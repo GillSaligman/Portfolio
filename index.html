@@ -5,6 +5,27 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Custom style adjustments */
+			img.enlarged-circle {
+				border-radius: 50%;
+				width: 110%;
+				height: auto;
+				object-fit: cover;
+				object-position: center;
+			}
+			img.rotated-arm {
+				transform: rotate(90deg);
+				width: 120%;
+				height: auto;
+			}
+			#banner {
+				background-image: url('images/bg.jpg');
+				background-size: cover;
+				background-position: center;
+				background-attachment: fixed;
+			}
+		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -46,7 +67,7 @@
 						<!-- Nauticus Robotics -->
 							<section class="wrapper spotlight style1">
 								<div class="inner">
-									<a href="#" class="image"><img src="images/NauticusCirclePic.jpg" alt="Nauticus Robotics" /></a>
+									<a href="#" class="image"><img src="images/NauticusCirclePic.jpg" alt="Nauticus Robotics" class="enlarged-circle" /></a>
 									<div class="content">
 										<h2 class="major">Nauticus Robotics</h2>
 										<p>As a mechanical engineer at Nauticus Robotics, I took on full-time responsibilities during a critical restructuring phase. I contributed to the design, manufacturing, and assembly of components for the Aquanaut MKII and Olympic Arm, solved oil pressure and hose routing challenges, and built a master controller prototype for advanced arm control. I worked long hours to meet tight deadlines and ensure the vehicle was ready for deep water testing.</p>
@@ -58,7 +79,7 @@
 						<!-- Robotic Arm | Senior Design -->
 							<section class="wrapper alt spotlight style2">
 								<div class="inner">
-									<a href="#" class="image"><img src="images/RobotArmRender.jpg" alt="Robotic Arm" /></a>
+									<a href="#" class="image"><img src="images/RobotArmRender.jpg" alt="Robotic Arm" class="rotated-arm" /></a>
 									<div class="content">
 										<h2 class="major">7-DOF Robotic Arm</h2>
 										<p>This project is a modular robotic arm mounted to a custom motorized chassis, designed for autonomous surface exploration. It was built for the NASA RASC-AL competition and represents a full-stack engineering effort — I calculated joint torques, selected and integrated components, and developed everything from mechanical structure to embedded firmware and ROS2 communication protocols.</p>
