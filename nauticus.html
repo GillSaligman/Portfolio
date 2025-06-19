@@ -13,12 +13,12 @@
 			background-attachment: fixed;
 			color: white;
 			text-shadow: 0 2px 5px rgba(0,0,0,0.7);
-			padding: 10em 2em 5em 2em;
+			padding: 16em 2em 6em 2em;
 			text-align: center;
 		}
 
 		#wrapper > .wrapper {
-			margin-top: -4em;
+			margin-top: -6em;
 		}
 
 		.features img {
@@ -28,15 +28,38 @@
 			object-fit: cover;
 			margin-bottom: 0.5em;
 		}
+
+		section#footer {
+			background: url('images/NauticusBackground.jpg') center center / cover fixed;
+			color: white;
+			text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+			padding-top: 4em;
+			padding-bottom: 4em;
+		}
+
+		section#footer a.special {
+			display: inline-block;
+			margin-top: 1em;
+			padding: 0.75em 2em;
+			border: 2px solid white;
+			border-radius: 4px;
+			text-decoration: none;
+			color: white;
+			font-weight: bold;
+			transition: background 0.3s ease, color 0.3s ease;
+		}
+
+		section#footer a.special:hover {
+			background: white;
+			color: #1b1b1b;
+		}
 	</style>
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
 
-	<!-- Page Wrapper -->
 	<div id="page-wrapper">
 
-		<!-- Header -->
 		<header id="header">
 			<h1><a href="index.html">Jesse Gill Saligman</a></h1>
 			<nav>
@@ -44,7 +67,6 @@
 			</nav>
 		</header>
 
-		<!-- Menu -->
 		<nav id="menu">
 			<div class="inner">
 				<h2>Menu</h2>
@@ -55,7 +77,6 @@
 			</div>
 		</nav>
 
-		<!-- Wrapper -->
 		<section id="wrapper">
 			<header>
 				<div class="inner">
@@ -64,7 +85,6 @@
 				</div>
 			</header>
 
-			<!-- Content -->
 			<div class="wrapper">
 				<div class="inner">
 
@@ -93,7 +113,6 @@
 			</div>
 		</section>
 
-		<!-- Footer -->
 		<section id="footer">
 			<div class="inner">
 				<h2 class="major">Get in Touch</h2>
@@ -102,6 +121,7 @@
 					<li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
 					<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
 				</ul>
+				<a href="index.html" class="special">Back to Portfolio</a>
 				<ul class="copyright">
 					<li>&copy; Jesse Gill Saligman. All rights reserved.</li>
 					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
@@ -111,7 +131,6 @@
 
 	</div>
 
-	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
