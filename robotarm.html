@@ -1,174 +1,238 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8" />
   <title>7-DOF Robotic Arm | Jesse Gill Saligman</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="assets/css/main.css" />
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; }
-    section { max-width: 800px; margin: 2em auto; padding: 0 1em; }
-    h2, h3 { margin-top: 1.5em; }
-    .hero {
+    /* Hero video styling */
+    #wrapper > header {
       position: relative;
       height: 60vh;
       overflow: hidden;
-      color: white;
     }
-    .hero video, .hero img {
+    #wrapper > header video.hero-video {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       object-fit: cover;
+      z-index: 0;
     }
-    .hero .overlay {
+    #wrapper > header .inner {
       position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      backdrop-filter: brightness(50%);
+      z-index: 1;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
     }
-    .toggle-content { display: none; padding-top: 1em; }
-    .toggle-btn {
-      display: inline-block;
-      margin-top: 1em;
-      background-color: #036;
+    /* Section spacing */
+    .section-space { margin-top: 4em; }
+    /* Center all main text */
+    section h2, section h3, section p { text-align: center; }
+    /* Basic Info images */
+    .basic-img { 
+      display: block; 
+      margin: 1.5em auto; 
+      max-width: 90%; 
+      border-radius: 8px;
+    }
+    /* Dropdown details */
+    .details {
+      display: none;
+      margin: 1em auto 2em;
+      padding: 1em;
+      max-width: 900px;
+      background: #f7f7f7;
+      border-radius: 6px;
+      text-align: left;
+    }
+    button.toggle-btn {
+      display: block;
+      margin: 1em auto;
+      padding: 0.6em 1.4em;
+      background-color: #333;
       color: #fff;
-      padding: 0.5em 1em;
       border: none;
+      border-radius: 4px;
       cursor: pointer;
-      font-weight: bold;
     }
-    .basic-img { max-width: 100%; margin-top: 1em; border-radius: 8px; }
+    button.toggle-btn:hover { background-color: #555; }
+    /* Inline videos */
+    .inline-video {
+      display: block;
+      margin: 1em auto;
+      max-width: 90%;
+      border-radius: 8px;
+    }
   </style>
 </head>
-<body>
+<body class="is-preload">
 
-  <!-- Hero section with muted looping background video -->
-  <section class="hero">
-    <video autoplay muted loop>
-      <source src="ArmVid1.mov" type="video/quicktime">
-    </video>
-    <img src="hero_image.jpg" alt="Fully rendered arm" />
-    <div class="overlay">
-      <h1>7-DOF Robotic Arm</h1>
-      <p>Modular, full-stack mechatronic system designed for autonomous surface exploration</p>
-    </div>
-  </section>
+  <div id="page-wrapper">
 
-  <!-- Overview -->
-  <section>
-    <h2>Overview</h2>
-    <p>Inspired by NASA’s RASC‑AL competition, my senior design team and I created a prototype lunar maintenance rover featuring a modular manipulator, custom chassis, and distributed control—built for adaptability, repairability, and upgradeability.</p>
-    <button class="toggle-btn" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
-      More Info
-    </button>
-    <div class="toggle-content">
-      <p>This was a college prototype platform to test modular arm control and system integration—not a sealed production system.</p>
-    </div>
-  </section>
+    <!-- Header & Hero -->
+    <header id="header">
+      <h1><a href="index.html">Jesse Gill Saligman</a></h1>
+      <nav><a href="#menu">Menu</a></nav>
+    </header>
+    <nav id="menu">
+      <div class="inner">
+        <h2>Menu</h2>
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+        </ul>
+        <a href="#" class="close">Close</a>
+      </div>
+    </nav>
 
-  <!-- Project Highlights -->
-  <section>
-    <h2>Project Highlights</h2>
-    <p>I served as Team Leader and was responsible for all mechanical design, electronics, software, prototyping, testing, and assembly—as opposed to focusing only on writing documentation.</p>
-    <img src="RobotArmRender.jpg" alt="Robot Arm Render" class="basic-img" />
-    <button class="toggle-btn" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
-      More Info
-    </button>
-    <div class="toggle-content">
-      <p>While RASC‑AL prompted modular swarm ideas, we focused on a single chassis with an advanced modular arm—choosing modularity for easier servicing, upgrades, and upgrade paths. We then built custom arm components and used ROS2-inspired communication architecture.</p>
-    </div>
-  </section>
+    <section id="wrapper">
+      <header>
+        <!-- background video -->
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source src="images/ArmVid1.mov" type="video/quicktime" />
+        </video>
+        <div class="inner">
+          <h2>7‑DOF Robotic Arm: LuMAR</h2>
+          <p>NASA RASC‑AL Senior Design • Full‑Stack Modular Platform</p>
+          <!-- overlay hero image if wanted -->
+          <img src="images/FullySeniorDesignRender.jpg" 
+               alt="LuMAR full-scale render" 
+               class="basic-img" 
+               style="max-height:200px; object-fit:contain;" />
+        </div>
+      </header>
 
-  <!-- Mechanical Design -->
-  <section>
-    <h2>Mechanical Design</h2>
-    <p>Modular joint layout minimized singularities. Performed torque & force analysis with our target payload, then designed, 3D‑printed (PLA/ABS/PETG) each joint housing around 1×1 aluminum tubing and rapid-prototyped individual joints sequentially.</p>
-    <img src="harmonicdrivecross.png" alt="Harmonic drive prototype" class="basic-img" />
-    <button class="toggle-btn" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
-      More Info
-    </button>
-    <div class="toggle-content">
-      <ul>
-        <li>Designed custom brackets, gears, mounts, and joints.</li>
-        <li>Considered, but ultimately sidelined a harmonic drive sub‑assembly due to complexity and timeline.</li>
-        <li>Built 4 joints + gripper (expected 7); J6 axial joint required down‑gearing potentiometer for ±300° rotation using thrust + radial bearings to maintain hollow wire routing.</li>
-      </ul>
-    </div>
-  </section>
+      <div class="wrapper">
+        <div class="inner">
 
-  <!-- Electronics -->
-  <section>
-    <h2>Electronics</h2>
-    <p>All joints connect to a single LV/HV power snake—only four wires run up the arm, go through a custom PCB, then split to each ESP‑controller. Chassis electronics use standard hobby components (12/24 V supplies, buck converters, fuses, Raspberry Pi).</p>
-    <img src="robotchassiseletronics.png" alt="Chassis electronics" class="basic-img" />
-    <button class="toggle-btn" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
-      More Info
-    </button>
-    <div class="toggle-content">
-      <p>We evaluated multiple microcontrollers for analog input, Wi‑Fi support, micropython compatibility, and performance. Chosen ESP8266 D1 Minis run MicroPython (not CircuitPython)—optimizing speed for PID loops. Each joint parses pot‑based position, runs PID, and drives motor independently.</p>
-    </div>
-  </section>
+          <!-- Mechanical Design -->
+          <h3 class="major section-space">Mechanical Design</h3>
+          <img src="images/j6GripperPic.png" alt="J6 & gripper assembly" class="basic-img">
+          <p>I led all mechanical analysis, torque calculations, CAD modeling, and rapid prototyping. Each joint is a 3D‑printed module clamped to a 1×1″ aluminum spine.</p>
+          <button class="toggle-btn" onclick="toggleDetails('mechDetails')">More Details</button>
+          <div id="mechDetails" class="details">
+            <ul>
+              <li>Joint layout optimized via singularity analysis.</li>
+              <li>Materials: PLA/ABS for high-load parts, PETG for structural components.</li>
+              <li>Designed a harmonic‑drive prototype (video below), but time constraints limited its use in the final build.</li>
+              <li>Built J3–J6 + gripper (intended J1–J6 + gripper), each fully constrained with axial & radial bearings.</li>
+              <li>Calibrated potentiometers with custom regression models to convert voltage → angle.</li>
+            </ul>
+            <p><strong>Harmonic Drive Prototype:</strong></p>
+            <img src="images/HarmonicDriveRender.png" alt="Harmonic drive render" class="basic-img">
+            <video class="inline-video" autoplay muted controls loop playsinline>
+              <source src="images/HarmonicDriveRedesignVideo.mov" type="video/quicktime" />
+            </video>
+          </div>
 
-  <!-- Software & Control -->
-  <section>
-    <h2>Software & Control</h2>
-    <p>I implemented a distributed control architecture: Controller ↔ PC ↔ Raspberry Pi ↔ joint ESPs. The Pi hosts wifi via hostapd/dnsmasq/Mosquitto; PC connects via SSH to launch ROS2‑style nodes.</p>
-    <img src="RobotArmComsDiagram.png" alt="Communications diagram" class="basic-img" />
-    <button class="toggle-btn" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
-      More Info
-    </button>
-    <div class="toggle-content">
-      <ul>
-        <li>Three bracket‑based data types: Controller (velocity), Desired (position P... or V...), and Actual (from ESPs).</li>
-        <li>System supports joint velocity control with “V<±1>” prefix, or direct joint positioning with “P<angle>”.</li>
-        <li>ESP routines: try Wi‑Fi, parse desired, convert to pot‑angle regression, run PID, publish actual at ~10 Hz.</li>
-      </ul>
-      <video controls muted style="max-width:100%; margin-top:1em;">
-        <source src="RobotArmComsDiagram.mp4" type="video/mp4">
-        <!-- Fallback note -->
-      </video>
-    </div>
-  </section>
+          <!-- Electronics -->
+          <h3 class="major section-space">Electronics</h3>
+          <img src="images/robotchassiselectronics.png" alt="Chassis electronics layout" class="basic-img">
+          <p>Each joint taps into a 4‑wire power “snake” (24 V+/–, 3.3 V+/–) and runs its own ESP8266 microcontroller, making the system hot‑swappable and fault‑tolerant.</p>
+          <button class="toggle-btn" onclick="toggleDetails('elecDetails')">More Details</button>
+          <div id="elecDetails" class="details">
+            <p><strong>Joint Electronics:</strong> Tested dozens of low‑cost microcontrollers for analog pins, Wi‑Fi reliability, and MicroPython support. Each module includes:</p>
+            <ul>
+              <li>ESP8266 with MicroPython + asyncio</li>
+              <li>Potentiometer feedback</li>
+              <li>Motor driver & DC gearmotor</li>
+              <li>Custom PCB for power regulation</li>
+            </ul>
+            <p><strong>Chassis Electronics:</strong> Hobbyist‑grade rails & safety:</p>
+            <ul>
+              <li>12 V & 24 V power supplies</li>
+              <li>Buck converters (5 V, 3.3 V) & fuses</li>
+              <li>Raspberry Pi hosting the control network</li>
+            </ul>
+          </div>
 
-  <!-- Prototyping & Assembly -->
-  <section>
-    <h2>Prototyping & Assembly</h2>
-    <p>Focused on modular design: each joint was built and validated individually—preventing integration bottlenecks. Software was developed in reverse, from end‑effector back to base.</p>
-    <img src="j6GripperPic.png" alt="J6 Gripper assembly" class="basic-img" />
-    <button class="toggle-btn" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
-      More Info
-    </button>
-    <div class="toggle-content">
-      <p>Started with J6 + gripper—software ignored earlier joints until they were built, avoiding errors caused by missing data slots and enabling incremental testing.</p>
-    </div>
-  </section>
+          <!-- Software & Control -->
+          <h3 class="major section-space">Software & Control</h3>
+          <img src="images/RobotArmComsDiagram.png" alt="Communication diagram" class="basic-img">
+          <p>Distributed control over ROS 2 + MQTT. A Raspberry Pi runs hostapd/dnsmasq/mosquitto, bridging commands to each joint’s ESP8266.</p>
+          <button class="toggle-btn" onclick="toggleDetails('swDetails')">More Details</button>
+          <div id="swDetails" class="details">
+            <ul>
+              <li>Connect laptop to Pi’s Wi‑Fi, SSH in, and launch the main control scripts.</li>
+              <li>Xbox controller → PC → Pi publishes “Controller Data” bracket:<br>
+                  <code>[DR, DL, J3, J4, J5, J6, J7]</code> (<em>floats –1 to 1</em>)</li>
+              <li>Pi converts to “Desired Data”:<br>
+                  • Velocity mode → <code>V&lt;value&gt;</code><br>
+                  • Position mode → <code>P&lt;angle&gt;</code></li>
+              <li>Each ESP listens for its own slot, runs a PID loop (or direct velocity), and publishes “Actual Data.”</li>
+              <li>ROS 2 nodes handle simulation in Gazebo, logging, and system health checks.</li>
+            </ul>
+          </div>
 
-  <!-- Takeaways & Future Work -->
-  <section>
-    <h2>Takeaways & Future Work</h2>
-    <p>This platform is designed for future developers to build upon: perfect for demonstrating PID tuning, adding drivetrain, new manipulators, end‑effectors, etc.</p>
-    <img src="FullySeniorDesignRender.jpg" alt="Future work preview" class="basic-img" />
-    <button class="toggle-btn" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
-      More Info
-    </button>
-    <div class="toggle-content">
-      <p>Professors plan to use it for student labs showcasing control tuning; next teams can focus on drivetrain, arm expansion, interchangable tools. Complete documentation will support easy handoffs.</p>
-    </div>
-  </section>
+          <!-- Prototyping & Assembly -->
+          <h3 class="major section-space">Prototyping & Assembly</h3>
+          <img src="images/HarmonicDriveRender.png" alt="Assembly example" class="basic-img">
+          <p>By testing each joint in isolation, I eliminated integration headaches — once a module passed bench tests, it plugged straight onto the spine and worked immediately.</p>
+          <button class="toggle-btn" onclick="toggleDetails('protoDetails')">More Details</button>
+          <div id="protoDetails" class="details">
+            <p><strong>Workflow:</strong></p>
+            <ol>
+              <li>Flash + calibrate gripper & J6 first — software already handled any empty slots.</li>
+              <li>Wire & PID‑tune each subsequent joint individually.</li>
+              <li>Mount modules in series — no joint‑to‑joint dependencies.</li>
+              <li>Final system test with <strong>ArmVid2.mov</strong> demonstration below.</li>
+            </ol>
+            <video class="inline-video" autoplay muted controls loop playsinline>
+              <source src="images/ArmVid2.mov" type="video/quicktime" />
+            </video>
+          </div>
 
-  <!-- Back to Portfolio -->
-  <section style="text-align:center; margin-bottom:2em;">
-    <a href="index.html" class="special">Back to Portfolio</a>
-  </section>
+          <!-- Takeaways & Future Work -->
+          <h3 class="major section-space">Takeaways & Future Work</h3>
+          <img src="images/FullySeniorDesignRender.jpg" alt="LuMAR final concept" class="basic-img">
+          <p>This platform is documented and handed off to future Drexel teams. It’s designed as a living testbed for controls, modular upgrades, and end‑effector interchangeability.</p>
+          <button class="toggle-btn" onclick="toggleDetails('futureDetails')">More Details
+
+```html
+          <div id="futureDetails" class="details">
+            <ul>
+              <li>Drive system refinement & encoder integration</li>
+              <li>Completion of J1 & J2 for full 7-DOF</li>
+              <li>Interchangeable end-effector toolset</li>
+              <li>Expanded ROS 2 autonomy and classroom demos</li>
+            </ul>
+            <p>Our advisor will use this arm to teach PID tuning, and younger students can pick up the drivetrain, add new joints, or build specialized attachments — the possibilities are endless.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <section id="footer">
+      <div class="inner">
+        <h2 class="major">Get in Touch</h2>
+        <ul class="contact">
+          <li class="icon solid fa-phone">610-316-5180</li>
+          <li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
+          <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
+        </ul>
+        <a href="index.html" class="special">Back to Portfolio</a>
+        <ul class="copyright">
+          <li>&copy; Jesse Gill Saligman. All rights reserved.</li>
+          <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+      </div>
+    </section>
+  </div>
 
   <script>
-    // No extra JS needed—the buttons toggle their sibling content
+    function toggleDetails(id) {
+      const el = document.getElementById(id);
+      el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
   </script>
 
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
