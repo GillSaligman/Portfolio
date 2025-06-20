@@ -1,211 +1,187 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>7-DOF Robotic Arm | Jesse Gill Saligman</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>7-DOF Robotic Arm – Jesse Gill Saligman</title>
   <style>
-    #wrapper > header {
-      background: black;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #f0f0f0;
+    }
+    header {
       position: relative;
       height: 100vh;
       overflow: hidden;
     }
-
-    #wrapper > header video {
+    header video {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-      z-index: 0;
-    }
-
-    #wrapper > header .inner {
-      position: relative;
-      z-index: 1;
-      padding: 12em 2em 12em 2em;
-      text-align: center;
-      color: white;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
-    }
-
-    .dropdown-content {
-      display: none;
-      margin-top: 1em;
-      background: #f9f9f9;
-      padding: 1em;
-      border-radius: 6px;
-      color: #222;
-    }
-
-    .dropdown-button {
-      background: #444;
-      color: white;
-      border: none;
-      padding: 0.5em 1em;
-      margin-top: 0.5em;
-      cursor: pointer;
-      font-size: 1em;
-      border-radius: 4px;
-    }
-
-    .features img, .features video {
+      top: 0; left: 0;
       width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-top: 1em;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
     }
-
-    h3.major {
-      margin-top: 3em;
-    }
-
-    section#footer {
-      background: #222;
+    header h1 {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3em;
       color: white;
-      padding: 4em 2em;
-      text-align: center;
+      text-shadow: 2px 2px 8px black;
     }
-
-    section#footer video {
+    section {
+      padding: 60px 10%;
+    }
+    h2 {
+      margin-top: 60px;
+      font-size: 2em;
+      border-bottom: 2px solid #444;
+      padding-bottom: 10px;
+    }
+    .image {
       max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 2em;
+      height: auto;
+      display: block;
+      margin: 20px 0;
     }
-
-    .spacer {
-      margin-top: 2em;
+    details {
+      margin-top: 20px;
+      background: #222;
+      padding: 15px;
+      border-radius: 6px;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.1em;
+    }
+    video.embedded {
+      width: 100%;
+      max-width: 720px;
+      margin: 30px auto;
+      display: block;
     }
   </style>
 </head>
-<body class="is-preload">
+<body>
 
-  <div id="page-wrapper">
+<header>
+  <video autoplay loop muted playsinline>
+    <source src="ArmVid1.MOV" type="video/mp4">
+  </video>
+  <h1>7-DOF Robotic Arm • Senior Design</h1>
+</header>
 
-    <!-- Background Header -->
-    <header id="header">
-      <video autoplay muted loop>
-        <source src="images/ArmVid1.MOV" type="video/mp4">
-      </video>
-      <div class="inner">
-        <h1>7-DOF Robotic Arm</h1>
-        <p>Senior Design Project • Drexel University • 2025</p>
-      </div>
-    </header>
+<section>
+  <h2>Overview</h2>
+  <p>Inspired by NASA’s RASC-AL challenge, my senior design team created a lunar maintenance rover with a modular advanced manipulator, a custom chassis, and distributed control — built for adaptability, repairability, and upgradeability.</p>
+  <details>
+    <summary>More Info</summary>
+    <p>The project was a test platform for modularity, control, and systems integration — not a hardened lunar system. Every element was designed with modularity in mind: only four wires (HV+/–, LV+/–) run from the chassis to the arm, distributing power to each joint’s independent controller. This minimized wiring complexity and enabled hot-swapping of components. While not space-grade, the prototype provided a hands-on validation environment for ideas in full-stack robotics.</p>
+  </details>
+</section>
 
-    <!-- Content Sections -->
-    <section id="wrapper">
-      <div class="wrapper">
-        <div class="inner">
+<section>
+  <h2>Project Highlights</h2>
+  <img src="FullySeniorDesignRender.JPG" class="image" alt="Full System Render">
+  <p>I was team leader and led all mechanical, electrical, coding, prototyping, and testing work. The rest of the team focused on documentation and outreach, while I built and integrated the actual hardware and software systems.</p>
+  <details>
+    <summary>More Info</summary>
+    <p>The concept was inspired by RASC-AL’s call for long-term lunar servicing platforms. We explored several directions before settling on a modular robotic arm mounted to a chassis. The arm’s modularity allows for easy upgrades and repairs — a feature that would be vital for years of service on the Moon. We decided to use ROS 2 to support autonomy and communication structure, and I built the entire stack to simulate real-world deployment.</p>
+    <img src="UswithArmBot.jpg" class="image" alt="Team with Arm Bot">
+  </details>
+</section>
 
-          <h3 class="major">Overview</h3>
-          <p>Inspired by NASA’s RASC-AL challenge, my senior design team created a lunar maintenance rover with a modular advanced manipulator, a custom chassis, and distributed control — built for adaptability, repairability, and upgradeability.</p>
-          <button class="dropdown-button" onclick="toggleDropdown('overviewMore')">More Info</button>
-          <div id="overviewMore" class="dropdown-content">
-            <p>This project was a test platform for modularity, control, and systems integration — not a hardened lunar system. Every element was designed with modularity in mind: only four wires (HV+/–, LV+/–) run from the chassis to the arm, distributing power to each joint’s independent controller. This minimized wiring complexity and enabled hot-swapping of components. While not space-grade, the prototype provided a hands-on validation environment for ideas in full-stack robotics.</p>
-          </div>
+<section>
+  <h2>Mechanical Design</h2>
+  <img src="RobotArmRender.jpg" class="image" alt="Arm Render">
+  <p>We started by analyzing different joint layouts to minimize singularities. I calculated all forces, moments, and required torques based on a desired payload and arm reach. Then, I designed and rapidly prototyped each joint one by one.</p>
+  <details>
+    <summary>More Info</summary>
+    <p>The arm’s structure is built around a 1” x 1” aluminum tube spine, with each joint 3D-printed using PLA, PETG, or ABS depending on stress requirements. Joints are designed to be fully modular, each attaching independently to the central spine.</p>
+    <p>I originally designed a 3D-printed harmonic drive to increase torque and reduce backlash, but it was cut due to time. We intended to build all 6 joints and a gripper (J1–J6 + gripper), but completed J3–J6 + gripper before the deadline.</p>
+    <img src="HarmonicDriveRender.png" class="image" alt="Harmonic Drive">
+    <img src="HarmoncDrivesidecross.png" class="image" alt="Harmonic Cross">
+    <video class="embedded" autoplay loop muted playsinline>
+      <source src="HarmonicDriveRedesignVideo.MOV" type="video/mp4">
+    </video>
+    <p>Potentiometers were used for joint feedback due to budget constraints, and we calibrated them ourselves using regression to convert resistance to angle. For torque estimates, we assumed motor weights early to avoid circular dependency between motor choice and structural load. Later, we verified that selected motors were within our bounds.</p>
+  </details>
+</section>
 
-          <h3 class="major spacer">Project Highlights</h3>
-          <img src="images/FullySeniorDesignRender.JPG" alt="Full system render" />
-          <p>I was team leader and led all mechanical, electrical, coding, prototyping, and testing work. The rest of the team focused on documentation and outreach, while I built and integrated the actual hardware and software systems.</p>
-          <button class="dropdown-button" onclick="toggleDropdown('highlightMore')">More Info</button>
-          <div id="highlightMore" class="dropdown-content">
-            <p>The concept was inspired by RASC-AL’s call for long-term lunar servicing platforms. We explored several directions before settling on a modular robotic arm mounted to a chassis. The arm’s modularity allows for easy upgrades and repairs — a feature that would be vital for years of service on the Moon. We decided to use ROS 2 to support autonomy and communication structure, and I built the entire stack to simulate real-world deployment.</p>
-            <img src="images/UswithArmBot.jpg" alt="Team with bot" />
-          </div>
+<section>
+  <h2>Special Note on J6 + Gripper</h2>
+  <img src="j6gripcrosssection.png" class="image" alt="Cross Section">
+  <p>J6 was an axial joint, already tough to design — but we needed more than 270° rotation, so I geared down the potentiometer to achieve ~600° range. We used axial thrust bearings and radial bearings to fully constrain it, while keeping the entire joint hollow for wire passthrough to the servo-powered gripper.</p>
+</section>
 
-          <h3 class="major spacer">Mechanical Design</h3>
-          <img src="images/RobotArmRender.jpg" alt="Arm Render" />
-          <p>We started by analyzing different joint layouts to minimize singularities. I calculated all forces, moments, and required torques based on a desired payload and arm reach. Then, I designed and rapidly prototyped each joint one by one.</p>
-          <button class="dropdown-button" onclick="toggleDropdown('mechMore')">More Info</button>
-          <div id="mechMore" class="dropdown-content">
-            <p>The arm’s structure is built around a 1” x 1” aluminum tube spine, with each joint 3D-printed using PLA, PETG, or ABS depending on stress requirements. Joints are designed to be fully modular, each attaching independently to the central spine. I originally designed a 3D-printed harmonic drive to increase torque and reduce backlash, but it was cut due to time.</p>
-            <video autoplay muted loop>
-              <source src="images/HarmonicDriveRedesignVideo.MOV" type="video/mp4">
-            </video>
-            <img src="images/HarmonicDriveRender.png" />
-            <img src="images/HarmoncDrivesidecross.png" />
-            <p>We completed J3–J6 + gripper before the deadline. Potentiometers were used for joint feedback due to budget constraints, and we calibrated them ourselves using regression to convert resistance to angle.</p>
-          </div>
+<section>
+  <h2>Electronics</h2>
+  <img src="ArmWiringGrosspic.png" class="image" alt="Gross Wiring">
+  <p>Each joint has its own microcontroller, powered by a shared 4-wire snake (HV+/– and LV+/–). Joints can be added or removed with no changes to the system — they just tap into the same power line and connect to the existing wireless network.</p>
+  <details>
+    <summary>Joint Electronics</summary>
+    <img src="Joint eleectronics Diagram.png" class="image" alt="Joint Diagram">
+    <p>We used ESP8266 microcontrollers with analog input and Wi-Fi support. Each joint includes a potentiometer, a motor driver, and a gearmotor. Once powered, it connects to Wi-Fi, receives a desired position, runs a PID loop, and publishes actual angle over MQTT.</p>
+  </details>
+  <details>
+    <summary>Chassis Electronics</summary>
+    <img src="robotchassiselectronics.png" class="image" alt="Chassis Electronics">
+    <p>Electronics include 12V and 24V power supplies, buck converters for 5V/3.3V, fuses, and a Raspberry Pi that controls everything. These parts made debugging fast and affordable.</p>
+  </details>
+</section>
 
-          <h3 class="major spacer">Special Note on J6 + Gripper</h3>
-          <img src="images/j6gripcrosssection.png" alt="Cross section of J6" />
-          <p>J6 was an axial joint requiring more than 270° rotation, so I geared down the potentiometer to achieve ~600° range. We used axial and radial bearings to fully constrain it, while keeping the joint hollow for wire passthrough to the servo-powered gripper.</p>
+<section>
+  <h2>Software & Control</h2>
+  <img src="RobotArmComsDiagram.png" class="image" alt="Comms Diagram">
+  <p>The Raspberry Pi relays MQTT commands to each joint, operating in position or velocity mode. It runs a local network and accepts Xbox controller or terminal input. ROS 2 was used for simulation and system debugging.</p>
+  <details>
+    <summary>More Info</summary>
+    <p>The Pi uses hostapd and mosquitto to broadcast a Wi-Fi network. Xbox controller input gets converted to velocity messages like “V0.65”. In manual mode, you can type “j4 45” to send “P45.00”. Each ESP returns its actual angle, forming a full feedback bracket like [DR, DL, J3, J4, J5, J6, G].</p>
+    <img src="Dataexamplepic.png" class="image" alt="Data Format">
+  </details>
+</section>
 
-          <h3 class="major spacer">Electronics</h3>
-          <img src="images/ArmWiringGrosspic.png" />
-          <p>Each joint has its own microcontroller, powered by a shared 4-wire snake (HV+/– and LV+/–). Joints can be added or removed with no changes to the system — they just tap into the same power line and connect to the existing wireless network.</p>
-          <button class="dropdown-button" onclick="toggleDropdown('elecMore')">More Info</button>
-          <div id="elecMore" class="dropdown-content">
-            <h4>Joint Electronics</h4>
-            <img src="images/Joint eleectronics Diagram.png" />
-            <p>Each joint contains:
-              <ul>
-                <li>ESP8266 microcontroller</li>
-                <li>Potentiometer for angle feedback</li>
-                <li>Motor driver + gearmotor</li>
-              </ul>
-              Joints connect to Wi-Fi, receive a target angle or velocity, run local PID loops, and send feedback via MQTT.
-            </p>
-            <h4>Chassis Electronics</h4>
-            <img src="images/robotchassiselectronics.png" />
-            <p>The chassis contains 12V/24V supplies, 5V/3.3V buck converters, fuse protection, and a Raspberry Pi which acts as the central hub.</p>
-          </div>
+<section>
+  <h2>ESP Logic</h2>
+  <img src="j5 data pic.png" class="image" alt="ESP PID Data">
+  <p>Each ESP:</p>
+  <ul>
+    <li>Connects to Wi-Fi</li>
+    <li>Listens for its command from the bracket</li>
+    <li>Interprets ‘P’ as angle and runs PID to it</li>
+    <li>Interprets ‘V’ as velocity with safety bounds</li>
+    <li>Sends back actual angle to the Pi</li>
+  </ul>
+</section>
 
-          <h3 class="major spacer">Software & Control</h3>
-          <img src="images/RobotArmComsDiagram.png" />
-          <p>The robot uses a distributed system with a Raspberry Pi hosting the network and relaying commands via MQTT to each joint. The Pi can operate in position or velocity mode.</p>
-          <button class="dropdown-button" onclick="toggleDropdown('swMore')">More Info</button>
-          <div id="swMore" class="dropdown-content">
-            <p>The Pi uses hostapd, dnsmasq, and mosquitto to run its own Wi-Fi network. ROS 2 is used for simulation and I/O, while MQTT handles real-time joint control. Input can come from a controller (velocity mode) or typed in (position mode).</p>
-          </div>
+<section>
+  <h2>Prototyping & Assembly</h2>
+  <p>Each joint is fully independent. This let me test, debug, and assemble them one at a time without breaking the whole system.</p>
+  <details>
+    <summary>More Info</summary>
+    <p>We built from the end-effector back: gripper → J6 → J5, etc. Since joints ignored bracket values they didn’t recognize, you could run the full system with only one or two joints hooked up. Joints were calibrated and mounted one by one, with quick-mount brackets and internal routing for clean wiring.</p>
+  </details>
+</section>
 
-          <h3 class="major spacer">Communication Protocol</h3>
-          <img src="images/Dataexamplepic.png" />
-          <p>MQTT messages follow the format [DR, DL, J3, J4, J5, J6, G]. The Raspberry Pi interprets joystick/controller data or terminal commands and formats desired position or velocity messages.</p>
+<section>
+  <h2>Takeaways & Future Work</h2>
+  <p>LuMAR is being passed on to future Drexel teams to serve as a platform for continued development and as a teaching tool for robotics and controls.</p>
+  <details>
+    <summary>More Info</summary>
+    <p>Our advisor plans to use the arm to demonstrate PID tuning in lab. Future goals include completing J1/J2, improving drivetrain robustness, making modular end-effectors, and expanding autonomy/simulation capabilities. I wrote full documentation to support continued development.</p>
+  </details>
+</section>
 
-          <h3 class="major spacer">ESP Logic</h3>
-          <img src="images/j5 data pic.png" />
-          <p>Each ESP listens for its joint's value. If it’s 'P45.00', it runs PID to that angle. If it’s 'V0.65', it runs motor speed with soft stops. Feedback is sent back as current position.</p>
-
-          <h3 class="major spacer">Prototyping & Assembly</h3>
-          <p>Joints were tested and assembled independently. We began from the gripper and moved backward to avoid integration issues. Each joint was flashed and PID-tuned before mounting.</p>
-
-          <h3 class="major spacer">Takeaways & Future Work</h3>
-          <p>LuMAR is being handed off to future Drexel teams as a platform and teaching tool. Our advisor will use it to teach PID control. Future plans include:</p>
-          <ul>
-            <li>Adding J1/J2 for 7-DOF</li>
-            <li>Improved drivetrain gearing</li>
-            <li>End-effector swapping</li>
-            <li>Full autonomy stack</li>
-          </ul>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ArmVid2 video above footer -->
-    <section id="footer">
-      <video autoplay muted loop>
-        <source src="images/ArmVid2.mov" type="video/mp4">
-      </video>
-      <h2>Get in Touch</h2>
-      <p><strong>Email:</strong> <a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">Gill Saligman</a></p>
-    </section>
-
-  </div>
-
-  <script>
-    function toggleDropdown(id) {
-      var x = document.getElementById(id);
-      x.style.display = x.style.display === "block" ? "none" : "block";
-    }
-  </script>
+<section>
+  <video class="embedded" controls muted>
+    <source src="ArmVid2.mov" type="video/mp4">
+  </video>
+</section>
 
 </body>
 </html>
