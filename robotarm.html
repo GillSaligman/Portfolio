@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>7-DOF Robotic Arm | Jesse Gill Saligman</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+  <div id="page-wrapper">
+
+    <!-- Header -->
+    <header id="header">
+      <h1><a href="index.html">Jesse Gill Saligman</a></h1>
+      <nav><a href="#menu">Menu</a></nav>
+    </header>
+
+    <!-- Menu -->
+    <nav id="menu">
+      <div class="inner">
+        <h2>Menu</h2>
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+        </ul>
+        <a href="#" class="close">Close</a>
+      </div>
+    </nav>
+
+    <!-- Banner -->
+    <section id="wrapper">
+      <header style="background-image: url('images/RobotArmRender.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 10em 2em 18em 2em; text-align: center; color: white; text-shadow: 0 2px 5px rgba(0,0,0,0.7);">
+        <div class="inner">
+          <h2>7-DOF Robotic Arm</h2>
+          <p>NASA RASC-AL | 2024 – 2025</p>
+        </div>
+      </header>
+
+      <!-- Overview -->
+      <div class="wrapper">
+        <div class="inner">
+          <h3 class="major">Project Overview</h3>
+          <p>This project is a modular robotic arm mounted to a custom motorized chassis, designed for autonomous surface exploration. Built for the NASA RASC-AL competition, it represents a full-stack engineering effort — I designed the mechanical structure, selected and integrated the electronics, developed embedded firmware, and built a ROS2 communication system.</p>
+        </div>
+      </div>
+
+      <!-- Project Highlights -->
+      <div class="wrapper">
+        <div class="inner">
+          <h3 class="major">Project Highlights</h3>
+          <section class="features">
+            <article>
+              <a href="#" class="image"><img src="" alt="Team with Robot" /></a>
+              <h3 class="major">Team and Final Prototype</h3>
+              <p>Our team worked collaboratively to design and build the final system. I was responsible for the design, prototyping, coding, and systems integration of the arm and controller.</p>
+            </article>
+            <article>
+              <a href="#" class="image"><img src="" alt="CAD Render" /></a>
+              <h3 class="major">Design, Code & Prototyping</h3>
+              <p>I led design calculations, developed the firmware and hardware architecture, and iteratively prototyped each joint using 3D-printed components.</p>
+            </article>
+          </section>
+        </div>
+      </div>
+
+      <!-- Software and Control -->
+      <div class="wrapper">
+        <div class="inner">
+          <h3 class="major">Software and Control</h3>
+          <a href="#" class="image"><img src="" alt="Software Diagram" /></a>
+          <p>ROS2 coordinates communication between a controller, the Raspberry Pi, and six ESP-based joints. Each joint runs its own PID controller with onboard feedback, while the central system manages coordination, user input, and simulation in Gazebo.</p>
+        </div>
+      </div>
+
+      <!-- Electronics -->
+      <div class="wrapper">
+        <div class="inner">
+          <h3 class="major">Electronics</h3>
+          <p>Each joint is independently powered and contains an ESP8266, motor driver, potentiometer, and local PID logic. The distributed architecture ensures modularity and minimizes wiring complexity while enhancing fault isolation.</p>
+        </div>
+      </div>
+
+      <!-- Mechanical Design -->
+      <div class="wrapper">
+        <div class="inner">
+          <h3 class="major">Mechanical Design</h3>
+          <p>Every joint was custom designed and torque-calculated to meet task specifications. We used aluminum tubing and 3D-printed clamps for strength, precision, and weight savings. Internal routing and modular joinery support field servicing.</p>
+        </div>
+      </div>
+
+      <!-- Prototyping and Assembly -->
+      <div class="wrapper">
+        <div class="inner">
+          <h3 class="major">Prototyping and Assembly</h3>
+          <p>The modular architecture allowed us to prototype each joint independently, ensuring rapid debugging and minimal integration overhead. Since each joint communicates with the Raspberry Pi in parallel, subsystem failures do not cascade — similar to octopus limbs. Once validated, the system worked seamlessly when combined.</p>
+          <section class="features">
+            <article>
+              <a href="#" class="image"><img src="" alt="Joint Assembly" /></a>
+            </article>
+            <article>
+              <a href="#" class="image"><img src="" alt="Assembled Robot" /></a>
+            </article>
+          </section>
+        </div>
+      </div>
+
+      <!-- Future Work -->
+      <div class="wrapper">
+        <div class="inner">
+          <h3 class="major">Takeaways and Future Work</h3>
+          <p>The project will be passed to future Drexel students. Recommendations include drivetrain upgrades, completing J1/J2, and better terrain traversal. A master documentation package was created to ease future onboarding and iteration.</p>
+          <a href="#" class="image"><img src="" alt="Team Wrap-Up" /></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <section id="footer" style="background: url('images/RobotArmRender.jpg') center center / cover fixed; color: white; text-shadow: 0 1px 3px rgba(0,0,0,0.7);">
+      <div class="inner">
+        <h2 class="major">Get in Touch</h2>
+        <ul class="contact">
+          <li class="icon solid fa-phone">610-316-5180</li>
+          <li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
+          <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
+        </ul>
+        <a href="index.html" class="special">Back to Portfolio</a>
+        <ul class="copyright">
+          <li>&copy; Jesse Gill Saligman. All rights reserved.</li>
+          <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
