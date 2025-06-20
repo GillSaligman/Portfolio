@@ -1,150 +1,85 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <title>7-DOF Robotic Arm | Jesse Gill Saligman</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/main.css">
   <style>
-    .inner {
-      text-align: center;
+    details {
+      margin-top: 1rem;
     }
-    .section-space {
-      margin-top: 4em;
-    }
-    .details {
-      display: none;
-      margin-top: 1em;
-      text-align: left;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    button.toggle-btn {
-      margin-top: 1em;
-      padding: 0.5em 1.2em;
-      background-color: #333;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button.toggle-btn:hover {
-      background-color: #555;
+    h3 {
+      margin-top: 2rem;
     }
   </style>
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
-<body class="is-preload">
-  <div id="page-wrapper">
-    <header id="header">
-      <h1><a href="index.html">Jesse Gill Saligman</a></h1>
-      <nav><a href="#menu">Menu</a></nav>
-    </header>
+<body>
 
-    <nav id="menu">
-      <div class="inner">
-        <h2>Menu</h2>
-        <ul class="links">
-          <li><a href="index.html">Home</a></li>
-        </ul>
-        <a href="#" class="close">Close</a>
-      </div>
-    </nav>
+  <section class="wrapper">
+    <div class="inner">
+      <h2 class="major">Overview</h2>
+      <p>Inspired by NASA's RASC-AL challenge, my senior design team created a lunar maintenance rover featuring a modular advanced manipulator, a custom chassis, and distributed control built for adaptability, repairability, and upgradeability.</p>
+      <details>
+        <summary>More Details</summary>
+        <p>The project was built as a proof-of-concept for modularity, control, and systems integration in an academic setting. We created a 7-DOF robotic arm system powered through a 4-wire trunk, with each joint operating independently over Wi-Fi. Every component — mechanical, electrical, and software — was designed from scratch to explore full-stack integration within budget constraints.</p>
+      </details>
 
-    <section id="wrapper">
-      <header>
-        <div class="inner">
-          <h2>7-DOF Robotic Arm: LuMAR</h2>
-          <p>NASA RASC-AL Project • Full-stack Modular System</p>
-        </div>
-      </header>
+      <h2 class="major">Project Highlights</h2>
+      <p>I was the team leader responsible for all mechanical design, electrical wiring, firmware, ROS integration, and full prototyping. Our four-person team chose a modular robotic arm as the focus — something serviceable, interchangeable, and upgradeable — rather than attempting a full modular swarm.</p>
+      <details>
+        <summary>More Details</summary>
+        <p>Using RASC-AL’s challenge prompt as inspiration, we brainstormed approaches and selected a modular manipulator that could theoretically function on the Moon for years. After refining that concept, we began prototyping a chassis and advanced arm using ROS2-based communication. The system’s control, integration, and hardware were all built and tested by me.</p>
+      </details>
 
-      <div class="wrapper">
-        <div class="inner">
-          <h3 class="major section-space">Overview</h3>
-          <p>This system is a 7-degree-of-freedom robotic arm mounted to a custom motorized chassis, built for the NASA RASC-AL competition. It demonstrates modularity, autonomy, and real-world engineering execution — every joint is independently controlled, wired, powered, and programmed.</p>
-          <button class="toggle-btn" onclick="toggleDetails('overviewDetails')">More Details</button>
-          <div id="overviewDetails" class="details">
-            <p>We brainstormed four concept directions: multifunctional bots, single-task bots, task-specialized swarms, and finally a modular swarm — which we chose. Our modular approach gives us scalable redundancy and resilience. Each joint is modular, powered with just 4 wires total running up the arm: HV +, HV −, LV +, LV −, reducing wiring complexity and increasing serviceability.</p>
-          </div>
+      <h2 class="major">Mechanical Design</h2>
+      <p>We performed simulations to avoid singularities, calculated torques and forces for each joint, and built the arm around a lightweight 1"x1" aluminum skeleton. Each bracket, mount, gear, and bearing interface was custom-designed and 3D-printed in PLA, ABS, or PETG depending on load conditions.</p>
+      <details>
+        <summary>More Details</summary>
+        <p>We initially aimed to use a harmonic drive, but due to time constraints only implemented joints J3 through J7. Each joint uses a potentiometer-based position sensing system. For J6, which required 600°+ motion, we added gearing to the potentiometer, sacrificing precision for range. The design included axial thrust bearings and hollow pathways for internal wire routing to support the gripper servo.</p>
+      </details>
 
-          <h3 class="major section-space">Project Highlights</h3>
-          <p>I was responsible for designing, prototyping, printing, wiring, and programming every aspect of the robotic arm. This includes calculating joint torques, testing dozens of microcontroller boards, developing embedded firmware in MicroPython, and building a Wi-Fi-based messaging system using MQTT across ESP32s, a Raspberry Pi, and a controller-hosting laptop.</p>
-          <button class="toggle-btn" onclick="toggleDetails('highlightDetails')">More Details</button>
-          <div id="highlightDetails" class="details">
-            <p>I tested numerous boards to find the ideal mix of analog pins, Wi-Fi reliability, and firmware support. Each joint has a self-contained system with power regulation, PID control, and regression-calibrated feedback. The mechanical design centers around 1x1 aluminum with custom 3D-printed clamping enclosures for modular swaps.</p>
-          </div>
+      <h2 class="major">Electronics</h2>
+      <p>Each joint contains its own ESP8266 microcontroller, motor driver, and potentiometer, powered through a shared 4-wire bus (HV+/–, LV+/–). This lets joints be removed or added without rewiring or reprogramming.</p>
+      <details>
+        <summary>More Details</summary>
+        <p>We tested several microcontrollers to find affordable, Wi-Fi-capable boards with analog input and MicroPython support. CircuitPython proved unreliable for PID loops, so MicroPython was used instead. The robot also includes off-the-shelf electronics like 12V/24V power supplies, buck converters, fuses, and a Raspberry Pi for central control.</p>
+      </details>
 
-          <h3 class="major section-space">Software & Control</h3>
-          <p>The control system is distributed using ROS 2 and MQTT. A Raspberry Pi hosts the Wi-Fi network and bridges commands between the controller (via SSH) and the ESP32s embedded in each joint. The Xbox controller enables live input; control messages are formatted and relayed in real-time.</p>
-          <button class="toggle-btn" onclick="toggleDetails('softwareDetails')">More Details</button>
-          <div id="softwareDetails" class="details">
-            <p>Each ESP32 listens for its own joint commands and publishes its angle feedback to MQTT. A Python simulation overlays real and target positions for debugging. ROS 2 nodes handle input, system state broadcasting, error reporting, and simulation in Gazebo.</p>
-          </div>
+      <h2 class="major">Software & Control</h2>
+      <p>The system is controlled through a Raspberry Pi hosting a Wi-Fi network and MQTT broker. A computer connects to the Pi via SSH and runs a main control program that sends desired angles or velocities to each joint, depending on mode.</p>
+      <details>
+        <summary>More Details</summary>
+        <p>The Pi can operate in two modes:
+          <ul>
+            <li><strong>Velocity Mode</strong>: Reads Xbox controller input, formats data as [V+value], and publishes it in a 7-slot array: [DL, DR, J3, J4, J5, J6, J7]</li>
+            <li><strong>Position Mode</strong>: Accepts typed commands (e.g., "j3 45") and sends formatted [P45.0] values for specific joints</li>
+          </ul>
+          Each ESP connects to Wi-Fi, parses its command, converts position to a potentiometer value using regression, and uses PID to reach the target. In velocity mode, motors are driven directly but respect pot-based soft limits.</p>
+          <p>Photos and visual breakdowns will be included for:</p>
+          <ul>
+            <li>Raspberry Pi configuration and network setup</li>
+            <li>MQTT communication flow and data types</li>
+            <li>ESP32 internal logic and PID structure</li>
+          </ul>
+        </details>
 
-          <h3 class="major section-space">Electronics</h3>
-          <p>Each joint receives only power. Logic, control, and feedback are embedded locally using ESP32s. The central Raspberry Pi provides wireless coordination. This modularity ensures a failure in one joint doesn’t impact the others.</p>
-          <button class="toggle-btn" onclick="toggleDetails('electronicsDetails')">More Details</button>
-          <div id="electronicsDetails" class="details">
-            <p>Boards were selected through trial and error — I tested dozens, evaluating firmware support, input/output pin counts, analog resolution, and reliability. I soldered and wired every joint myself, building custom power distribution from a 4-wire backbone.</p>
-          </div>
+      <h2 class="major">Prototyping & Assembly</h2>
+      <p>To maintain modularity, we validated each joint independently before integration. Because joints don’t depend on each other, we avoided integration hell and could run the system with any subset of joints attached.</p>
+      <details>
+        <summary>More Details</summary>
+        <p>The arm was assembled from the gripper downward (J7 to J3). Each joint was flashed and tested individually, then added to the full system. Our software works with any configuration — for example, with just J6 and J7 operating, the system still handles messaging and feedback correctly. Empty bracket slots disable unused joints.</p>
+      </details>
 
-          <h3 class="major section-space">Mechanical Design</h3>
-          <p>I designed the full arm structure using CAD, calculated torques, and selected drive motors. The parts were all 3D-printed and clamped around 1x1 aluminum tubing. The modular frame allows each joint to mount or dismount in minutes.</p>
-          <button class="toggle-btn" onclick="toggleDetails('mechanicalDetails')">More Details</button>
-          <div id="mechanicalDetails" class="details">
-            <p>The gearboxes were 3D printed and tested extensively. I accounted for thermal deformation and print tolerance when designing fits and mounting. Designs evolved to clamp around tubing instead of enclosing it, improving alignment and swap time.</p>
-          </div>
+      <h2 class="major">Takeaways & Future Work</h2>
+      <p>The robot will be handed off to future Drexel students as an open platform for experimentation and extension — from drivetrain improvement to new end effectors or control schemes.</p>
+      <details>
+        <summary>More Details</summary>
+        <p>Our controls professor plans to use the platform to demonstrate real-time PID tuning effects. Other students hope to upgrade the chassis, add more joints or grippers, and experiment with tool-changing systems. I prepared detailed documentation, wiring diagrams, and firmware to ensure the system’s longevity as a teaching and prototyping tool.</p>
+      </details>
 
-          <h3 class="major section-space">Prototyping & Assembly</h3>
-          <p>Because the system was modular, integration was seamless. I verified each joint in isolation before integrating them into the full arm. This reduced risk and made debugging straightforward — no 'integration hell.'</p>
-          <button class="toggle-btn" onclick="toggleDetails('protoDetails')">More Details</button>
-          <div id="protoDetails" class="details">
-            <p>The modular system meant once a joint worked on the bench, it would work in the full build. I carefully managed wire routing, shielding, and power distribution. I also validated system integrity with full-chain simulation before field tests.</p>
-          </div>
+    </div>
+  </section>
 
-          <h3 class="major section-space">Takeaways & Future Work</h3>
-          <p>LuMAR is now left for future Drexel students to improve. I’m proud of the modularity, robustness, and expandability of this system. The biggest future step is finishing the drive system and adding battery power.</p>
-          <button class="toggle-btn" onclick="toggleDetails('takeawaysDetails')">More Details</button>
-          <div id="takeawaysDetails" class="details">
-            <p>Future steps include improving drive encoders, expanding the ROS 2 stack, adding 1st and 2nd joints for full base rotation, and documenting procedures for handoff. I’m confident the modularity and reliability foundation we built will support whatever comes next.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="footer">
-      <div class="inner">
-        <h2 class="major">Get in Touch</h2>
-        <ul class="contact">
-          <li class="icon solid fa-phone">610-316-5180</li>
-          <li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
-          <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
-        </ul>
-        <a href="index.html" class="special">Back to Portfolio</a>
-        <ul class="copyright">
-          <li>&copy; Jesse Gill Saligman. All rights reserved.</li>
-          <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
-      </div>
-    </section>
-
-  </div>
-
-  <script>
-    function toggleDetails(id) {
-      var el = document.getElementById(id);
-      el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
-    }
-  </script>
-
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/jquery.scrollex.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
