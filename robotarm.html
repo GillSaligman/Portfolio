@@ -1,171 +1,210 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>7-DOF Robotic Arm | Jesse Gill Saligman</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <style>
-        #wrapper > header {
-            background: url('images/ArmVid1.MOV') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
-            padding: 10em 2em 18em 2em;
-            text-align: center;
-        }
+	<title>7-DOF Robotic Arm | Jesse Gill Saligman</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<style>
+		#wrapper > header {
+			background: url('images/ArmVid1.MOV') no-repeat center center fixed;
+			background-size: cover;
+			color: white;
+			text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+			padding: 10em 2em 18em 2em;
+			text-align: center;
+		}
 
-        .wrapper { margin-top: -6em; margin-bottom: -6em; }
-        section#footer {
-            background: url('images/ArmVid1.MOV') center center / cover fixed;
-            color: white; padding: 4em 0; border-top: none;
-        }
+		.wrapper { margin-top: -6em; margin-bottom: -6em; }
+		section#footer {
+			background: url('images/ArmVid1.MOV') center center / cover fixed;
+			color: white; padding: 4em 0; border-top: none;
+		}
 
-        .features img, video {
-            border-radius: 12px;
-            width: 100%;
-            height: auto;
-            margin-bottom: 1em;
-        }
+		.features img, video {
+			border-radius: 12px;
+			width: 100%;
+			height: auto;
+			margin-bottom: 1em;
+		}
 
-        .toggle-btn {
-            margin: 1em 0;
-            padding: 0.5em 1em;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+		.toggle-btn {
+			margin: 1em 0;
+			padding: 0.5em 1em;
+			background-color: #333;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
 
-        .details { display: none; text-align: left; margin: auto; max-width: 900px; }
-    </style>
-    <script>
-        function toggleDetails(id) {
-            var el = document.getElementById(id);
-            el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
-        }
-    </script>
+		.details { display: none; text-align: left; margin: auto; max-width: 900px; }
+	</style>
+	<script>
+		function toggleDetails(id) {
+			var el = document.getElementById(id);
+			el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
+		}
+	</script>
 </head>
 <body>
 <div id="page-wrapper">
-    <header id="header">
-        <h1><a href="index.html">Jesse Gill Saligman</a></h1>
-        <nav><a href="#menu">Menu</a></nav>
-    </header>
+	<header id="header">
+		<h1><a href="index.html">Jesse Gill Saligman</a></h1>
+		<nav><a href="#menu">Menu</a></nav>
+	</header>
 
-    <section id="wrapper">
-        <header>
-            <div class="inner">
-                <h2>7-DOF Robotic Arm</h2>
-                <p>Senior Design Project | Drexel University</p>
-            </div>
-        </header>
+	<section id="wrapper">
+		<header>
+			<div class="inner">
+				<h2>7-DOF Robotic Arm</h2>
+				<p>Senior Design Project | Drexel University</p>
+			</div>
+		</header>
 
-        <div class="wrapper">
-            <div class="inner">
+		<div class="wrapper">
+			<div class="inner">
 
-                <!-- OVERVIEW -->
-                <h3 class="major">Overview</h3>
-                <p>Inspired by NASA’s RASC-AL competition, my senior design team created a modular robotic arm mounted to a custom-designed chassis with distributed control, prioritizing modularity, adaptability, and repairability.</p>
-                <button class="toggle-btn" onclick="toggleDetails('overview')">More Info</button>
-                <div class="details" id="overview">
-                    <p>This platform was a testbed for modularity and control integration, using a streamlined four-wire backbone (HV+/- & LV+/-) powering independent joint controllers, allowing simplified upgrades and easy troubleshooting.</p>
-                </div>
+				<!-- OVERVIEW -->
+				<h3 class="major">Overview</h3>
+				<p>Inspired by NASA's RASC-AL competition, my senior design team created a modular robotic arm mounted to a custom chassis with distributed control, built with modularity, adaptability, repairability, and future upgradeability in mind.</p>
+				<button class="toggle-btn" onclick="toggleDetails('overview')">More Info</button>
+				<div class="details" id="overview">
+					<p>Our prototype serves as a hands-on test platform to validate modularity and distributed control concepts. The streamlined four-wire backbone (HV+/-, LV+/-) drastically reduces wiring complexity, enabling hot-swaps and easy troubleshooting. Each joint contains independent electronics, simplifying repairs and upgrades - essential characteristics for sustainable robotic systems in challenging environments.</p>
+				</div>
 
-                <!-- PROJECT HIGHLIGHTS -->
-                <h3 class="major">Project Highlights</h3>
-                <img src="images/FullySeniorDesignRender.JPG">
-                <p>As team leader, I led all mechanical, electrical, coding, prototyping, and testing tasks, while teammates supported documentation and outreach.</p>
-                <button class="toggle-btn" onclick="toggleDetails('highlights')">More Info</button>
-                <div class="details" id="highlights">
-                    <img src="images/UswithArmBot.jpg">
-                    <p>We explored multiple concepts inspired by RASC-AL criteria and settled on a modular robotic arm. I implemented ROS 2 and MQTT to simulate autonomy and distributed control.</p>
-                </div>
+				<!-- PROJECT HIGHLIGHTS -->
+				<h3 class="major">Project Highlights</h3>
+				<img src="images/FullySeniorDesignRender.JPG" alt="Robotic Arm Render">
+				<p>As team leader, I personally executed all mechanical design, electrical systems, coding, prototyping, and testing tasks while coordinating documentation and outreach efforts.</p>
+				<button class="toggle-btn" onclick="toggleDetails('highlights')">More Info</button>
+				<div class="details" id="highlights">
+					<img src="images/UswithArmBot.jpg" alt="Team with Arm Prototype">
+					<p>After exploring NASA RASC-AL design criteria including multifunctional robots, specialized swarms, and modular systems, we selected the modular robotic arm approach for its long-term serviceability and upgrade potential. I implemented ROS 2 and MQTT to simulate real-world deployment scenarios, enabling comprehensive testing of autonomous capabilities and distributed control schemes.</p>
+				</div>
 
-                <!-- MECHANICAL DESIGN -->
-                <h3 class="major">Mechanical Design</h3>
-                <img src="images/RobotArmRender.jpg">
-                <p>I calculated forces, moments, and torques to iteratively prototype each joint, ensuring structural efficiency and minimal singularities.</p>
+				<!-- MECHANICAL DESIGN -->
+				<h3 class="major">Mechanical Design</h3>
+				<img src="images/RobotArmRender.jpg" alt="Arm Mechanical Design">
+				<p>I designed and built the robotic arm from concept to implementation, beginning with singularity analyses and guided by torque, payload, and reach calculations for each joint.</p>
+				<button class="toggle-btn" onclick="toggleDetails('mech-details')">More Info</button>
+				<div class="details" id="mech-details">
+					<p>The arm's backbone is a 1"x1" aluminum tube with independently attached 3D-printed joints. Material selection (PLA, PETG, ABS) was based on stress and thermal requirements, with critical ABS components clamped to prevent warping. Potentiometers provided cost-effective angle feedback, calibrated via custom regression analyses. Motors were pre-selected based on structural load estimates to avoid circular dependencies.</p>
+				</div>
 
-                <button class="toggle-btn" onclick="toggleDetails('mech-details')">More Info</button>
-                <div class="details" id="mech-details">
-                    <p>The arm features independently mounted joints on a 1"x1" aluminum spine, printed in PLA, PETG, and ABS based on stress analysis. Potentiometers provided angle feedback, calibrated via regression analysis. Motors were selected within pre-estimated weights to simplify design.</p>
-                </div>
+				<button class="toggle-btn" onclick="toggleDetails('harmonic-drive')">Harmonic Drive</button>
+				<div class="details" id="harmonic-drive">
+					<video muted autoplay loop><source src="images/HarmonicDriveRedesignVideo.MOV" type="video/mp4"></video>
+					<img src="images/HarmonicDriveRender.png" alt="Harmonic Drive Render">
+					<img src="images/HarmoncDrivesidecross.png" alt="Harmonic Drive Cross Section">
+					<p>I designed a custom harmonic drive gearbox to increase torque and minimize backlash using fully 3D-printed components. Though time constraints prevented full integration, the prototype demonstrated advanced manufacturing capabilities and the feasibility of high-torque assemblies through additive manufacturing.</p>
+				</div>
 
-                <button class="toggle-btn" onclick="toggleDetails('harmonic-drive')">Harmonic Drive</button>
-                <div class="details" id="harmonic-drive">
-                    <video muted autoplay loop>
-                        <source src="images/HarmonicDriveRedesignVideo.MOV" type="video/mp4">
-                    </video>
-                    <img src="images/HarmonicDriveRender.png">
-                    <img src="images/HarmoncDrivesidecross.png">
-                    <p>I developed a custom harmonic gearbox to improve torque and minimize backlash. Though not integrated due to time, this validated high-complexity 3D printed components.</p>
-                </div>
+				<button class="toggle-btn" onclick="toggleDetails('j6-gripper')">Joint 6 + Gripper</button>
+				<div class="details" id="j6-gripper">
+					<img src="images/j6gripcrosssection.png" alt="J6 Cross Section">
+					<img src="images/j6GripperPic.png" alt="J6 Gripper">
+					<p>Joint 6 presented unique challenges requiring over 270° rotation. The final solution achieves ~600° rotation through a geared-down potentiometer. Axial thrust and radial bearings fully constrain the joint while maintaining a hollow core for internal wiring to power the servo-driven gripper.</p>
+				</div>
 
-                <button class="toggle-btn" onclick="toggleDetails('j6-gripper')">Joint 6 + Gripper</button>
-                <div class="details" id="j6-gripper">
-                    <img src="images/j6gripcrosssection.png">
-                    <img src="images/j6GripperPic.png">
-                    <p>Joint 6 required a geared-down potentiometer for ~600° rotation, supported by axial thrust and radial bearings, featuring a hollow core for internal wiring.</p>
-                </div>
+				<!-- ELECTRONICS -->
+				<h3 class="major">Electronics</h3>
+				<img src="images/ArmWiringGrosspic.png" alt="Arm Electronics">
+				<p>A shared 4-wire backbone (HV+/- and LV+/-) powers each joint's independent electronics, enabling modular expansion without affecting overall system configuration.</p>
+				
+				<button class="toggle-btn" onclick="toggleDetails('joint-electronics')">Joint Electronics</button>
+				<div class="details" id="joint-electronics">
+					<img src="images/Joint eleectronics Diagram.png" alt="Joint Electronics Diagram">
+					<p>After extensive microcontroller testing for MicroPython compatibility, analog inputs, and reliable Wi-Fi, each joint features:
+					<ul>
+						<li>ESP8266 microcontroller</li>
+						<li>Potentiometer for angle feedback</li>
+						<li>Motor driver with DC gearmotor</li>
+					</ul>
+					Each joint independently runs PID loops and communicates positions via MQTT.</p>
+				</div>
 
-                <!-- ELECTRONICS -->
-                <h3 class="major">Electronics</h3>
-                <img src="images/ArmWiringGrosspic.png">
-                <p>A 4-wire power backbone enabled modular, independent joint electronics.</p>
+				<button class="toggle-btn" onclick="toggleDetails('chassis-electronics')">Chassis Electronics</button>
+				<div class="details" id="chassis-electronics">
+					<img src="images/robotchassiselectronics.png" alt="Chassis Electronics">
+					<p>The chassis utilizes robust, accessible components including:
+					<ul>
+						<li>12V and 24V power supplies</li>
+						<li>DC-DC buck converters for 5V/3.3V rails</li>
+						<li>Fuse protection systems</li>
+						<li>Raspberry Pi central controller</li>
+					</ul>
+					Off-the-shelf components simplified troubleshooting and rapid iteration.</p>
+				</div>
 
-                <button class="toggle-btn" onclick="toggleDetails('joint-electronics')">Joint Electronics</button>
-                <div class="details" id="joint-electronics">
-                    <img src="images/Joint eleectronics Diagram.png">
-                    <p>ESP8266 microcontrollers were selected for analog input, reliable Wi-Fi, and MicroPython compatibility. Each joint managed its PID loop and MQTT communications.</p>
-                </div>
+				<!-- SOFTWARE & COMMUNICATION -->
+				<h3 class="major">Software & Communication</h3>
+				<img src="images/RobotArmComsDiagram.png" alt="Communication Diagram">
+				<p>Our distributed architecture uses a Raspberry Pi hosting a dedicated Wi-Fi network to control the robot via MQTT, supporting both position and velocity control modes.</p>
+				
+				<button class="toggle-btn" onclick="toggleDetails('communication-protocol')">Communication Protocol</button>
+				<div class="details" id="communication-protocol">
+					<img src="images/Dataexamplepic.png" alt="Data Example">
+					<p>Communication utilizes structured MQTT messages in the format [DR, DL, J3, J4, J5, J6, J7]:
+					<ul>
+						<li><strong>Controller Data:</strong> Xbox joystick inputs translated to velocities</li>
+						<li><strong>Desired Data:</strong> Position (P45.00) or velocity (V0.65) commands</li>
+						<li><strong>Actual Data:</strong> Real-time joint positions reported by ESPs</li>
+					</ul></p>
+				</div>
 
-                <button class="toggle-btn" onclick="toggleDetails('chassis-electronics')">Chassis Electronics</button>
-                <div class="details" id="chassis-electronics">
-                    <img src="images/robotchassiselectronics.png">
-                    <p>Chassis featured standard DC-DC converters, fuse protection, and a Raspberry Pi central hub for ease of troubleshooting.</p>
-                </div>
+				<button class="toggle-btn" onclick="toggleDetails('pi-logic')">Raspberry Pi Logic</button>
+				<div class="details" id="pi-logic">
+					<p>The Raspberry Pi network utilizes hostapd, dnsmasq, and Mosquitto to manage all communication. Users connect via SSH to:
+					<ul>
+						<li>Initialize control scripts</li>
+						<li>Select velocity or position control modes</li>
+						<li>Manage joint interactions through a custom Python interface</li>
+					</ul></p>
+				</div>
 
-                <!-- SOFTWARE & COMMUNICATION -->
-                <h3 class="major">Software & Communication</h3>
-                <img src="images/RobotArmComsDiagram.png">
-                <p>The system employed distributed control via a Raspberry Pi hosted network, managing commands through MQTT in both velocity and position modes.</p>
+				<button class="toggle-btn" onclick="toggleDetails('esp-logic')">ESP Logic</button>
+				<div class="details" id="esp-logic">
+					<img src="images/j5 data pic.png" alt="J5 Data">
+					<p>Each ESP8266 independently:
+					<ul>
+						<li>Connects automatically to the Wi-Fi network</li>
+						<li>Parses its specific command bracket entry</li>
+						<li>Executes local PID loops (position) or drives at specified velocities with soft stops</li>
+						<li>Reports calibrated potentiometer angles for system feedback</li>
+					</ul></p>
+				</div>
 
-                <button class="toggle-btn" onclick="toggleDetails('communication-protocol')">Communication Protocol</button>
-                <div class="details" id="communication-protocol">
-                    <img src="images/Dataexamplepic.png">
-                    <p>Structured MQTT messaging [DR, DL, J3-J7] relayed real-time commands and feedback.</p>
-                    <p>Controller Data: Xbox joystick live velocities. Desired Data: position (P45.00), velocity (V0.65). Actual Data: ESP-reported positions aggregated by Raspberry Pi.</p>
-                </div>
+				<!-- PROTOTYPING & ASSEMBLY -->
+				<h3 class="major">Prototyping & Assembly</h3>
+				<p>Modular design enabled independent testing and debugging of each joint, eliminating integration complexities and accelerating development.</p>
+				<button class="toggle-btn" onclick="toggleDetails('proto-assembly')">More Info</button>
+				<div class="details" id="proto-assembly">
+					<p>Assembly began with the gripper and proceeded backward through joints (J6, J5, etc.). The software system remained fully operational throughout development, with each joint independently flashed, tuned, and integrated. Rapid prototyping techniques, internal cable routing, and modular mounting significantly accelerated iterative testing cycles.</p>
+				</div>
 
-                <button class="toggle-btn" onclick="toggleDetails('pi-logic')">Raspberry Pi Logic</button>
-                <div class="details" id="pi-logic">
-                    <p>The Pi network hosted via hostapd, dnsmasq, and mosquitto, enabled SSH access for initiating scripts and controlling operational modes seamlessly.</p>
-                </div>
+				<!-- TAKEAWAYS & FUTURE WORK -->
+				<h3 class="major">Takeaways & Future Work</h3>
+				<p>This platform is being transitioned to future engineering teams as a robust teaching tool for control systems, robotics, and modular design principles.</p>
+				<button class="toggle-btn" onclick="toggleDetails('takeaways')">More Info</button>
+				<div class="details" id="takeaways">
+					<p>Detailed documentation and setup guides facilitate continued development. Potential enhancements include:
+					<ul>
+						<li>Completing J1/J2 for full 7-DOF capability</li>
+						<li>Improving drivetrain gearing and housing design</li>
+						<li>Developing swappable end-effectors</li>
+						<li>Expanding ROS 2 integration for advanced autonomy and simulation</li>
+					</ul>
+					The system will serve as a practical demonstration platform for control concepts like PID tuning.</p>
+				</div>
 
-                <button class="toggle-btn" onclick="toggleDetails('esp-logic')">ESP Logic</button>
-                <div class="details" id="esp-logic">
-                    <img src="images/j5 data pic.png">
-                    <p>Each ESP autonomously managed Wi-Fi connection, local PID loops or velocity control, and continuous feedback via potentiometer.</p>
-                </div>
+				<!-- FINAL VIDEO -->
+				<video muted autoplay loop><source src="images/ArmVid2.mov" type="video/mp4"></video>
 
-                <!-- PROTOTYPING & ASSEMBLY -->
-                <h3 class="major">Prototyping & Assembly</h3>
-                <p>Modular design facilitated individual joint testing, easing integration.</p>
-                <button class="toggle-btn" onclick="toggleDetails('proto-assembly')">More Info</button>
-                <div class="details" id="proto-assembly">
-                    <p>Assembly began at gripper, integrating each joint independently with software prepared for seamless modular integration and cable routing.</p>
-                </div>
+			</div>
+		</div>
+	</section>
 
-                <!-- FINAL VIDEO -->
-                <video muted autoplay loop>
-                    <source src="images/ArmVid2.mov" type="video/mp4">
-                </video>
-
-            </div>
-        </div>
-    </section>
 </div>
 </body>
 </html>
