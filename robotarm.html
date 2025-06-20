@@ -1,144 +1,113 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>7-DOF Robotic Arm | Jesse Gill Saligman</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<title>7-DOF Robotic Arm | Jesse Gill Saligman</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<style>
+		section h2, section h3, section p {
+			text-align: center;
+		}
+		section .image {
+			text-align: center;
+			margin: 2em auto;
+		}
+		.image img {
+			max-width: 90%;
+			border-radius: 12px;
+		}
+		.dropdown {
+			margin: 1em auto;
+			text-align: center;
+			max-width: 800px;
+		}
+		.dropdown summary {
+			cursor: pointer;
+			font-weight: bold;
+			margin-bottom: 0.5em;
+		}
+	</style>
 </head>
 <body class="is-preload">
-  <div id="page-wrapper">
+	<div id="page-wrapper">
+		<header id="header">
+			<h1><a href="index.html">Jesse Gill Saligman</a></h1>
+			<nav><a href="#menu">Menu</a></nav>
+		</header>
+		<nav id="menu">
+			<div class="inner">
+				<h2>Menu</h2>
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+				</ul>
+				<a href="#" class="close">Close</a>
+			</div>
+		</nav>
 
-    <!-- Header -->
-    <header id="header">
-      <h1><a href="index.html">Jesse Gill Saligman</a></h1>
-      <nav><a href="#menu">Menu</a></nav>
-    </header>
+		<section id="wrapper">
+			<header>
+				<div class="inner">
+					<h2>LuMAR | 7-DOF Robotic Arm</h2>
+					<p>NASA RASC-AL | Drexel Senior Design | 2024–2025</p>
+				</div>
+			</header>
 
-    <!-- Menu -->
-    <nav id="menu">
-      <div class="inner">
-        <h2>Menu</h2>
-        <ul class="links">
-          <li><a href="index.html">Home</a></li>
-        </ul>
-        <a href="#" class="close">Close</a>
-      </div>
-    </nav>
+			<div class="wrapper">
+				<div class="inner">
 
-    <!-- Banner -->
-    <section id="wrapper">
-      <header style="background-image: url('images/RobotArmRender.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 10em 2em 18em 2em; text-align: center; color: white; text-shadow: 0 2px 5px rgba(0,0,0,0.7);">
-        <div class="inner">
-          <h2>7-DOF Robotic Arm</h2>
-          <p>NASA RASC-AL | 2024 – 2025</p>
-        </div>
-      </header>
+					<h3 class="major">Overview</h3>
+					<p>LuMAR is a fully modular robotic arm system designed for lunar base maintenance. Developed for the NASA RASC-AL competition, it features a 7-DOF arm, custom gripper, and autonomous control over Wi-Fi. The entire system is modular by design — only 4 wires run up the arm (24V, GND, 3.3V, GND), powering custom PCBs and individual ESP32 microcontrollers at each joint. Each joint runs independently and wirelessly communicates with a Raspberry Pi on the chassis, which in turn interfaces with a master controller. The result is a scalable, reliable system that eliminates integration bottlenecks and isolates faults.</p>
 
-      <!-- Overview -->
-      <div class="wrapper">
-        <div class="inner">
-          <h3 class="major">Project Overview</h3>
-          <p>This project is a modular robotic arm mounted to a custom motorized chassis, designed for autonomous surface exploration. Built for the NASA RASC-AL competition, it represents a full-stack engineering effort — I designed the mechanical structure, selected and integrated the electronics, developed embedded firmware, and built a ROS2 communication system.</p>
-        </div>
-      </div>
+					<h3 class="major">Project Highlights</h3>
+					<div class="image"><img src="" alt="Team with robot" /></div>
+					<p>Our system architecture allows future students to scale or swap joints easily. I personally led mechanical design, electronics spec development, prototyping, and coding — everything from torque calculations and part testing to 3D printing custom brackets that fit around 1x1 aluminum extrusion and developing firmware for each microcontroller.</p>
 
-      <!-- Project Highlights -->
-      <div class="wrapper">
-        <div class="inner">
-          <h3 class="major">Project Highlights</h3>
-          <section class="features">
-            <article>
-              <a href="#" class="image"><img src="" alt="Team with Robot" /></a>
-              <h3 class="major">Team and Final Prototype</h3>
-              <p>Our team worked collaboratively to design and build the final system. I was responsible for the design, prototyping, coding, and systems integration of the arm and controller.</p>
-            </article>
-            <article>
-              <a href="#" class="image"><img src="" alt="CAD Render" /></a>
-              <h3 class="major">Design, Code & Prototyping</h3>
-              <p>I led design calculations, developed the firmware and hardware architecture, and iteratively prototyped each joint using 3D-printed components.</p>
-            </article>
-          </section>
-        </div>
-      </div>
+					<h3 class="major">Software and Control</h3>
+					<div class="image"><img src="" alt="Software Diagram" /></div>
+					<p>The robotic arm operates through ROS 2 nodes running on a laptop, which SSH into a Raspberry Pi on the bot. The Pi bridges communications to ESP32s via MQTT. Each ESP interprets joint commands, executes PID loops, and returns position feedback in real time. Control modes include direct manual input and Xbox controller-based velocity control. The laptop coordinates simulation and live debugging through Gazebo.</p>
 
-      <!-- Software and Control -->
-      <div class="wrapper">
-        <div class="inner">
-          <h3 class="major">Software and Control</h3>
-          <a href="#" class="image"><img src="" alt="Software Diagram" /></a>
-          <p>ROS2 coordinates communication between a controller, the Raspberry Pi, and six ESP-based joints. Each joint runs its own PID controller with onboard feedback, while the central system manages coordination, user input, and simulation in Gazebo.</p>
-        </div>
-      </div>
+					<h3 class="major">Electronics</h3>
+					<p>I hand-wired every part of the system. The ESP32s were selected after testing multiple microcontrollers for Wi-Fi stability, analog support, pinout, firmware compatibility, and processing power. Every joint receives power only — no data lines — enabling a lightweight and highly modular electrical architecture.</p>
 
-      <!-- Electronics -->
-      <div class="wrapper">
-        <div class="inner">
-          <h3 class="major">Electronics</h3>
-          <p>Each joint is independently powered and contains an ESP8266, motor driver, potentiometer, and local PID logic. The distributed architecture ensures modularity and minimizes wiring complexity while enhancing fault isolation.</p>
-        </div>
-      </div>
+					<h3 class="major">Mechanical Design</h3>
+					<p>The arm was designed around a hollow 1x1" aluminum backbone. I modeled and 3D printed all bracketry, drive enclosures, and joint mounts with PLA or ABS depending on strength and warping risk. Each part was iterated to minimize print failure and maximize rigidity. My torque calculations guided gear ratio selection and motor sizing.</p>
 
-      <!-- Mechanical Design -->
-      <div class="wrapper">
-        <div class="inner">
-          <h3 class="major">Mechanical Design</h3>
-          <p>Every joint was custom designed and torque-calculated to meet task specifications. We used aluminum tubing and 3D-printed clamps for strength, precision, and weight savings. Internal routing and modular joinery support field servicing.</p>
-        </div>
-      </div>
+					<h3 class="major">Prototyping & Assembly</h3>
+					<div class="image"><img src="" alt="Assembly Image" /></div>
+					<div class="image"><img src="" alt="Assembly Image 2" /></div>
+					<p>Our distributed architecture meant each joint could be tested in isolation before being added to the system. This eliminated integration bottlenecks and ensured that when joints came together, they worked immediately. I designed the joints to act like octopus arms: if one fails, the rest still work.</p>
 
-      <!-- Prototyping and Assembly -->
-      <div class="wrapper">
-        <div class="inner">
-          <h3 class="major">Prototyping and Assembly</h3>
-          <p>The modular architecture allowed us to prototype each joint independently, ensuring rapid debugging and minimal integration overhead. Since each joint communicates with the Raspberry Pi in parallel, subsystem failures do not cascade — similar to octopus limbs. Once validated, the system worked seamlessly when combined.</p>
-          <section class="features">
-            <article>
-              <a href="#" class="image"><img src="" alt="Joint Assembly" /></a>
-            </article>
-            <article>
-              <a href="#" class="image"><img src="" alt="Assembled Robot" /></a>
-            </article>
-          </section>
-        </div>
-      </div>
+					<h3 class="major">Takeaways & Future Work</h3>
+					<div class="image"><img src="" alt="Final robot image" /></div>
+					<p>We’re handing this project off to Drexel’s next class. Documentation, testing code, and CAD files are complete. Major next steps include drivetrain fixes, full battery operation, and completion of J1 and J2. This project showed me the power of modular systems and gave me end-to-end ownership over a real robotics platform.</p>
 
-      <!-- Future Work -->
-      <div class="wrapper">
-        <div class="inner">
-          <h3 class="major">Takeaways and Future Work</h3>
-          <p>The project will be passed to future Drexel students. Recommendations include drivetrain upgrades, completing J1/J2, and better terrain traversal. A master documentation package was created to ease future onboarding and iteration.</p>
-          <a href="#" class="image"><img src="" alt="Team Wrap-Up" /></a>
-        </div>
-      </div>
-    </section>
+				</div>
+			</div>
+		</section>
 
-    <!-- Footer -->
-    <section id="footer" style="background: url('images/RobotArmRender.jpg') center center / cover fixed; color: white; text-shadow: 0 1px 3px rgba(0,0,0,0.7);">
-      <div class="inner">
-        <h2 class="major">Get in Touch</h2>
-        <ul class="contact">
-          <li class="icon solid fa-phone">610-316-5180</li>
-          <li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
-          <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
-        </ul>
-        <a href="index.html" class="special">Back to Portfolio</a>
-        <ul class="copyright">
-          <li>&copy; Jesse Gill Saligman. All rights reserved.</li>
-          <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
-      </div>
-    </section>
+		<section id="footer">
+			<div class="inner">
+				<h2 class="major">Get in Touch</h2>
+				<ul class="contact">
+					<li class="icon solid fa-phone">610-316-5180</li>
+					<li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
+					<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
+				</ul>
+				<a href="index.html" class="special">Back to Portfolio</a>
+				<ul class="copyright">
+					<li>&copy; Jesse Gill Saligman. All rights reserved.</li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</section>
+	</div>
 
-  </div>
-
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/jquery.scrollex.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
-
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 </body>
 </html>
