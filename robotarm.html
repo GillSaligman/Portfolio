@@ -15,37 +15,27 @@
 			--accent: #4fc3f7;
 		}
 		
-		/* FIXED BACKGROUND VIDEO */
-		.video-background {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: -2;
-			overflow: hidden;
-		}
-		
-		.video-background video {
-			min-width: 100%;
-			min-height: 100%;
-			width: auto;
-			height: auto;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-		
+		/* FIXED: Background video implementation */
 		#wrapper > header {
-			background: rgba(0,0,0,0.5);
+			position: relative;
+			overflow: hidden;
 			color: white;
 			text-shadow: 0 2px 5px rgba(0,0,0,0.8);
 			padding: 10em 2em 18em 2em;
 			text-align: center;
-			position: relative;
-			overflow: hidden;
-			z-index: 1;
+		}
+
+		.header-video {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			min-width: 100%;
+			min-height: 100%;
+			width: auto;
+			height: auto;
+			transform: translateX(-50%) translateY(-50%);
+			z-index: 0;
+			object-fit: cover;
 		}
 
 		#wrapper > header::after {
@@ -56,88 +46,66 @@
 			right: 0;
 			bottom: 0;
 			background: rgba(0,0,0,0.6);
-			z-index: 0;
+			z-index: 1;
 		}
 
 		#wrapper > header .inner {
 			position: relative;
-			z-index: 1;
+			z-index: 2;
 		}
 
 		.wrapper { margin-top: -6em; margin-bottom: -6em; }
 		section#footer {
-			background: rgba(0,0,0,0.8); 
-			color: white; 
-			padding: 4em 0; 
-			border-top: none;
-			position: relative;
-			z-index: 1;
+			background: url('images/ArmVid1.MOV') center center / cover fixed;
+			color: white; padding: 4em 0; border-top: none;
 		}
 
-		/* WIDER DROPDOWN BOXES */
-		.details { 
-			display: none; 
-			padding: 2.5em;
-			margin: 0.5em 0 3em;
-			background: var(--dark-bg);
-			border-left: 4px solid var(--secondary);
-			border-radius: 0 10px 10px 0;
-			color: var(--light-text);
-			box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-			width: 95%; /* Wider dropdowns */
-			max-width: 1500px; /* Increased max-width */
+		/* Media containers */
+		.media-container {
+			max-width: 900px;
+			margin: 2em auto;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 		}
 		
-		.details-content {
-			max-width: 100%;
-			margin: 0 auto;
-		}
-		
-		/* IMPROVED IMAGE QUALITY */
-		.media-container img {
-			max-width: 100%;
+		.media-container img, 
+		.media-container video {
+			width: 100%;
 			height: auto;
 			display: block;
-			image-rendering: -webkit-optimize-contrast; /* Better rendering */
-			image-rendering: crisp-edges;
+		}
+
+		/* IMPROVED: Media formatting in dropdowns */
+		.detail-media {
+			display: flex;
+			flex-direction: column;
+			gap: 2em;
 		}
 		
-		/* Specific adjustment for coms diagram */
-		#coms-diagram {
-			max-width: 80%; /* Smaller size for better quality */
-			margin: 0 auto;
-			display: block;
-		}
-		
-		/* FLEXIBLE MEDIA FORMATTING */
-		.detail-media img,
-		.detail-media video {
-			width: 100%;
-			height: auto; /* Natural aspect ratio */
+		.detail-media-item {
 			border-radius: 10px;
 			box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 			border: 1px solid #3a4659;
-			object-fit: contain; /* Maintain aspect ratio */
+			overflow: hidden;
 		}
 		
-		/* Remove fixed height constraints */
-		.detail-media img,
-		.detail-media video {
-			max-height: none !important; 
+		.detail-media-item img,
+		.detail-media-item video {
+			width: 100%;
+			height: auto;
+			display: block;
+			object-fit: contain;
 		}
 		
-		/* Better media container */
-		.media-item {
-			margin-bottom: 2em;
+		/* FIXED: Low quality image sizing */
+		#robot-coms-diagram {
+			max-width: 80%;
+			margin: 0 auto;
 		}
-		
-		/* Improved dropdown appearance */
-		.toggle-btn {
-			padding: 1.5em 2.5em; /* Larger padding for wider appearance */
-		}
-		
-		/* Other existing styles... */
-		/* [All your existing CSS styles remain here] */
+
+		/* Rest of your CSS remains unchanged */
+		/* ... [ALL YOUR EXISTING CSS REMAINS HERE] ... */
 		
 	</style>
 	<script>
@@ -148,24 +116,18 @@
 			btn.classList.toggle('active');
 		}
 		
+		// Ensure video plays when page loads
 		document.addEventListener('DOMContentLoaded', function() {
-			// Auto-play video background
-			const video = document.getElementById('background-video');
+			var video = document.getElementById('header-video');
 			if(video) {
-				video.play().catch(e => console.log("Video autoplay prevented: ", e));
+				video.play().catch(function(error) {
+					console.log('Video autoplay failed:', error);
+				});
 			}
 		});
 	</script>
 </head>
 <body>
-<!-- Background Video -->
-<div class="video-background">
-	<video id="background-video" autoplay loop muted playsinline>
-		<source src="images/ArmVid1.MOV" type="video/mp4">
-		Your browser does not support the video tag.
-	</video>
-</div>
-
 <div id="page-wrapper">
 	<header id="header">
 		<h1><a href="index.html">Jesse Gill Saligman</a></h1>
@@ -174,6 +136,11 @@
 
 	<section id="wrapper">
 		<header>
+			<!-- FIXED: Background video element -->
+			<video autoplay muted loop id="header-video" class="header-video">
+				<source src="images/ArmVid1.MOV" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
 			<div class="inner">
 				<h2>Modular Robotic Arm System</h2>
 				<p>Senior Design Project | Drexel University</p>
@@ -204,10 +171,11 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/FullySeniorDesignRender.JPG" alt="Full System Render">
 									</div>
-									<div class="media-item">
+									<div class="detail-media-item">
 										<img src="images/ArmWiringGrosspic.png" alt="Four-Wire Backbone">
 									</div>
 								</div>
@@ -241,10 +209,11 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/FullySeniorDesignRender.JPG" alt="System Architecture">
 									</div>
-									<div class="media-item">
+									<div class="detail-media-item">
 										<video muted autoplay loop>
 											<source src="images/ArmVid2.mov" type="video/mp4">
 										</video>
@@ -281,7 +250,8 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/FullySeniorDesignRender.JPG" alt="Full System Render">
 									</div>
 								</div>
@@ -306,13 +276,14 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/HarmonicDriveRender.png" alt="Harmonic Drive Design">
 									</div>
-									<div class="media-item">
+									<div class="detail-media-item">
 										<img src="images/HarmoncDrivesidecross.png" alt="Harmonic Drive Cross-Section">
 									</div>
-									<div class="media-item">
+									<div class="detail-media-item">
 										<video muted autoplay loop>
 											<source src="images/HarmonicDriveRedesignVideo.MOV" type="video/mp4">
 										</video>
@@ -339,10 +310,11 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/j6gripcrosssection.png" alt="Joint 6 Cross-Section">
 									</div>
-									<div class="media-item">
+									<div class="detail-media-item">
 										<img src="images/j6GripperPic.png" alt="Gripper Implementation">
 									</div>
 								</div>
@@ -377,7 +349,8 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/Joint eleectronics Diagram.png" alt="Joint Electronics">
 									</div>
 								</div>
@@ -402,10 +375,11 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/robotchassiselectronics.png" alt="Chassis Electronics">
 									</div>
-									<div class="media-item">
+									<div class="detail-media-item">
 										<img src="images/FullySeniorDesignRender.JPG" alt="Chassis Render">
 									</div>
 								</div>
@@ -416,9 +390,9 @@
 
 				<!-- SOFTWARE & COMMUNICATION -->
 				<h3 class="major">Software & Communication</h3>
-				<div class="media-container">
-					<!-- Improved coms diagram with smaller size -->
-					<img id="coms-diagram" src="images/RobotArmComsDiagram.png" alt="Software Architecture">
+				<!-- FIXED: Improved coms diagram quality -->
+				<div class="media-container" id="robot-coms-diagram">
+					<img src="images/RobotArmComsDiagram.png" alt="Software Architecture">
 				</div>
 				
 				<div class="section-intro">
@@ -441,7 +415,8 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/robotchassiselectronics.png" alt="Communication Setup">
 									</div>
 								</div>
@@ -466,7 +441,8 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/Dataexamplepic.png" alt="Data Example">
 									</div>
 								</div>
@@ -491,10 +467,11 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/j5 data pic.png" alt="Joint Data Output">
 									</div>
-									<div class="media-item">
+									<div class="detail-media-item">
 										<img src="images/Joint eleectronics Diagram.png" alt="Electronics Diagram">
 									</div>
 								</div>
@@ -529,10 +506,11 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/UswithArmBot.jpg" alt="Assembly Process">
 									</div>
-									<div class="media-item">
+									<div class="detail-media-item">
 										<video muted autoplay loop>
 											<source src="images/ArmVid2.mov" type="video/mp4">
 										</video>
@@ -564,10 +542,11 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<div class="media-item">
+									<!-- FIXED: Updated media containers -->
+									<div class="detail-media-item">
 										<img src="images/FullySeniorDesignRender.JPG" alt="Future Development">
 									</div>
-									<div class="media-item">
+									<div class="detail-media-item">
 										<img src="images/HarmonicDriveRender.png" alt="Advanced Components">
 									</div>
 								</div>
