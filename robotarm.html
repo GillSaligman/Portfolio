@@ -6,9 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<style>
-		/* ... existing styles ... */
+		:root {
+			--primary: #2c3e50;
+			--secondary: #3498db;
+			--dark-bg: #1a1f29;
+			--light-text: #f0f0f0;
+			--medium-bg: #252c3a;
+			--accent: #4fc3f7;
+		}
 		
-		/* FIXED HEADER BACKGROUND VIDEO */
 		#wrapper > header {
 			position: relative;
 			overflow: hidden;
@@ -17,12 +23,8 @@
 			padding: 10em 2em 18em 2em;
 			text-align: center;
 		}
-		
-		#wrapper > header .inner {
-			position: relative;
-			z-index: 1;
-		}
-		
+
+		/* FIXED: Background video styling */
 		#header-video {
 			position: absolute;
 			top: 0;
@@ -44,39 +46,236 @@
 			z-index: 0;
 		}
 
-		/* ... existing styles ... */
+		#wrapper > header .inner {
+			position: relative;
+			z-index: 1;
+		}
+
+		.wrapper { margin-top: -6em; margin-bottom: -6em; }
+		section#footer {
+			background: url('images/ArmVid1.MOV') center center / cover fixed;
+			color: white; padding: 4em 0; border-top: none;
+		}
+
+		/* Media containers */
+		.media-container {
+			max-width: 900px;
+			margin: 2em auto;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+		}
 		
-		/* FIXED IMAGE DISPLAY IN DROPDOWNS */
+		.media-container img, 
+		.media-container video {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+
+		/* FIXED: Comms diagram sizing */
+		.coms-diagram-container {
+			max-width: 70%;
+			margin: 0 auto;
+		}
+
+		/* Dropdown sections */
+		.dropdown-section {
+			margin: 3em 0;
+		}
+		
+		.toggle-btn {
+			display: block;
+			width: 100%;
+			margin: 1.5em 0 1em;
+			padding: 1.2em 2em;
+			background-color: var(--primary);
+			color: #fff;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+			font-size: 1.15em;
+			text-align: left;
+			transition: all 0.3s;
+			font-weight: 600;
+		}
+		
+		.toggle-btn:after {
+			content: "▼";
+			float: right;
+			font-size: 0.9em;
+			transition: transform 0.3s;
+		}
+		
+		.toggle-btn.active:after {
+			content: "▲";
+		}
+		
+		.toggle-btn:hover {
+			background-color: var(--secondary);
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+		}
+
+		.details { 
+			display: none; 
+			padding: 2.5em;
+			margin: 0.5em 0 3em;
+			background: var(--dark-bg);
+			border-left: 4px solid var(--secondary);
+			border-radius: 0 10px 10px 0;
+			color: var(--light-text);
+			box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+		}
+		
+		.details-content {
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+		
+		.details h4 {
+			color: var(--accent);
+			margin-top: 1.8em;
+			padding-bottom: 0.6em;
+			font-size: 1.3em;
+			border-bottom: 1px solid #3a4659;
+		}
+		
+		.details ul {
+			padding-left: 1.8em;
+			margin: 1.5em 0;
+		}
+		
+		.details li {
+			margin-bottom: 0.8em;
+			line-height: 1.7;
+			color: #e0e0e0;
+		}
+		
+		.section-intro {
+			margin-bottom: 2em;
+			line-height: 1.8;
+			text-align: center;
+			max-width: 1000px;
+			margin-left: auto;
+			margin-right: auto;
+			font-size: 1.1em;
+			color: #fff;
+			text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+		}
+		
+		/* Two-column layout for details */
+		.detail-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 2.5em;
+			margin: 2em 0;
+		}
+		
+		.detail-text {
+			padding-right: 1.5em;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		
+		.detail-media {
+			display: flex;
+			flex-direction: column;
+			gap: 2em;
+		}
+		
+		/* FIXED: Image/video formatting in dropdowns */
 		.detail-media img,
 		.detail-media video {
 			border-radius: 10px;
 			box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 			border: 1px solid #3a4659;
-			width: 100%;
-			height: auto;
-			/* Remove max-height constraint */
+			width: 100%; /* Fixed width */
+			height: auto; /* Flexible height */
+			object-fit: contain;
 		}
 		
-		/* Add this to maintain aspect ratio */
-		.detail-media .media-wrapper {
-			display: block;
-			width: 100%;
-			overflow: hidden;
+		/* REMOVED max-height constraints for natural aspect ratio */
+		
+		@media (max-width: 900px) {
+			.detail-grid {
+				grid-template-columns: 1fr;
+			}
+			.detail-text {
+				padding-right: 0;
+			}
+			.details {
+				padding: 1.8em;
+			}
+			.coms-diagram-container {
+				max-width: 100%;
+			}
 		}
 		
-		/* ... existing styles ... */
+		/* Centered content */
+		.centered-content {
+			text-align: center;
+			max-width: 1100px;
+			margin: 0 auto;
+		}
+		
+		h3.major {
+			text-align: center;
+			margin-top: 3em;
+			position: relative;
+			padding-bottom: 0.6em;
+			font-size: 1.8em;
+			color: #fff;
+		}
+		
+		h3.major::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 120px;
+			height: 4px;
+			background: var(--secondary);
+		}
+		
+		/* Improved typography */
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.7;
+			color: #f0f0f0;
+			background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+		}
+		
+		.details p {
+			margin-bottom: 1.2em;
+			font-size: 1.05em;
+			color: #e0e0e0;
+		}
+		
+		.details strong {
+			color: #fff;
+		}
+		
+		/* Content styling */
+		.narrative-content {
+			font-size: 1.1em;
+			line-height: 1.8;
+			margin-bottom: 1.5em;
+		}
+		
+		.narrative-content p {
+			margin-bottom: 1.2em;
+		}
 	</style>
 	<script>
-		// ... existing script ...
-		
-		// Add autoplay for header video
-		document.addEventListener('DOMContentLoaded', function() {
-			var video = document.getElementById('header-video');
-			if(video) {
-				video.muted = true;
-				video.play();
-			}
-		});
+		function toggleDetails(id) {
+			var el = document.getElementById(id);
+			var btn = document.querySelector('[onclick="toggleDetails(\'' + id + '\')"]');
+			el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
+			btn.classList.toggle('active');
+		}
 	</script>
 </head>
 <body>
@@ -88,11 +287,11 @@
 
 	<section id="wrapper">
 		<header>
-			<!-- ADDED VIDEO ELEMENT FOR BACKGROUND -->
+			<!-- FIXED: Background video element -->
 			<video id="header-video" autoplay muted loop playsinline>
 				<source src="images/ArmVid1.MOV" type="video/mp4">
+				Your browser does not support the video tag.
 			</video>
-			
 			<div class="inner">
 				<h2>Modular Robotic Arm System</h2>
 				<p>Senior Design Project | Drexel University</p>
@@ -102,37 +301,363 @@
 		<div class="wrapper">
 			<div class="inner centered-content">
 
-				<!-- ... existing content ... -->
+				<!-- OVERVIEW -->
+				<h3 class="major">Overview</h3>
+				<div class="section-intro">
+					<p>Inspired by NASA's RASC-AL competition, I led a team to develop a modular robotic arm system with distributed control architecture. The design emphasizes adaptability, repairability, and upgradeability with a streamlined four-wire backbone (HV+/-, LV+/-) enabling hot-swappable joints.</p>
+				</div>
 				
-				<!-- EXAMPLE OF UPDATED IMAGE DISPLAY -->
 				<div class="dropdown-section">
-					<button class="toggle-btn" onclick="toggleDetails('harmonic-drive')">Harmonic Drive System</button>
-					<div class="details" id="harmonic-drive">
+					<button class="toggle-btn" onclick="toggleDetails('overview')">Design Philosophy & Technical Approach</button>
+					<div class="details" id="overview">
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<!-- ... text content ... -->
+									<div class="narrative-content">
+										<p>This prototype serves as a test platform to validate modular architecture and distributed control concepts. While exploring NASA RASC-AL concepts, we focused on developing a modular robotic arm that would be easily serviceable and upgradeable - essential characteristics for sustainable robotics.</p>
+										
+										<p>The core innovation is the radical modularity achieved through a four-wire backbone that powers all joints, drastically reducing wiring complexity. Each joint contains its own electronics package for hot-swappability, and the distributed intelligence allows joints to operate autonomously with local PID control.</p>
+										
+										<p>Key capabilities include component-level repairability without system shutdown, future-proof design allowing technology upgrades, redundancy through independent joint controllers, and simplified troubleshooting and maintenance.</p>
+									</div>
 								</div>
 								<div class="detail-media">
-									<!-- WRAP IMAGES TO MAINTAIN ASPECT RATIO -->
-									<div class="media-wrapper">
-										<img src="images/HarmonicDriveRender.png" alt="Harmonic Drive Design">
+									<img src="images/FullySeniorDesignRender.JPG" alt="Full System Render">
+									<img src="images/ArmWiringGrosspic.png" alt="Four-Wire Backbone">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- PROJECT HIGHLIGHTS -->
+				<h3 class="major">Project Highlights</h3>
+				<div class="media-container">
+					<img src="images/UswithArmBot.jpg" alt="Team with Robotic Arm">
+				</div>
+				
+				<div class="section-intro">
+					<p>As project lead, I personally executed mechanical design, electrical systems, firmware development, prototyping, and validation testing while coordinating documentation and outreach.</p>
+				</div>
+				
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('highlights')">Development Process & Key Decisions</button>
+					<div class="details" id="highlights">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>While exploring NASA RASC-AL concepts including multifunctional robots and specialized swarms, we ultimately focused on developing a modular robotic arm for our senior design project. This approach offered significant advantages in serviceability, adaptability, and long-term upgrade potential.</p>
+										
+										<p>Our modular system features independently replaceable joints, each with its own control electronics. This design enables easy maintenance and component upgrades without requiring full system downtime. The robotic arm was mounted on a custom chassis with distributed control architecture.</p>
+										
+										<p>I implemented ROS 2 and MQTT communication to simulate real-world deployment scenarios, enabling comprehensive testing of autonomous capabilities and distributed control schemes. This approach allowed us to validate the system's performance in realistic operational environments.</p>
 									</div>
-									<div class="media-wrapper">
-										<img src="images/HarmoncDrivesidecross.png" alt="Harmonic Drive Cross-Section">
+								</div>
+								<div class="detail-media">
+									<img src="images/FullySeniorDesignRender.JPG" alt="System Architecture">
+									<video muted autoplay loop>
+										<source src="images/ArmVid2.mov" type="video/mp4">
+									</video>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- MECHANICAL DESIGN -->
+				<h3 class="major">Mechanical Design</h3>
+				<div class="media-container">
+					<img src="images/RobotArmRender.jpg" alt="Mechanical Design">
+				</div>
+				
+				<div class="section-intro">
+					<p>I engineered the robotic arm from concept to implementation, performing singularity analysis, torque/payload calculations, and iterative prototyping for each joint.</p>
+				</div>
+				
+				<!-- Core Mechanical Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('mech-details')">Core Mechanical Systems</button>
+					<div class="details" id="mech-details">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>The mechanical design centered around a 1"x1" aluminum backbone providing structural rigidity while keeping weight manageable. Each joint was independently mounted and 3D-printed using materials selected for specific functional requirements - PLA for non-critical components, PETG for impact resistance, and ABS for high-stress gears.</p>
+										
+										<p>We used cost-effective potentiometers for position feedback, calibrated through custom regression analysis. To avoid circular dependencies between structural loads and motor selection, we pre-estimated motor weights before finalizing our Polulu 24V DC motors with 150:1 gearboxes.</p>
+										
+										<p>Key solutions included a clamping mechanism for ABS components to prevent thermal warping, integrated cable routing through hollow joints, and a modular mounting system enabling rapid reconfiguration and maintenance.</p>
 									</div>
-									<div class="media-wrapper">
-										<video muted autoplay loop>
-											<source src="images/HarmonicDriveRedesignVideo.MOV" type="video/mp4">
-										</video>
-									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/FullySeniorDesignRender.JPG" alt="Full System Render">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				
-				<!-- ... rest of existing content ... -->
+				<!-- Harmonic Drive Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('harmonic-drive')">Harmonic Drive System</button>
+					<div class="details" id="harmonic-drive">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>To overcome torque limitations while minimizing backlash, I designed a fully 3D-printed harmonic drive system. The design objectives included achieving a 200% torque increase over direct drive and near-zero backlash operation.</p>
+										
+										<p>The harmonic drive features a precision elliptical wave generator, a flex spline with optimized tooth profile, and a circular spline with 2% more teeth than the flex spline. This configuration creates a high gear reduction ratio in a compact form factor.</p>
+										
+										<p>Although time constraints prevented full system integration, bench testing demonstrated the feasibility of high-torque additive manufacturing and achieved the target torque increase. The design showcases the potential for complex, high-performance components through advanced manufacturing techniques.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/HarmonicDriveRender.png" alt="Harmonic Drive Design">
+									<img src="images/HarmoncDrivesidecross.png" alt="Harmonic Drive Cross-Section">
+									<video muted autoplay loop>
+										<source src="images/HarmonicDriveRedesignVideo.MOV" type="video/mp4">
+									</video>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- J6 & Gripper Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('j6-gripper')">Joint 6 & Gripper Mechanism</button>
+					<div class="details" id="j6-gripper">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>Joint 6 presented unique challenges requiring innovative solutions. The requirement for 600° rotation range exceeded the 270° capability of standard potentiometers, necessitating a gearing solution.</p>
+										
+										<p>We implemented 4:1 potentiometer gearing to expand the measurable range, sacrificing some precision for significantly increased rotational capability. Axial loading constraints were addressed with a combined thrust and radial bearing system, while the hollow core design allowed internal wiring for the servo-driven gripper.</p>
+										
+										<p>The parallel-jaw gripper features a 120° range of motion with interchangeable jaws for different payload types. Integrated force sensing via current monitoring enables delicate object manipulation. This joint demonstrates how mechanical constraints can be overcome through creative engineering solutions.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/j6gripcrosssection.png" alt="Joint 6 Cross-Section">
+									<img src="images/j6GripperPic.png" alt="Gripper Implementation">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- ELECTRONICS -->
+				<h3 class="major">Electronics</h3>
+				<div class="media-container">
+					<img src="images/ArmWiringGrosspic.png" alt="Electronics Overview">
+				</div>
+				
+				<div class="section-intro">
+					<p>The electronic system features a shared four-wire backbone (HV+/- and LV+/-) powering independent joint controllers, enabling modular expansion without system reconfiguration.</p>
+				</div>
+				
+				<!-- Joint Electronics Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('joint-electronics')">Joint Electronics</button>
+					<div class="details" id="joint-electronics">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>Each joint features a self-contained electronics package that taps into the four-wire backbone. After testing eight different microcontrollers, we selected the ESP8266 based on its MicroPython compatibility, analog input resolution, and Wi-Fi stability under load.</p>
+										
+										<p>The joint electronics include a precision potentiometer for position feedback, a motor driver with current-limiting protection, and a DC gearmotor with thermal monitoring. Advanced features include automatic Wi-Fi reconnection routines, soft and hard motor current limits, and local PID execution at 100Hz.</p>
+										
+										<p>This approach allows each joint to operate independently while maintaining system-wide coordination. The modular design enables quick replacement of any joint without affecting the overall system operation.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/Joint eleectronics Diagram.png" alt="Joint Electronics">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Chassis Electronics Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('chassis-electronics')">Chassis Electronics</button>
+					<div class="details" id="chassis-electronics">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>The chassis electronics form the central nervous system of the robotic platform. Power management includes 24V/12V dual-rail power supplies, high-efficiency (92%) DC-DC buck converters, and polyfuse protection on all circuits with redundant power pathways.</p>
+										
+										<p>Control is centered around a Raspberry Pi 4B with dedicated cooling and dual-band Wi-Fi with Ethernet failover. Real-time system monitoring ensures operational safety and performance optimization.</p>
+										
+										<p>Design for serviceability was a key consideration, implemented through color-coded wiring harnesses, hot-swappable power modules, diagnostic LEDs on critical circuits, and modular component arrangement. This approach minimizes downtime during maintenance and troubleshooting.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/robotchassiselectronics.png" alt="Chassis Electronics">
+									<img src="images/FullySeniorDesignRender.JPG" alt="Chassis Render">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- SOFTWARE & COMMUNICATION -->
+				<h3 class="major">Software & Communication</h3>
+				<!-- FIXED: Comms diagram container -->
+				<div class="coms-diagram-container">
+					<img src="images/RobotArmComsDiagram.png" alt="Software Architecture">
+				</div>
+				
+				<div class="section-intro">
+					<p>Distributed architecture uses a Raspberry Pi-hosted network managing MQTT communication across all joints, supporting position and velocity control modes with real-time telemetry.</p>
+				</div>
+				
+				<!-- Communication Protocol Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('communication-protocol')">Communication Protocol</button>
+					<div class="details" id="communication-protocol">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>Our communication system implements MQTT with a structured bracket format: [DR, DL, J3, J4, J5, J6, J7]. This format efficiently handles three data types with a 10Hz update rate for real-time control.</p>
+										
+										<p>Controller Data translates Xbox inputs into normalized velocities, while Desired Commands specify either positions (P[angle]) or velocities (V[value]). Actual Data provides real-time joint position feedback.</p>
+										
+										<p>The system supports two operational modes: Velocity Mode for direct joystick-to-motor mapping, and Position Mode for precise joint angle specification. This dual-mode approach provides flexibility for different operational requirements.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/robotchassiselectronics.png" alt="Communication Setup">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Raspberry Pi Logic Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('pi-logic')">Raspberry Pi Control Logic</button>
+					<div class="details" id="pi-logic">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>The Raspberry Pi serves as the central controller, hosting a dedicated Wi-Fi network using hostapd, providing DHCP services through dnsmasq, and managing MQTT communication with Mosquitto. Secure SSH access enables remote management.</p>
+										
+										<p>The control workflow begins when a user connects to the robot's Wi-Fi network and SSHs into the Raspberry Pi. After launching control scripts, the operator selects between velocity or position control modes before initiating control via Xbox controller or direct commands.</p>
+										
+										<p>System management features include ROS 2 integration for simulation, a web-based dashboard using Flask, automatic error recovery routines, and comprehensive diagnostics logging. This robust control architecture ensures reliable operation in various scenarios.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/Dataexamplepic.png" alt="Data Example">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- ESP Logic Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('esp-logic')">Joint Microcontroller Logic</button>
+					<div class="details" id="esp-logic">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>Each ESP8266 microcontroller operates autonomously with a carefully designed startup sequence: automatic Wi-Fi connection with fallback, MQTT topic subscription, self-calibration routine, and position initialization.</p>
+										
+										<p>During operation, the microcontroller parses bracket commands, converts potentiometer readings to angles via regression models, executes PID control loops at 100Hz, and implements velocity trapezoidal profiling for smooth motion.</p>
+										
+										<p>Safety systems include software limit switches, over-current protection, watchdog timer resets, thermal shutdown protocols, and emergency stop handling. These features ensure safe operation even in unexpected conditions.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/j5 data pic.png" alt="Joint Data Output">
+									<img src="images/Joint eleectronics Diagram.png" alt="Electronics Diagram">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- PROTOTYPING & ASSEMBLY -->
+				<h3 class="major">Prototyping & Assembly</h3>
+				<div class="media-container">
+					<img src="images/robotchassiselectronics.png" alt="Electronics Assembly">
+					<img src="images/Joint eleectronics Diagram.png" alt="Joint Assembly">
+				</div>
+				
+				<div class="section-intro">
+					<p>Reverse assembly approach enabled independent validation of each joint, preventing integration complexities and accelerating development.</p>
+				</div>
+				
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('proto-assembly')">Development Methodology</button>
+					<div class="details" id="proto-assembly">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>We adopted a reverse assembly methodology, beginning with the end-effector (gripper) and progressing backward through joints (J6 → J5 → J4 → J3). This approach allowed us to validate each subsystem independently before integration, significantly reducing complexity.</p>
+										
+										<p>Software integration was maintained throughout development, with pre-flashed firmware for all joints, automated PID tuning scripts, and continuous integration testing. The modular communication architecture allowed us to develop and test each component separately.</p>
+										
+										<p>Validation included early testing of complex components, progressive weight testing as joints were added, end-to-end communication validation, and real-world task simulation. This comprehensive approach ensured system reliability before final assembly.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/UswithArmBot.jpg" alt="Assembly Process">
+									<video muted autoplay loop>
+										<source src="images/ArmVid2.mov" type="video/mp4">
+									</video>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- TAKEAWAYS & FUTURE WORK -->
+				<h3 class="major">Takeaways & Future Work</h3>
+				<div class="section-intro">
+					<p>This platform is being transitioned to future engineering teams as a robust teaching tool for control systems, robotics, and modular design principles.</p>
+				</div>
+				
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('takeaways')">Knowledge Transfer & Roadmap</button>
+					<div class="details" id="takeaways">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>This project serves as an excellent educational platform for demonstrating control concepts like PID tuning, modular systems design principles, and distributed architecture implementation. Our professor plans to use it to practically illustrate how changing PID values affects system response.</p>
+										
+										<p>Comprehensive documentation including setup guides, video tutorials, annotated code repositories, and system architecture documentation ensures smooth knowledge transfer to future teams. Younger students have already expressed interest in continuing development.</p>
+										
+										<p>The enhancement roadmap includes completing J1/J2 for full 7-DOF capability, implementing CAN bus communication, adding higher resolution encoders, enhancing ROS 2 integration, developing swappable end effectors, and creating autonomous navigation capabilities. The platform's modular design makes these enhancements feasible and exciting.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/FullySeniorDesignRender.JPG" alt="Future Development">
+									<img src="images/HarmonicDriveRender.png" alt="Advanced Components">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- FINAL VIDEO -->
+				<div class="media-container">
+					<video muted autoplay loop>
+						<source src="images/ArmVid2.mov" type="video/mp4">
+					</video>
+				</div>
 
 			</div>
 		</div>
