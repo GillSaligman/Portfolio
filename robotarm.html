@@ -9,8 +9,9 @@
 		:root {
 			--primary: #2c3e50;
 			--secondary: #3498db;
-			--light-bg: #f8f9fa;
-			--dark-text: #333;
+			--dark-bg: #1a1f29;
+			--light-text: #f0f0f0;
+			--medium-bg: #252c3a;
 		}
 		
 		#wrapper > header {
@@ -31,7 +32,7 @@
 			left: 0;
 			right: 0;
 			bottom: 0;
-			background: rgba(0,0,0,0.4);
+			background: rgba(0,0,0,0.6);
 			z-index: 0;
 		}
 
@@ -48,11 +49,11 @@
 
 		/* Media containers */
 		.media-container {
-			max-width: 800px;
-			margin: 1.5em auto;
+			max-width: 900px;
+			margin: 2em auto;
 			border-radius: 12px;
 			overflow: hidden;
-			box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+			box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 		}
 		
 		.media-container img, 
@@ -64,20 +65,20 @@
 
 		/* Dropdown sections */
 		.dropdown-section {
-			margin: 2.5em 0;
+			margin: 3em 0;
 		}
 		
 		.toggle-btn {
 			display: block;
 			width: 100%;
-			margin: 1.5em 0 0.5em;
-			padding: 1em 1.8em;
+			margin: 1.5em 0 1em;
+			padding: 1.2em 2em;
 			background-color: var(--primary);
 			color: #fff;
 			border: none;
-			border-radius: 6px;
+			border-radius: 8px;
 			cursor: pointer;
-			font-size: 1.1em;
+			font-size: 1.15em;
 			text-align: left;
 			transition: all 0.3s;
 			font-weight: 600;
@@ -86,7 +87,7 @@
 		.toggle-btn:after {
 			content: "▼";
 			float: right;
-			font-size: 0.8em;
+			font-size: 0.9em;
 			transition: transform 0.3s;
 		}
 		
@@ -96,94 +97,106 @@
 		
 		.toggle-btn:hover {
 			background-color: var(--secondary);
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 		}
 
 		.details { 
 			display: none; 
-			padding: 2em;
-			margin: 0.5em 0 2em;
-			background: var(--light-bg);
+			padding: 2.5em;
+			margin: 0.5em 0 3em;
+			background: var(--dark-bg);
 			border-left: 4px solid var(--secondary);
-			border-radius: 0 8px 8px 0;
-			color: var(--dark-text);
+			border-radius: 0 10px 10px 0;
+			color: var(--light-text);
+			box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 		}
 		
 		.details-content {
-			max-width: 1000px;
+			max-width: 1200px;
 			margin: 0 auto;
 		}
 		
 		.details h4 {
-			color: var(--primary);
-			margin-top: 1.5em;
-			border-bottom: 1px solid #ddd;
-			padding-bottom: 0.5em;
+			color: var(--secondary);
+			margin-top: 1.8em;
+			padding-bottom: 0.6em;
+			font-size: 1.3em;
+			border-bottom: 1px solid #3a4659;
 		}
 		
 		.details ul {
 			padding-left: 1.8em;
-			margin: 1.2em 0;
+			margin: 1.5em 0;
 		}
 		
 		.details li {
 			margin-bottom: 0.8em;
-			line-height: 1.6;
+			line-height: 1.7;
+			color: #e0e0e0;
 		}
 		
 		.section-intro {
-			margin-bottom: 1.8em;
-			line-height: 1.7;
+			margin-bottom: 2em;
+			line-height: 1.8;
 			text-align: center;
-			max-width: 900px;
+			max-width: 1000px;
 			margin-left: auto;
 			margin-right: auto;
+			font-size: 1.1em;
+			color: #444;
 		}
 		
 		/* Two-column layout for details */
 		.detail-grid {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			gap: 2em;
-			margin: 1.5em 0;
+			gap: 2.5em;
+			margin: 2em 0;
 		}
 		
 		.detail-text {
-			padding-right: 1em;
+			padding-right: 1.5em;
 		}
 		
 		.detail-media {
 			display: flex;
 			flex-direction: column;
-			gap: 1.5em;
+			gap: 2em;
 		}
 		
 		.detail-media img,
 		.detail-media video {
-			border-radius: 8px;
-			box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+			border-radius: 10px;
+			box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+			border: 1px solid #3a4659;
 		}
 		
-		@media (max-width: 768px) {
+		@media (max-width: 900px) {
 			.detail-grid {
 				grid-template-columns: 1fr;
 			}
 			.detail-text {
 				padding-right: 0;
 			}
+			.details {
+				padding: 1.8em;
+			}
 		}
 		
 		/* Centered content */
 		.centered-content {
 			text-align: center;
-			max-width: 900px;
+			max-width: 1100px;
 			margin: 0 auto;
 		}
 		
 		h3.major {
 			text-align: center;
-			margin-top: 2.5em;
+			margin-top: 3em;
 			position: relative;
-			padding-bottom: 0.5em;
+			padding-bottom: 0.6em;
+			font-size: 1.8em;
 		}
 		
 		h3.major::after {
@@ -192,9 +205,36 @@
 			bottom: 0;
 			left: 50%;
 			transform: translateX(-50%);
-			width: 100px;
-			height: 3px;
+			width: 120px;
+			height: 4px;
 			background: var(--secondary);
+		}
+		
+		/* Image sizing adjustments */
+		.detail-media img {
+			max-height: 400px;
+			object-fit: cover;
+		}
+		
+		.detail-media video {
+			max-height: 400px;
+		}
+		
+		/* Improved typography */
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.7;
+			color: #333;
+			background: #f8f9fa;
+		}
+		
+		.details p {
+			margin-bottom: 1.2em;
+			font-size: 1.05em;
+		}
+		
+		.details strong {
+			color: #fff;
 		}
 	</style>
 	<script>
@@ -265,7 +305,7 @@
 				<!-- PROJECT HIGHLIGHTS -->
 				<h3 class="major">Project Highlights</h3>
 				<div class="media-container">
-					<img src="images/UswithArmBot.jpg" alt="Team with Prototype">
+					<img src="images/FullySeniorDesignRender.JPG" alt="Robotic Arm Render">
 				</div>
 				
 				<div class="section-intro">
@@ -304,8 +344,8 @@
 									</ul>
 								</div>
 								<div class="detail-media">
+									<img src="images/UswithArmBot.jpg" alt="Team with Prototype">
 									<img src="images/RobotArmComsDiagram.png" alt="System Architecture">
-									<img src="images/robotchassiselectronics.png" alt="Electronics Layout">
 								</div>
 							</div>
 						</div>
@@ -400,6 +440,7 @@
 										<source src="images/HarmonicDriveRedesignVideo.MOV" type="video/mp4">
 									</video>
 									<img src="images/HarmonicDriveRender.png" alt="Harmonic Drive Design">
+									<img src="images/HarmoncDrivesidecross.png" alt="Harmonic Drive Cross-Section">
 								</div>
 							</div>
 						</div>
@@ -448,7 +489,7 @@
 				<!-- ELECTRONICS -->
 				<h3 class="major">Electronics</h3>
 				<div class="media-container">
-					<img src="images/Joint eleectronics Diagram.png" alt="Electronics Architecture">
+					<img src="images/ArmWiringGrosspic.png" alt="Electronics Overview">
 				</div>
 				
 				<div class="section-intro">
@@ -493,7 +534,7 @@
 									</ul>
 								</div>
 								<div class="detail-media">
-									<img src="images/ArmWiringGrosspic.png" alt="Joint Electronics">
+									<img src="images/Joint eleectronics Diagram.png" alt="Joint Electronics">
 									<img src="images/Dataexamplepic.png" alt="Data Example">
 								</div>
 							</div>
