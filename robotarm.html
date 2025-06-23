@@ -12,11 +12,14 @@
 			--dark-bg: #1a1f29;
 			--light-text: #f0f0f0;
 			--medium-bg: #252c3a;
+			--accent: #4fc3f7;
 		}
 		
 		#wrapper > header {
 			background: url('images/ArmVid1.MOV') no-repeat center center fixed;
 			background-size: cover;
+			background-position: center;
+			background-attachment: fixed;
 			color: white;
 			text-shadow: 0 2px 5px rgba(0,0,0,0.8);
 			padding: 10em 2em 18em 2em;
@@ -118,7 +121,7 @@
 		}
 		
 		.details h4 {
-			color: var(--secondary);
+			color: var(--accent);
 			margin-top: 1.8em;
 			padding-bottom: 0.6em;
 			font-size: 1.3em;
@@ -144,7 +147,8 @@
 			margin-left: auto;
 			margin-right: auto;
 			font-size: 1.1em;
-			color: #444;
+			color: #fff;
+			text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 		}
 		
 		/* Two-column layout for details */
@@ -157,6 +161,9 @@
 		
 		.detail-text {
 			padding-right: 1.5em;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
 		}
 		
 		.detail-media {
@@ -170,6 +177,8 @@
 			border-radius: 10px;
 			box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 			border: 1px solid #3a4659;
+			height: auto;
+			object-fit: contain;
 		}
 		
 		@media (max-width: 900px) {
@@ -197,6 +206,7 @@
 			position: relative;
 			padding-bottom: 0.6em;
 			font-size: 1.8em;
+			color: #fff;
 		}
 		
 		h3.major::after {
@@ -213,7 +223,6 @@
 		/* Image sizing adjustments */
 		.detail-media img {
 			max-height: 400px;
-			object-fit: cover;
 		}
 		
 		.detail-media video {
@@ -224,17 +233,29 @@
 		body {
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			line-height: 1.7;
-			color: #333;
-			background: #f8f9fa;
+			color: #f0f0f0;
+			background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
 		}
 		
 		.details p {
 			margin-bottom: 1.2em;
 			font-size: 1.05em;
+			color: #e0e0e0;
 		}
 		
 		.details strong {
 			color: #fff;
+		}
+		
+		/* Content styling */
+		.narrative-content {
+			font-size: 1.1em;
+			line-height: 1.8;
+			margin-bottom: 1.5em;
+		}
+		
+		.narrative-content p {
+			margin-bottom: 1.2em;
 		}
 	</style>
 	<script>
@@ -274,24 +295,15 @@
 					<button class="toggle-btn" onclick="toggleDetails('overview')">Design Philosophy & Technical Approach</button>
 					<div class="details" id="overview">
 						<div class="details-content">
-							<p>This prototype serves as a hands-on test platform to validate modular architecture and distributed control concepts. While not designed for actual lunar missions, the system demonstrates essential characteristics for sustainable robotics in challenging environments:</p>
-							
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>Core Innovations</h4>
-									<ul>
-										<li><strong>Radical Modularity:</strong> Only four wires power all joints, drastically reducing wiring complexity</li>
-										<li><strong>Independent Joint Controllers:</strong> Each joint contains its own electronics package for hot-swappability</li>
-										<li><strong>Distributed Intelligence:</strong> Joints operate autonomously with local PID control</li>
-									</ul>
-									
-									<h4>Key Capabilities</h4>
-									<ul>
-										<li>Component-level repairability without system shutdown</li>
-										<li>Future-proof design allowing technology upgrades</li>
-										<li>Redundancy through independent joint controllers</li>
-										<li>Simplified troubleshooting and maintenance</li>
-									</ul>
+									<div class="narrative-content">
+										<p>This prototype serves as a test platform to validate modular architecture and distributed control concepts. While exploring NASA RASC-AL concepts, we focused on developing a modular robotic arm that would be easily serviceable and upgradeable - essential characteristics for sustainable robotics.</p>
+										
+										<p>The core innovation is the radical modularity achieved through a four-wire backbone that powers all joints, drastically reducing wiring complexity. Each joint contains its own electronics package for hot-swappability, and the distributed intelligence allows joints to operate autonomously with local PID control.</p>
+										
+										<p>Key capabilities include component-level repairability without system shutdown, future-proof design allowing technology upgrades, redundancy through independent joint controllers, and simplified troubleshooting and maintenance.</p>
+									</div>
 								</div>
 								<div class="detail-media">
 									<img src="images/FullySeniorDesignRender.JPG" alt="Full System Render">
@@ -305,7 +317,7 @@
 				<!-- PROJECT HIGHLIGHTS -->
 				<h3 class="major">Project Highlights</h3>
 				<div class="media-container">
-					<img src="images/FullySeniorDesignRender.JPG" alt="Robotic Arm Render">
+					<img src="images/UswithArmBot.jpg" alt="Team with Robotic Arm">
 				</div>
 				
 				<div class="section-intro">
@@ -318,34 +330,19 @@
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>Concept Selection</h4>
-									<p>We evaluated four approaches against NASA RASC-AL criteria:</p>
-									<ul>
-										<li>Multi-functional robot with multiple arms</li>
-										<li>Specialized single-task robot</li>
-										<li>Swarm of specialized robots</li>
-										<li>Modular swarm with interchangeable attachments</li>
-									</ul>
-									
-									<h4>Design Decision</h4>
-									<p>The modular robotic arm approach was selected for its:</p>
-									<ul>
-										<li>Long-term serviceability in isolated environments</li>
-										<li>Scalability through interchangeable components</li>
-										<li>Adaptability to evolving mission requirements</li>
-										<li>Cost-effectiveness through 3D-printed parts</li>
-									</ul>
-									
-									<h4>Implementation Strategy</h4>
-									<ul>
-										<li>ROS 2 integration for realistic deployment simulation</li>
-										<li>MQTT communication for distributed control</li>
-										<li>End-to-end validation of autonomous capabilities</li>
-									</ul>
+									<div class="narrative-content">
+										<p>While exploring NASA RASC-AL concepts including multifunctional robots and specialized swarms, we ultimately focused on developing a modular robotic arm for our senior design project. This approach offered significant advantages in serviceability, adaptability, and long-term upgrade potential.</p>
+										
+										<p>Our modular system features independently replaceable joints, each with its own control electronics. This design enables easy maintenance and component upgrades without requiring full system downtime. The robotic arm was mounted on a custom chassis with distributed control architecture.</p>
+										
+										<p>I implemented ROS 2 and MQTT communication to simulate real-world deployment scenarios, enabling comprehensive testing of autonomous capabilities and distributed control schemes. This approach allowed us to validate the system's performance in realistic operational environments.</p>
+									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/UswithArmBot.jpg" alt="Team with Prototype">
-									<img src="images/RobotArmComsDiagram.png" alt="System Architecture">
+									<img src="images/FullySeniorDesignRender.JPG" alt="System Architecture">
+									<video muted autoplay loop>
+										<source src="images/ArmVid2.mov" type="video/mp4">
+									</video>
 								</div>
 							</div>
 						</div>
@@ -369,37 +366,16 @@
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>Structural Design</h4>
-									<ul>
-										<li>1"x1" aluminum backbone for structural rigidity</li>
-										<li>Independently mounted 3D-printed joints</li>
-										<li>Material selection based on functional requirements:
-											<ul>
-												<li>PLA for non-critical components</li>
-												<li>PETG for impact resistance</li>
-												<li>ABS for high-stress gears (with thermal expansion compensation)</li>
-											</ul>
-										</li>
-									</ul>
-									
-									<h4>Motion Systems</h4>
-									<ul>
-										<li>Polulu 24V DC motors with 150:1 gearboxes</li>
-										<li>Cost-effective potentiometers for position feedback</li>
-										<li>Custom regression analysis for angle calibration</li>
-										<li>Motor selection based on pre-emptive torque calculations</li>
-									</ul>
-									
-									<h4>Key Solutions</h4>
-									<ul>
-										<li>Clamping mechanism for ABS components to prevent thermal warping</li>
-										<li>Integrated cable routing through hollow joints</li>
-										<li>Modular mounting system for rapid reconfiguration</li>
-									</ul>
+									<div class="narrative-content">
+										<p>The mechanical design centered around a 1"x1" aluminum backbone providing structural rigidity while keeping weight manageable. Each joint was independently mounted and 3D-printed using materials selected for specific functional requirements - PLA for non-critical components, PETG for impact resistance, and ABS for high-stress gears.</p>
+										
+										<p>We used cost-effective potentiometers for position feedback, calibrated through custom regression analysis. To avoid circular dependencies between structural loads and motor selection, we pre-estimated motor weights before finalizing our Polulu 24V DC motors with 150:1 gearboxes.</p>
+										
+										<p>Key solutions included a clamping mechanism for ABS components to prevent thermal warping, integrated cable routing through hollow joints, and a modular mounting system enabling rapid reconfiguration and maintenance.</p>
+									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/j5 data pic.png" alt="Joint Data">
-									<img src="images/j6gripcrosssection.png" alt="Joint Cross-Section">
+									<img src="images/FullySeniorDesignRender.JPG" alt="Full System Render">
 								</div>
 							</div>
 						</div>
@@ -413,34 +389,20 @@
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>Design Objectives</h4>
-									<ul>
-										<li>200% torque increase over direct drive</li>
-										<li>Near-zero backlash operation</li>
-										<li>Fully 3D-printed implementation</li>
-									</ul>
-									
-									<h4>Technical Implementation</h4>
-									<ul>
-										<li>Precision elliptical wave generator</li>
-										<li>Flex spline with optimized tooth profile</li>
-										<li>Circular spline with 2% more teeth than flex spline</li>
-										<li>Modular design for easy maintenance</li>
-									</ul>
-									
-									<h4>Validation & Outcomes</h4>
-									<ul>
-										<li>Demonstrated feasibility of high-torque additive manufacturing</li>
-										<li>Achieved target torque increase in bench testing</li>
-										<li>Time constraints prevented full system integration</li>
-									</ul>
+									<div class="narrative-content">
+										<p>To overcome torque limitations while minimizing backlash, I designed a fully 3D-printed harmonic drive system. The design objectives included achieving a 200% torque increase over direct drive and near-zero backlash operation.</p>
+										
+										<p>The harmonic drive features a precision elliptical wave generator, a flex spline with optimized tooth profile, and a circular spline with 2% more teeth than the flex spline. This configuration creates a high gear reduction ratio in a compact form factor.</p>
+										
+										<p>Although time constraints prevented full system integration, bench testing demonstrated the feasibility of high-torque additive manufacturing and achieved the target torque increase. The design showcases the potential for complex, high-performance components through advanced manufacturing techniques.</p>
+									</div>
 								</div>
 								<div class="detail-media">
+									<img src="images/HarmonicDriveRender.png" alt="Harmonic Drive Design">
+									<img src="images/HarmoncDrivesidecross.png" alt="Harmonic Drive Cross-Section">
 									<video muted autoplay loop>
 										<source src="images/HarmonicDriveRedesignVideo.MOV" type="video/mp4">
 									</video>
-									<img src="images/HarmonicDriveRender.png" alt="Harmonic Drive Design">
-									<img src="images/HarmoncDrivesidecross.png" alt="Harmonic Drive Cross-Section">
 								</div>
 							</div>
 						</div>
@@ -454,32 +416,17 @@
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>Design Challenges</h4>
-									<ul>
-										<li>Requirement for 600° rotation range</li>
-										<li>Limited 270° range of standard potentiometers</li>
-										<li>Axial loading constraints</li>
-										<li>Internal wiring requirements for gripper</li>
-									</ul>
-									
-									<h4>Innovative Solutions</h4>
-									<ul>
-										<li>4:1 potentiometer gearing for expanded range</li>
-										<li>Combined thrust and radial bearing system</li>
-										<li>Hollow core design for internal wiring</li>
-										<li>Servo-driven parallel-jaw gripper</li>
-									</ul>
-									
-									<h4>Performance Characteristics</h4>
-									<ul>
-										<li>120° gripper range of motion</li>
-										<li>Interchangeable jaw system</li>
-										<li>Integrated force sensing via current monitoring</li>
-									</ul>
+									<div class="narrative-content">
+										<p>Joint 6 presented unique challenges requiring innovative solutions. The requirement for 600° rotation range exceeded the 270° capability of standard potentiometers, necessitating a gearing solution.</p>
+										
+										<p>We implemented 4:1 potentiometer gearing to expand the measurable range, sacrificing some precision for significantly increased rotational capability. Axial loading constraints were addressed with a combined thrust and radial bearing system, while the hollow core design allowed internal wiring for the servo-driven gripper.</p>
+										
+										<p>The parallel-jaw gripper features a 120° range of motion with interchangeable jaws for different payload types. Integrated force sensing via current monitoring enables delicate object manipulation. This joint demonstrates how mechanical constraints can be overcome through creative engineering solutions.</p>
+									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/j6GripperPic.png" alt="Gripper Implementation">
 									<img src="images/j6gripcrosssection.png" alt="Joint 6 Cross-Section">
+									<img src="images/j6GripperPic.png" alt="Gripper Implementation">
 								</div>
 							</div>
 						</div>
@@ -503,39 +450,16 @@
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>Component Selection Process</h4>
-									<ul>
-										<li>Tested 8+ microcontrollers for optimal performance</li>
-										<li>Selection criteria:
-											<ul>
-												<li>MicroPython compatibility</li>
-												<li>Analog input resolution</li>
-												<li>Wi-Fi stability under load</li>
-												<li>PID execution capability</li>
-											</ul>
-										</li>
-										<li>ESP8266 selected after rigorous validation</li>
-									</ul>
-									
-									<h4>Joint Electronics Package</h4>
-									<ul>
-										<li>ESP8266 microcontroller</li>
-										<li>Precision potentiometer for position feedback</li>
-										<li>Motor driver with current-limiting protection</li>
-										<li>DC gearmotor with thermal monitoring</li>
-									</ul>
-									
-									<h4>Advanced Features</h4>
-									<ul>
-										<li>Automatic Wi-Fi reconnection routines</li>
-										<li>Soft and hard motor current limits</li>
-										<li>Temperature monitoring with thermal derating</li>
-										<li>Local PID execution at 100Hz</li>
-									</ul>
+									<div class="narrative-content">
+										<p>Each joint features a self-contained electronics package that taps into the four-wire backbone. After testing eight different microcontrollers, we selected the ESP8266 based on its MicroPython compatibility, analog input resolution, and Wi-Fi stability under load.</p>
+										
+										<p>The joint electronics include a precision potentiometer for position feedback, a motor driver with current-limiting protection, and a DC gearmotor with thermal monitoring. Advanced features include automatic Wi-Fi reconnection routines, soft and hard motor current limits, and local PID execution at 100Hz.</p>
+										
+										<p>This approach allows each joint to operate independently while maintaining system-wide coordination. The modular design enables quick replacement of any joint without affecting the overall system operation.</p>
+									</div>
 								</div>
 								<div class="detail-media">
 									<img src="images/Joint eleectronics Diagram.png" alt="Joint Electronics">
-									<img src="images/Dataexamplepic.png" alt="Data Example">
 								</div>
 							</div>
 						</div>
@@ -549,33 +473,17 @@
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>Power Management</h4>
-									<ul>
-										<li>24V/12V dual-rail power supplies</li>
-										<li>High-efficiency (92%) DC-DC buck converters</li>
-										<li>Polyfuse protection on all circuits</li>
-										<li>Redundant power pathways</li>
-									</ul>
-									
-									<h4>Control Systems</h4>
-									<ul>
-										<li>Raspberry Pi 4B central controller</li>
-										<li>Dual-band Wi-Fi with Ethernet failover</li>
-										<li>Dedicated cooling solution</li>
-										<li>Real-time system monitoring</li>
-									</ul>
-									
-									<h4>Design for Serviceability</h4>
-									<ul>
-										<li>Color-coded wiring harnesses</li>
-										<li>Hot-swappable power modules</li>
-										<li>Diagnostic LEDs on critical circuits</li>
-										<li>Modular component arrangement</li>
-									</ul>
+									<div class="narrative-content">
+										<p>The chassis electronics form the central nervous system of the robotic platform. Power management includes 24V/12V dual-rail power supplies, high-efficiency (92%) DC-DC buck converters, and polyfuse protection on all circuits with redundant power pathways.</p>
+										
+										<p>Control is centered around a Raspberry Pi 4B with dedicated cooling and dual-band Wi-Fi with Ethernet failover. Real-time system monitoring ensures operational safety and performance optimization.</p>
+										
+										<p>Design for serviceability was a key consideration, implemented through color-coded wiring harnesses, hot-swappable power modules, diagnostic LEDs on critical circuits, and modular component arrangement. This approach minimizes downtime during maintenance and troubleshooting.</p>
+									</div>
 								</div>
 								<div class="detail-media">
 									<img src="images/robotchassiselectronics.png" alt="Chassis Electronics">
-									<img src="images/FullySeniorDesignRender.JPG" alt="Full System">
+									<img src="images/FullySeniorDesignRender.JPG" alt="Chassis Render">
 								</div>
 							</div>
 						</div>
@@ -599,44 +507,16 @@
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>MQTT Implementation</h4>
-									<ul>
-										<li>Structured bracket system: [DR, DL, J3, J4, J5, J6, J7]</li>
-										<li>Three data types:
-											<ul>
-												<li><strong>Controller Data:</strong> Xbox inputs → normalized velocities</li>
-												<li><strong>Desired Commands:</strong> P[angle] or V[value]</li>
-												<li><strong>Actual Data:</strong> Real-time joint positions</li>
-											</ul>
-										</li>
-										<li>10Hz update rate for real-time control</li>
-									</ul>
-									
-									<h4>Control Modes</h4>
-									<ul>
-										<li><strong>Velocity Mode:</strong>
-											<ul>
-												<li>Direct joystick-to-motor mapping</li>
-												<li>Example command: V0.75 (75% max speed)</li>
-											</ul>
-										</li>
-										<li><strong>Position Mode:</strong>
-											<ul>
-												<li>Joint angle specification</li>
-												<li>Example command: P45.00 (45° position)</li>
-											</ul>
-										</li>
-									</ul>
-									
-									<h4>Data Handling</h4>
-									<ul>
-										<li>Timestamped position reporting</li>
-										<li>Error code propagation</li>
-										<li>System status monitoring</li>
-									</ul>
+									<div class="narrative-content">
+										<p>Our communication system implements MQTT with a structured bracket format: [DR, DL, J3, J4, J5, J6, J7]. This format efficiently handles three data types with a 10Hz update rate for real-time control.</p>
+										
+										<p>Controller Data translates Xbox inputs into normalized velocities, while Desired Commands specify either positions (P[angle]) or velocities (V[value]). Actual Data provides real-time joint position feedback.</p>
+										
+										<p>The system supports two operational modes: Velocity Mode for direct joystick-to-motor mapping, and Position Mode for precise joint angle specification. This dual-mode approach provides flexibility for different operational requirements.</p>
+									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/Dataexamplepic.png" alt="Data Example">
+									<img src="images/robotchassiselectronics.png" alt="Communication Setup">
 								</div>
 							</div>
 						</div>
@@ -650,33 +530,16 @@
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>Network Infrastructure</h4>
-									<ul>
-										<li>hostapd for Wi-Fi access point</li>
-										<li>dnsmasq for DHCP services</li>
-										<li>Mosquitto MQTT broker</li>
-										<li>Secure SSH access</li>
-									</ul>
-									
-									<h4>Control Workflow</h4>
-									<ol>
-										<li>User connects to robot's Wi-Fi network</li>
-										<li>SSH into Raspberry Pi</li>
-										<li>Launch control scripts</li>
-										<li>Select operation mode (velocity/position)</li>
-										<li>Initiate control via Xbox controller or direct commands</li>
-									</ol>
-									
-									<h4>System Management</h4>
-									<ul>
-										<li>ROS 2 integration for simulation</li>
-										<li>Web-based dashboard (Flask)</li>
-										<li>Automatic error recovery routines</li>
-										<li>System diagnostics and logging</li>
-									</ul>
+									<div class="narrative-content">
+										<p>The Raspberry Pi serves as the central controller, hosting a dedicated Wi-Fi network using hostapd, providing DHCP services through dnsmasq, and managing MQTT communication with Mosquitto. Secure SSH access enables remote management.</p>
+										
+										<p>The control workflow begins when a user connects to the robot's Wi-Fi network and SSHs into the Raspberry Pi. After launching control scripts, the operator selects between velocity or position control modes before initiating control via Xbox controller or direct commands.</p>
+										
+										<p>System management features include ROS 2 integration for simulation, a web-based dashboard using Flask, automatic error recovery routines, and comprehensive diagnostics logging. This robust control architecture ensures reliable operation in various scenarios.</p>
+									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/robotchassiselectronics.png" alt="Raspberry Pi Setup">
+									<img src="images/Dataexamplepic.png" alt="Data Example">
 								</div>
 							</div>
 						</div>
@@ -690,30 +553,13 @@
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>Startup Sequence</h4>
-									<ol>
-										<li>Automatic Wi-Fi connection with fallback</li>
-										<li>MQTT topic subscription</li>
-										<li>Self-calibration routine</li>
-										<li>Position initialization</li>
-									</ol>
-									
-									<h4>Real-Time Processing</h4>
-									<ul>
-										<li>Bracket command parsing</li>
-										<li>Potentiometer to angle conversion via regression</li>
-										<li>PID control loop execution at 100Hz</li>
-										<li>Velocity trapezoidal profiling</li>
-									</ul>
-									
-									<h4>Safety Systems</h4>
-									<ul>
-										<li>Software limit switches</li>
-										<li>Over-current protection</li>
-										<li>Watchdog timer reset</li>
-										<li>Thermal shutdown protocol</li>
-										<li>Emergency stop handling</li>
-									</ul>
+									<div class="narrative-content">
+										<p>Each ESP8266 microcontroller operates autonomously with a carefully designed startup sequence: automatic Wi-Fi connection with fallback, MQTT topic subscription, self-calibration routine, and position initialization.</p>
+										
+										<p>During operation, the microcontroller parses bracket commands, converts potentiometer readings to angles via regression models, executes PID control loops at 100Hz, and implements velocity trapezoidal profiling for smooth motion.</p>
+										
+										<p>Safety systems include software limit switches, over-current protection, watchdog timer resets, thermal shutdown protocols, and emergency stop handling. These features ensure safe operation even in unexpected conditions.</p>
+									</div>
 								</div>
 								<div class="detail-media">
 									<img src="images/j5 data pic.png" alt="Joint Data Output">
@@ -726,6 +572,11 @@
 
 				<!-- PROTOTYPING & ASSEMBLY -->
 				<h3 class="major">Prototyping & Assembly</h3>
+				<div class="media-container">
+					<img src="images/robotchassiselectronics.png" alt="Electronics Assembly">
+					<img src="images/Joint eleectronics Diagram.png" alt="Joint Assembly">
+				</div>
+				
 				<div class="section-intro">
 					<p>Reverse assembly approach enabled independent validation of each joint, preventing integration complexities and accelerating development.</p>
 				</div>
@@ -736,29 +587,13 @@
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>Assembly Process</h4>
-									<ol>
-										<li>Began with end-effector (gripper) development</li>
-										<li>Progressed backward through joints (J6 → J5 → J4 → J3)</li>
-										<li>Validated each subsystem independently</li>
-										<li>Integrated wiring at each stage</li>
-									</ol>
-									
-									<h4>Software Integration</h4>
-									<ul>
-										<li>Pre-flashed firmware for all joints</li>
-										<li>Automated PID tuning scripts</li>
-										<li>Continuous integration testing</li>
-										<li>Modular communication architecture</li>
-									</ul>
-									
-									<h4>Validation Approach</h4>
-									<ul>
-										<li>Early testing of most complex components</li>
-										<li>Progressive weight testing as joints added</li>
-										<li>End-to-end communication validation</li>
-										<li>Real-world task simulation</li>
-									</ul>
+									<div class="narrative-content">
+										<p>We adopted a reverse assembly methodology, beginning with the end-effector (gripper) and progressing backward through joints (J6 → J5 → J4 → J3). This approach allowed us to validate each subsystem independently before integration, significantly reducing complexity.</p>
+										
+										<p>Software integration was maintained throughout development, with pre-flashed firmware for all joints, automated PID tuning scripts, and continuous integration testing. The modular communication architecture allowed us to develop and test each component separately.</p>
+										
+										<p>Validation included early testing of complex components, progressive weight testing as joints were added, end-to-end communication validation, and real-world task simulation. This comprehensive approach ensured system reliability before final assembly.</p>
+									</div>
 								</div>
 								<div class="detail-media">
 									<img src="images/UswithArmBot.jpg" alt="Assembly Process">
@@ -783,29 +618,13 @@
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
-									<h4>Educational Value</h4>
-									<ul>
-										<li>Practical demonstration platform for control concepts</li>
-										<li>Real-world PID tuning experimentation</li>
-										<li>Modular systems design principles</li>
-										<li>Distributed architecture implementation</li>
-									</ul>
-									
-									<h4>Documentation</h4>
-									<ul>
-										<li>Comprehensive setup and operation guides</li>
-										<li>Video tutorials for maintenance procedures</li>
-										<li>Annotated code repository</li>
-										<li>System architecture documentation</li>
-									</ul>
-									
-									<h4>Enhancement Roadmap</h4>
-									<ul>
-										<li><strong>Mechanical:</strong> Complete J1/J2 for full 7-DOF capability</li>
-										<li><strong>Electronics:</strong> CAN bus upgrade, higher resolution encoders</li>
-										<li><strong>Software:</strong> Enhanced ROS 2 integration, digital twin simulation</li>
-										<li><strong>Functionality:</strong> Swappable end effectors, autonomous navigation</li>
-									</ul>
+									<div class="narrative-content">
+										<p>This project serves as an excellent educational platform for demonstrating control concepts like PID tuning, modular systems design principles, and distributed architecture implementation. Our professor plans to use it to practically illustrate how changing PID values affects system response.</p>
+										
+										<p>Comprehensive documentation including setup guides, video tutorials, annotated code repositories, and system architecture documentation ensures smooth knowledge transfer to future teams. Younger students have already expressed interest in continuing development.</p>
+										
+										<p>The enhancement roadmap includes completing J1/J2 for full 7-DOF capability, implementing CAN bus communication, adding higher resolution encoders, enhancing ROS 2 integration, developing swappable end effectors, and creating autonomous navigation capabilities. The platform's modular design makes these enhancements feasible and exciting.</p>
+									</div>
 								</div>
 								<div class="detail-media">
 									<img src="images/FullySeniorDesignRender.JPG" alt="Future Development">
