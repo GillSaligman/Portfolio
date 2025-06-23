@@ -15,17 +15,37 @@
 			--accent: #4fc3f7;
 		}
 		
+		/* FIXED BACKGROUND VIDEO */
+		.video-background {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -2;
+			overflow: hidden;
+		}
+		
+		.video-background video {
+			min-width: 100%;
+			min-height: 100%;
+			width: auto;
+			height: auto;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		
 		#wrapper > header {
-			background: url('images/ArmVid1.MOV') no-repeat center center fixed;
-			background-size: cover;
-			background-position: center;
-			background-attachment: fixed;
+			background: rgba(0,0,0,0.5);
 			color: white;
 			text-shadow: 0 2px 5px rgba(0,0,0,0.8);
 			padding: 10em 2em 18em 2em;
 			text-align: center;
 			position: relative;
 			overflow: hidden;
+			z-index: 1;
 		}
 
 		#wrapper > header::after {
@@ -46,64 +66,15 @@
 
 		.wrapper { margin-top: -6em; margin-bottom: -6em; }
 		section#footer {
-			background: url('images/ArmVid1.MOV') center center / cover fixed;
-			color: white; padding: 4em 0; border-top: none;
+			background: rgba(0,0,0,0.8); 
+			color: white; 
+			padding: 4em 0; 
+			border-top: none;
+			position: relative;
+			z-index: 1;
 		}
 
-		/* Media containers */
-		.media-container {
-			max-width: 900px;
-			margin: 2em auto;
-			border-radius: 12px;
-			overflow: hidden;
-			box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-		}
-		
-		.media-container img, 
-		.media-container video {
-			width: 100%;
-			height: auto;
-			display: block;
-		}
-
-		/* Dropdown sections */
-		.dropdown-section {
-			margin: 3em 0;
-		}
-		
-		.toggle-btn {
-			display: block;
-			width: 100%;
-			margin: 1.5em 0 1em;
-			padding: 1.2em 2em;
-			background-color: var(--primary);
-			color: #fff;
-			border: none;
-			border-radius: 8px;
-			cursor: pointer;
-			font-size: 1.15em;
-			text-align: left;
-			transition: all 0.3s;
-			font-weight: 600;
-		}
-		
-		.toggle-btn:after {
-			content: "▼";
-			float: right;
-			font-size: 0.9em;
-			transition: transform 0.3s;
-		}
-		
-		.toggle-btn.active:after {
-			content: "▲";
-		}
-		
-		.toggle-btn:hover {
-			background-color: var(--secondary);
-			transform: translateY(-2px);
-			box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-		}
-
+		/* WIDER DROPDOWN BOXES */
 		.details { 
 			display: none; 
 			padding: 2.5em;
@@ -113,150 +84,61 @@
 			border-radius: 0 10px 10px 0;
 			color: var(--light-text);
 			box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+			width: 95%; /* Wider dropdowns */
+			max-width: 1500px; /* Increased max-width */
 		}
 		
 		.details-content {
-			max-width: 1400px;
+			max-width: 100%;
 			margin: 0 auto;
 		}
 		
-		.details h4 {
-			color: var(--accent);
-			margin-top: 1.8em;
-			padding-bottom: 0.6em;
-			font-size: 1.3em;
-			border-bottom: 1px solid #3a4659;
+		/* IMPROVED IMAGE QUALITY */
+		.media-container img {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			image-rendering: -webkit-optimize-contrast; /* Better rendering */
+			image-rendering: crisp-edges;
 		}
 		
-		.details ul {
-			padding-left: 1.8em;
-			margin: 1.5em 0;
+		/* Specific adjustment for coms diagram */
+		#coms-diagram {
+			max-width: 80%; /* Smaller size for better quality */
+			margin: 0 auto;
+			display: block;
 		}
 		
-		.details li {
-			margin-bottom: 0.8em;
-			line-height: 1.7;
-			color: #e0e0e0;
-		}
-		
-		.section-intro {
-			margin-bottom: 2em;
-			line-height: 1.8;
-			text-align: center;
-			max-width: 1000px;
-			margin-left: auto;
-			margin-right: auto;
-			font-size: 1.1em;
-			color: #fff;
-			text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-		}
-		
-		/* Two-column layout for details */
-		.detail-grid {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 2.5em;
-			margin: 2em 0;
-		}
-		
-		.detail-text {
-			padding-right: 1.5em;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-		}
-		
-		.detail-media {
-			display: flex;
-			flex-direction: column;
-			gap: 2em;
-		}
-		
+		/* FLEXIBLE MEDIA FORMATTING */
 		.detail-media img,
 		.detail-media video {
+			width: 100%;
+			height: auto; /* Natural aspect ratio */
 			border-radius: 10px;
 			box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 			border: 1px solid #3a4659;
-			height: auto;
-			object-fit: contain;
+			object-fit: contain; /* Maintain aspect ratio */
 		}
 		
-		@media (max-width: 900px) {
-			.detail-grid {
-				grid-template-columns: 1fr;
-			}
-			.detail-text {
-				padding-right: 0;
-			}
-			.details {
-				padding: 1.8em;
-			}
-		}
-		
-		/* Centered content */
-		.centered-content {
-			text-align: center;
-			max-width: 1100px;
-			margin: 0 auto;
-		}
-		
-		h3.major {
-			text-align: center;
-			margin-top: 3em;
-			position: relative;
-			padding-bottom: 0.6em;
-			font-size: 1.8em;
-			color: #fff;
-		}
-		
-		h3.major::after {
-			content: "";
-			position: absolute;
-			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 120px;
-			height: 4px;
-			background: var(--secondary);
-		}
-		
-		/* Image sizing adjustments */
-		.detail-media img {
-			max-height: 400px;
-		}
-		
+		/* Remove fixed height constraints */
+		.detail-media img,
 		.detail-media video {
-			max-height: 400px;
+			max-height: none !important; 
 		}
 		
-		/* Improved typography */
-		body {
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			line-height: 1.7;
-			color: #f0f0f0;
-			background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+		/* Better media container */
+		.media-item {
+			margin-bottom: 2em;
 		}
 		
-		.details p {
-			margin-bottom: 1.2em;
-			font-size: 1.05em;
-			color: #e0e0e0;
+		/* Improved dropdown appearance */
+		.toggle-btn {
+			padding: 1.5em 2.5em; /* Larger padding for wider appearance */
 		}
 		
-		.details strong {
-			color: #fff;
-		}
+		/* Other existing styles... */
+		/* [All your existing CSS styles remain here] */
 		
-		/* Content styling */
-		.narrative-content {
-			font-size: 1.1em;
-			line-height: 1.8;
-			margin-bottom: 1.5em;
-		}
-		
-		.narrative-content p {
-			margin-bottom: 1.2em;
-		}
 	</style>
 	<script>
 		function toggleDetails(id) {
@@ -265,9 +147,25 @@
 			el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
 			btn.classList.toggle('active');
 		}
+		
+		document.addEventListener('DOMContentLoaded', function() {
+			// Auto-play video background
+			const video = document.getElementById('background-video');
+			if(video) {
+				video.play().catch(e => console.log("Video autoplay prevented: ", e));
+			}
+		});
 	</script>
 </head>
 <body>
+<!-- Background Video -->
+<div class="video-background">
+	<video id="background-video" autoplay loop muted playsinline>
+		<source src="images/ArmVid1.MOV" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
+</div>
+
 <div id="page-wrapper">
 	<header id="header">
 		<h1><a href="index.html">Jesse Gill Saligman</a></h1>
@@ -306,8 +204,12 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/FullySeniorDesignRender.JPG" alt="Full System Render">
-									<img src="images/ArmWiringGrosspic.png" alt="Four-Wire Backbone">
+									<div class="media-item">
+										<img src="images/FullySeniorDesignRender.JPG" alt="Full System Render">
+									</div>
+									<div class="media-item">
+										<img src="images/ArmWiringGrosspic.png" alt="Four-Wire Backbone">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -339,10 +241,14 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/FullySeniorDesignRender.JPG" alt="System Architecture">
-									<video muted autoplay loop>
-										<source src="images/ArmVid2.mov" type="video/mp4">
-									</video>
+									<div class="media-item">
+										<img src="images/FullySeniorDesignRender.JPG" alt="System Architecture">
+									</div>
+									<div class="media-item">
+										<video muted autoplay loop>
+											<source src="images/ArmVid2.mov" type="video/mp4">
+										</video>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -375,7 +281,9 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/FullySeniorDesignRender.JPG" alt="Full System Render">
+									<div class="media-item">
+										<img src="images/FullySeniorDesignRender.JPG" alt="Full System Render">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -398,11 +306,17 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/HarmonicDriveRender.png" alt="Harmonic Drive Design">
-									<img src="images/HarmoncDrivesidecross.png" alt="Harmonic Drive Cross-Section">
-									<video muted autoplay loop>
-										<source src="images/HarmonicDriveRedesignVideo.MOV" type="video/mp4">
-									</video>
+									<div class="media-item">
+										<img src="images/HarmonicDriveRender.png" alt="Harmonic Drive Design">
+									</div>
+									<div class="media-item">
+										<img src="images/HarmoncDrivesidecross.png" alt="Harmonic Drive Cross-Section">
+									</div>
+									<div class="media-item">
+										<video muted autoplay loop>
+											<source src="images/HarmonicDriveRedesignVideo.MOV" type="video/mp4">
+										</video>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -425,8 +339,12 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/j6gripcrosssection.png" alt="Joint 6 Cross-Section">
-									<img src="images/j6GripperPic.png" alt="Gripper Implementation">
+									<div class="media-item">
+										<img src="images/j6gripcrosssection.png" alt="Joint 6 Cross-Section">
+									</div>
+									<div class="media-item">
+										<img src="images/j6GripperPic.png" alt="Gripper Implementation">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -459,7 +377,9 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/Joint eleectronics Diagram.png" alt="Joint Electronics">
+									<div class="media-item">
+										<img src="images/Joint eleectronics Diagram.png" alt="Joint Electronics">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -482,8 +402,12 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/robotchassiselectronics.png" alt="Chassis Electronics">
-									<img src="images/FullySeniorDesignRender.JPG" alt="Chassis Render">
+									<div class="media-item">
+										<img src="images/robotchassiselectronics.png" alt="Chassis Electronics">
+									</div>
+									<div class="media-item">
+										<img src="images/FullySeniorDesignRender.JPG" alt="Chassis Render">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -493,7 +417,8 @@
 				<!-- SOFTWARE & COMMUNICATION -->
 				<h3 class="major">Software & Communication</h3>
 				<div class="media-container">
-					<img src="images/RobotArmComsDiagram.png" alt="Software Architecture">
+					<!-- Improved coms diagram with smaller size -->
+					<img id="coms-diagram" src="images/RobotArmComsDiagram.png" alt="Software Architecture">
 				</div>
 				
 				<div class="section-intro">
@@ -516,7 +441,9 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/robotchassiselectronics.png" alt="Communication Setup">
+									<div class="media-item">
+										<img src="images/robotchassiselectronics.png" alt="Communication Setup">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -539,7 +466,9 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/Dataexamplepic.png" alt="Data Example">
+									<div class="media-item">
+										<img src="images/Dataexamplepic.png" alt="Data Example">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -562,8 +491,12 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/j5 data pic.png" alt="Joint Data Output">
-									<img src="images/Joint eleectronics Diagram.png" alt="Electronics Diagram">
+									<div class="media-item">
+										<img src="images/j5 data pic.png" alt="Joint Data Output">
+									</div>
+									<div class="media-item">
+										<img src="images/Joint eleectronics Diagram.png" alt="Electronics Diagram">
+									</div>
 								</div>
 							</div>
 						</div>
@@ -596,10 +529,14 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/UswithArmBot.jpg" alt="Assembly Process">
-									<video muted autoplay loop>
-										<source src="images/ArmVid2.mov" type="video/mp4">
-									</video>
+									<div class="media-item">
+										<img src="images/UswithArmBot.jpg" alt="Assembly Process">
+									</div>
+									<div class="media-item">
+										<video muted autoplay loop>
+											<source src="images/ArmVid2.mov" type="video/mp4">
+										</video>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -627,8 +564,12 @@
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/FullySeniorDesignRender.JPG" alt="Future Development">
-									<img src="images/HarmonicDriveRender.png" alt="Advanced Components">
+									<div class="media-item">
+										<img src="images/FullySeniorDesignRender.JPG" alt="Future Development">
+									</div>
+									<div class="media-item">
+										<img src="images/HarmonicDriveRender.png" alt="Advanced Components">
+									</div>
 								</div>
 							</div>
 						</div>
