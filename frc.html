@@ -8,11 +8,11 @@
 	<style>
 		:root {
 			--primary: #2c3e50;
-			--secondary: #3498db;
+			--secondary: #d35400; /* FRC orange accent */
 			--dark-bg: #1a1f29;
 			--light-text: #f0f0f0;
 			--medium-bg: #252c3a;
-			--accent: #4fc3f7;
+			--accent: #e67e22;
 		}
 		
 		#wrapper > header {
@@ -96,11 +96,6 @@
 			width: 100%;
 			height: auto;
 			display: block;
-		}
-
-		.coms-diagram-container {
-			max-width: 70%;
-			margin: 0 auto;
 		}
 
 		.dropdown-section {
@@ -217,74 +212,6 @@
 			object-fit: contain;
 		}
 		
-		@media (max-width: 900px) {
-			.detail-grid {
-				grid-template-columns: 1fr;
-			}
-			.detail-text {
-				padding-right: 0;
-			}
-			.details {
-				padding: 1.8em;
-			}
-			.coms-diagram-container {
-				max-width: 100%;
-			}
-		}
-		
-		.centered-content {
-			text-align: center;
-			max-width: 1100px;
-			margin: 0 auto;
-		}
-		
-		h3.major {
-			text-align: center;
-			margin-top: 0.25em;
-			position: relative;
-			padding-bottom: 0.6em;
-			font-size: 1.8em;
-			color: #fff;
-		}
-		
-		h3.major::after {
-			content: "";
-			position: absolute;
-			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 120px;
-			height: 4px;
-			background: var(--secondary);
-		}
-		
-		body {
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			line-height: 1.7;
-			color: #f0f0f0;
-			background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-		}
-		
-		.details p {
-			margin-bottom: 1.2em;
-			font-size: 1.05em;
-			color: #e0e0e0;
-		}
-		
-		.details strong {
-			color: #fff;
-		}
-		
-		.narrative-content {
-			font-size: 1.1em;
-			line-height: 1.8;
-			margin-bottom: 1.5em;
-		}
-		
-		.narrative-content p {
-			margin-bottom: 1.2em;
-		}
-		
 		.media-gallery {
 			display: grid;
 			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -301,6 +228,35 @@
 			height: auto;
 			object-fit: cover;
 		}
+		
+		.youtube-container {
+			position: relative;
+			width: 100%;
+			padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+			height: 0;
+			overflow: hidden;
+			border-radius: 10px;
+			box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+			border: 1px solid #3a4659;
+		}
+		
+		.youtube-container iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+		
+		/* Tribute styling */
+		.tribute-section {
+			background: rgba(255,255,255,0.05);
+			padding: 1.5rem;
+			border-radius: 8px;
+			margin: 2rem 0;
+			border-left: 4px solid var(--accent);
+		}
 	</style>
 	<script>
 		function toggleDetails(id) {
@@ -309,6 +265,16 @@
 			el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
 			btn.classList.toggle('active');
 		}
+		
+		// Automatically mute and loop all videos
+		document.addEventListener('DOMContentLoaded', function() {
+			const videos = document.querySelectorAll('video');
+			videos.forEach(video => {
+				video.muted = true;
+				video.loop = true;
+				video.playsInline = true;
+			});
+		});
 	</script>
 </head>
 <body>
@@ -425,12 +391,14 @@
 								<div class="detail-media">
 									<img src="images/FRC2020SidePicofBot.png" alt="Redesigned Robot">
 									<video muted autoplay loop>
-										<source src="images/2020Slowmotionvid.MP4" type="video/mp4">
+										<source src="images/FRC2020Slowmotionvid.MP4" type="video/mp4">
 									</video>
 								</div>
 							</div>
 							<div class="media-gallery">
-								<img src="images/2020NewPrototyping.MOV" type="video/mp4" alt="Prototyping">
+								<video muted autoplay loop>
+									<source src="images/2020NewPrototyping.MOV" type="video/mp4">
+								</video>
 								<video muted autoplay loop>
 									<source src="images/FRC2020BotShooting.mp4" type="video/mp4">
 								</video>
@@ -444,14 +412,17 @@
 					<button class="toggle-btn" onclick="toggleDetails('sam-climb')">Sam Ozer's Climbing Mechanism</button>
 					<div class="details" id="sam-climb">
 						<div class="details-content">
+							<div class="tribute-section">
+								<h4>In Memory of Sam Ozer</h4>
+								<p>Sam Ozer was a brilliant and beloved member of our team who tragically passed away in a biking accident during the season. His creativity and passion for robotics inspired everyone who worked with him.</p>
+							</div>
+							
 							<div class="detail-grid">
 								<div class="detail-text">
 									<div class="narrative-content">
-										<p>Sam Ozer was a cherished team member whose life was tragically cut short in a biking accident during our 2020 season. He had begun developing an innovative climbing mechanism that I completed in his memory.</p>
+										<p>Sam had begun developing an innovative climbing mechanism that I completed in his memory. His ingenious concept used two opposed tape measures to deploy a hook connected by Kevlar rope. The opposing orientation prevented buckling that would occur with a single tape measure.</p>
 										
-										<p>Sam's ingenious concept used two opposed tape measures to deploy a hook connected by Kevlar rope. The opposing orientation prevented buckling that would occur with a single tape measure. After winching the hook to the climb bar, the robot would reel itself up.</p>
-										
-										<p>I took Sam's prototype and engineered a robust metal version capable of handling competition forces. Integrating this mechanism onto our robot was a tribute to his creativity and a way to honor his contribution to our team.</p>
+										<p>I took Sam's prototype and engineered a robust metal version capable of handling competition forces. After winching the hook to the climb bar, the robot would reel itself up. Integrating this mechanism onto our robot was a tribute to his creativity and a way to honor his contribution to our team.</p>
 									</div>
 								</div>
 								<div class="detail-media">
@@ -499,9 +470,12 @@
 							</div>
 							<div class="media-gallery">
 								<img src="images/FRC_2019BotTitlePic.png" alt="2019 Robot Front">
-								<video muted autoplay loop>
-									<source src="https://www.youtube.com/embed/0kcaoZ99Ntc" type="video/mp4">
-								</video>
+								<div class="youtube-container">
+									<iframe src="https://www.youtube.com/embed/0kcaoZ99Ntc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+								<div class="youtube-container">
+									<iframe src="https://www.youtube.com/embed/FU-yjB7ruHc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -521,6 +495,12 @@
 					<p>As a newcomer, I focused on learning the engineering design process, fabrication techniques, and team dynamics. Our robot's lift mechanism could place game pieces over 9 feet high, a key capability in that year's game.</p>
 					
 					<p>Competing at the World Championship in Detroit was a transformative experience that solidified my passion for robotics and engineering. The collaborative environment and exposure to advanced designs inspired me to pursue mechanical engineering.</p>
+				</div>
+				
+				<div class="media-gallery">
+					<div class="youtube-container">
+						<iframe src="https://www.youtube.com/embed/5huqXrFeeAM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
 				</div>
 
 				<!-- OFF-SEASON PROJECT -->
