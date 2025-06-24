@@ -52,7 +52,11 @@
 		}
 
 		.wrapper { margin-top: -6em; margin-bottom: -6em; }
-		
+		section#footer {
+			background: url('images/ArmVid1.MOV') center center / cover fixed;
+			color: white; padding: 4em 0; border-top: none;
+		}
+
 		/* Media containers */
 		.media-container {
 			max-width: 900px;
@@ -263,65 +267,6 @@
 		
 		.narrative-content p {
 			margin-bottom: 1.2em;
-		}
-		
-		/* ========== UPDATED FOOTER STYLES TO MATCH NAUTICUS PAGE ========== */
-		section#footer {
-			position: relative;
-			overflow: hidden;
-			color: white;
-			text-shadow: 0 1px 3px rgba(0,0,0,0.7);
-			padding-top: 4em;
-			padding-bottom: 4em;
-			border-top: none;
-		}
-		
-		#footer-video {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			z-index: -1;
-		}
-		
-		section#footer::after {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: rgba(0,0,0,0.6);
-			z-index: 0;
-		}
-		
-		section#footer .inner {
-			position: relative;
-			z-index: 1;
-		}
-		
-		section#footer a.special {
-			display: inline-block;
-			margin-top: 1em;
-			padding: 0.75em 2em;
-			border: 2px solid white;
-			border-radius: 4px;
-			text-decoration: none;
-			color: white;
-			font-weight: bold;
-			transition: background 0.3s ease, color 0.3s ease;
-		}
-		
-		section#footer a.special:hover {
-			background: white;
-			color: #1b1b1b;
-		}
-		
-		section#footer .contact li {
-			font-weight: bold;
-			font-size: 1.2em;
 		}
 	</style>
 	<script>
@@ -645,6 +590,8 @@
 				<!-- PROTOTYPING & ASSEMBLY -->
 				<h3 class="major">Prototyping & Assembly</h3>
 				
+				<!-- REMOVED: The two images that were here -->
+				
 				<div class="section-intro">
 					<p>Reverse assembly approach enabled independent validation of each joint, preventing integration complexities and accelerating development.</p>
 				</div>
@@ -703,39 +650,11 @@
 					</div>
 				</div>
 
+				<!-- REMOVED: Final video at the very end -->
+
 			</div>
-		</div>
-	</section>
-	
-	<!-- ===================== UPDATED FOOTER TO MATCH NAUTICUS PAGE ===================== -->
-	<section id="footer">
-		<video id="footer-video" autoplay muted loop playsinline>
-			<source src="images/ArmVid1.MOV" type="video/mp4">
-			Your browser does not support the video tag.
-		</video>
-		<div class="inner">
-			<h2 class="major">Get in Touch</h2>
-			<ul class="contact">
-				<li class="icon solid fa-phone">610-316-5180</li>
-				<li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
-				<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
-			</ul>
-			<a href="index.html" class="special">Back to Portfolio</a>
-			<ul class="copyright">
-				<li>&copy; Jesse Gill Saligman. All rights reserved.</li>
-				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-			</ul>
 		</div>
 	</section>
 
 </div>
-
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-
 </body>
-</html>
