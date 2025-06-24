@@ -1,823 +1,595 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRC Robotics | Jesse Gill Saligman</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #d32f2f;
-            --dark-bg: #1a1f29;
-            --light-text: #f0f0f0;
-            --medium-bg: #252c3a;
-            --accent: #ff9800;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            color: #f0f0f0;
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-            overflow-x: hidden;
-        }
-        
-        /* Header Styles */
-        #header-video-container {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-        }
-        
-        #header-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: 1;
-            object-fit: cover;
-        }
-        
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-        
-        .header-content {
-            max-width: 900px;
-            z-index: 3;
-        }
-        
-        .header-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-            color: white;
-        }
-        
-        .header-content h2 {
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            color: var(--accent);
-        }
-        
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-            z-index: 3;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
-            40% {transform: translateY(-20px) translateX(-50%);}
-            60% {transform: translateY(-10px) translateX(-50%);}
-        }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(26, 31, 41, 0.95);
-            z-index: 1000;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-        
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: white;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        
-        .section-title h2:after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--secondary);
-        }
-        
-        .overview-content {
-            background: var(--dark-bg);
-            border-radius: 10px;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .overview-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .highlight {
-            background: rgba(255, 152, 0, 0.1);
-            border-left: 4px solid var(--accent);
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        /* Season Sections */
-        .season-section {
-            margin-bottom: 4rem;
-            background: var(--dark-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .season-header {
-            padding: 2rem;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-        }
-        
-        .season-year {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-right: 1.5rem;
-            min-width: 120px;
-        }
-        
-        .season-title {
-            font-size: 1.8rem;
-            color: white;
-        }
-        
-        .season-content {
-            padding: 2.5rem;
-        }
-        
-        .season-image {
-            width: 100%;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        /* Dropdown Sections */
-        .dropdown-section {
-            margin: 2.5rem 0;
-        }
-        
-        .toggle-btn {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 1.2rem 2rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            text-align: left;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-        
-        .toggle-btn:hover {
-            background: var(--secondary);
-        }
-        
-        .toggle-btn i {
-            transition: transform 0.3s;
-        }
-        
-        .toggle-btn.active i {
-            transform: rotate(180deg);
-        }
-        
-        .details {
-            display: none;
-            padding: 2rem;
-            background: rgba(37, 44, 58, 0.7);
-            border-left: 4px solid var(--secondary);
-            border-radius: 0 8px 8px 0;
-            margin-top: 0.5rem;
-        }
-        
-        .detail-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 1.5rem 0;
-        }
-        
-        .detail-text {
-            padding-right: 1rem;
-        }
-        
-        .detail-media {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-        
-        .detail-media img, 
-        .detail-media video {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        
-        /* Gallery */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .gallery-item {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            position: relative;
-            height: 250px;
-        }
-        
-        .gallery-item img, 
-        .gallery-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        
-        .gallery-item:hover img, 
-        .gallery-item:hover video {
-            transform: scale(1.05);
-        }
-        
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 0.8rem;
-            font-size: 0.9rem;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-        
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark-bg);
-            padding: 4rem 2rem;
-            text-align: center;
-            border-top: 3px solid var(--secondary);
-        }
-        
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            margin: 2rem 0;
-        }
-        
-        .footer-links li {
-            margin: 0 1rem;
-        }
-        
-        .footer-links a {
-            color: var(--accent);
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .copyright {
-            margin-top: 2rem;
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 900px) {
-            .detail-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .season-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .season-year {
-                margin-right: 0;
-                margin-bottom: 1rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .header-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .header-content h2 {
-                font-size: 1.4rem;
-            }
-        }
-    </style>
+	<title>FRC Robotics | Jesse Gill Saligman</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<style>
+		:root {
+			--primary: #2c3e50;
+			--secondary: #d35400; /* Orange accent for FRC */
+			--dark-bg: #1a1f29;
+			--light-text: #f0f0f0;
+			--medium-bg: #252c3a;
+			--accent: #e67e22;
+		}
+		
+		#wrapper > header {
+			position: relative;
+			overflow: hidden;
+			color: white;
+			text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+			padding: 10em 2em 22em 2em;
+			text-align: center;
+		}
+
+		#header-video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			z-index: -1;
+		}
+
+		#wrapper > header::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0,0,0,0.6);
+			z-index: 0;
+		}
+
+		#wrapper > header .inner {
+			position: relative;
+			z-index: 1;
+		}
+
+		.wrapper { margin-top: -6em; margin-bottom: -6em; }
+		
+		section#footer {
+			background: url('images/FRC2019ClimbingVideo.mp4') center center / cover fixed;
+			color: white;
+			text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+			padding-top: 4em;
+			padding-bottom: 4em;
+			border-top: none;
+		}
+
+		section#footer a.special {
+			display: inline-block;
+			margin-top: 1em;
+			padding: 0.75em 2em;
+			border: 2px solid white;
+			border-radius: 4px;
+			text-decoration: none;
+			color: white;
+			font-weight: bold;
+			transition: background 0.3s ease, color 0.3s ease;
+		}
+
+		section#footer a.special:hover {
+			background: white;
+			color: #1b1b1b;
+		}
+
+		section#footer .contact li {
+			font-weight: bold;
+			font-size: 1.2em;
+		}
+
+		.media-container {
+			max-width: 900px;
+			margin: 2em auto;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+		}
+		
+		.media-container img, 
+		.media-container video {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+
+		.dropdown-section {
+			margin: 3em 0;
+		}
+		
+		.toggle-btn {
+			display: block;
+			width: 100%;
+			margin: 1.5em 0 1em;
+			padding: 1.2em 2em;
+			background-color: var(--primary);
+			color: #fff;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+			font-size: 1.15em;
+			text-align: left;
+			transition: all 0.3s;
+			font-weight: 600;
+		}
+		
+		.toggle-btn:after {
+			content: "▼";
+			float: right;
+			font-size: 0.9em;
+			transition: transform 0.3s;
+		}
+		
+		.toggle-btn.active:after {
+			content: "▲";
+		}
+		
+		.toggle-btn:hover {
+			background-color: var(--secondary);
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+		}
+
+		.details { 
+			display: none; 
+			padding: 2.5em;
+			margin: 0.5em 0 3em;
+			background: var(--dark-bg);
+			border-left: 4px solid var(--secondary);
+			border-radius: 0 10px 10px 0;
+			color: var(--light-text);
+			box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+		}
+		
+		.details-content {
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+		
+		.details h4 {
+			color: var(--accent);
+			margin-top: 1.8em;
+			padding-bottom: 0.6em;
+			font-size: 1.3em;
+			border-bottom: 1px solid #3a4659;
+		}
+		
+		.details ul {
+			padding-left: 1.8em;
+			margin: 1.5em 0;
+		}
+		
+		.details li {
+			margin-bottom: 0.8em;
+			line-height: 1.7;
+			color: #e0e0e0;
+		}
+		
+		.section-intro {
+			margin-bottom: 2em;
+			line-height: 1.8;
+			text-align: center;
+			max-width: 1000px;
+			margin-left: auto;
+			margin-right: auto;
+			font-size: 1.1em;
+			color: #fff;
+			text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+		}
+		
+		.detail-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 2.5em;
+			margin: 2em 0;
+		}
+		
+		.detail-text {
+			padding-right: 1.5em;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		
+		.detail-media {
+			display: flex;
+			flex-direction: column;
+			gap: 2em;
+		}
+		
+		.detail-media img,
+		.detail-media video {
+			border-radius: 10px;
+			box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+			border: 1px solid #3a4659;
+			width: 100%;
+			height: auto;
+			object-fit: contain;
+		}
+		
+		.media-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 1.5rem;
+			margin-top: 2rem;
+		}
+		
+		.media-grid img,
+		.media-grid video {
+			width: 100%;
+			height: auto;
+			border-radius: 8px;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+		}
+		
+		@media (max-width: 900px) {
+			.detail-grid {
+				grid-template-columns: 1fr;
+			}
+			.detail-text {
+				padding-right: 0;
+			}
+			.details {
+				padding: 1.8em;
+			}
+		}
+		
+		.centered-content {
+			text-align: center;
+			max-width: 1100px;
+			margin: 0 auto;
+		}
+		
+		h3.major {
+			text-align: center;
+			margin-top: 1em;
+			position: relative;
+			padding-bottom: 0.6em;
+			font-size: 1.8em;
+			color: #fff;
+		}
+		
+		h3.major::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 120px;
+			height: 4px;
+			background: var(--secondary);
+		}
+		
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.7;
+			color: #f0f0f0;
+			background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+		}
+		
+		.details p {
+			margin-bottom: 1.2em;
+			font-size: 1.05em;
+			color: #e0e0e0;
+		}
+		
+		.details strong {
+			color: #fff;
+		}
+		
+		.narrative-content {
+			font-size: 1.1em;
+			line-height: 1.8;
+			margin-bottom: 1.5em;
+		}
+		
+		.narrative-content p {
+			margin-bottom: 1.2em;
+		}
+		
+		/* Tribute section styling */
+		.tribute-section {
+			background: rgba(255,255,255,0.05);
+			padding: 2rem;
+			border-radius: 8px;
+			margin: 2rem 0;
+			border-left: 4px solid var(--accent);
+		}
+		
+		.tribute-section h4 {
+			color: var(--accent);
+			margin-top: 0;
+		}
+	</style>
+	<script>
+		function toggleDetails(id) {
+			var el = document.getElementById(id);
+			var btn = document.querySelector('[onclick="toggleDetails(\'' + id + '\')"]');
+			el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
+			btn.classList.toggle('active');
+		}
+		
+		document.addEventListener('DOMContentLoaded', function() {
+			// Automatically mute and loop all videos
+			const videos = document.querySelectorAll('video');
+			videos.forEach(video => {
+				video.muted = true;
+				video.loop = true;
+				video.playsInline = true;
+			});
+		});
+	</script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="#" class="logo">Jesse Gill Saligman</a>
-        <ul class="nav-links">
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#2020">2020 Season</a></li>
-            <li><a href="#2019">2019 Season</a></li>
-            <li><a href="#2018">2018 Season</a></li>
-            <li><a href="#elevator">Elevator Project</a></li>
-        </ul>
-    </nav>
+<div id="page-wrapper">
+	<header id="header">
+		<h1><a href="index.html">Jesse Gill Saligman</a></h1>
+		<nav><a href="#menu">Menu</a></nav>
+	</header>
 
-    <!-- Header with Video Background -->
-    <div id="header-video-container">
-        <video id="header-video" autoplay muted loop playsinline>
-            <source src="images/FRC2019ClimbingVideo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="video-overlay">
-            <div class="header-content">
-                <h1>FIRST Robotics Competition</h1>
-                <h2>Team Captain & Mechanical Lead | 2017-2021</h2>
-            </div>
-        </div>
-        <div class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </div>
+	<section id="wrapper">
+		<header>
+			<video id="header-video" autoplay muted loop playsinline>
+				<source src="images/FRC2019ClimbingVideo.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+			<div class="inner">
+				<h2>First Robotics Competition</h2>
+				<p>Team Captain & Mechanical Lead | 2017-2021</p>
+			</div>
+		</header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Overview Section -->
-        <section id="overview">
-            <div class="section-title">
-                <h2>Overview</h2>
-            </div>
-            
-            <div class="overview-content">
-                <p>FIRST Robotics Competition (FRC) is an international high school robotics competition where teams design, build, and program industrial-sized robots to compete in challenging, alliance-based games. Over my four years in FRC, I developed extensive skills in mechanical design, team leadership, and problem-solving under pressure.</p>
-                
-                <div class="highlight">
-                    <p>As Team Captain and Mechanical Lead throughout high school, I was responsible for:</p>
-                    <ul>
-                        <li>Leading a team of 30+ students in robot design and development</li>
-                        <li>Managing project timelines and resource allocation during build season</li>
-                        <li>Designing and implementing complex mechanical systems</li>
-                        <li>Mentoring younger team members in engineering principles</li>
-                        <li>Representing the team at competitions and community events</li>
-                    </ul>
-                </div>
-                
-                <p>My FRC journey taught me the value of rapid prototyping, iterative design, and collaborative problem-solving - skills that have proven invaluable in my engineering career. Through FRC, I discovered my passion for robotics and mechanical design while learning to lead teams through complex technical challenges.</p>
-            </div>
-        </section>
+		<div class="wrapper">
+			<div class="inner centered-content">
 
-        <!-- 2020 Season -->
-        <section id="2020">
-            <div class="section-title">
-                <h2>2020 Season: Infinite Recharge</h2>
-            </div>
-            
-            <div class="season-section">
-                <div class="season-header">
-                    <div class="season-year">2020</div>
-                    <div class="season-title">Innovation Under Pressure</div>
-                </div>
-                
-                <div class="season-content">
-                    <img src="images/FRC2020RobotWithA10.png" alt="2020 Robot with A-10" class="season-image">
-                    
-                    <p>In my junior year as Team Captain and Mechanical Lead, we faced the challenge of designing a robot for Infinite Recharge, a game focused on scoring dodgeballs into goals. Our initial design featured a tank drive with a 360° turret for rapid aiming. However, after observing the first week of competition, I recognized significant design flaws that would hinder our competitive performance.</p>
-                    
-                    <p>With our seniors away on a trip, I proposed a complete redesign. The team trusted my vision, and we completely rebuilt the robot in just one week. The new design featured a "washing machine" carousel spinner with a hollow center tube and an omni wheel feeding mechanism. This innovation increased our scoring rate from one ball every 3-4 seconds to five balls in the same timeframe.</p>
-                    
-                    <p>Tragically, the competition was canceled due to the COVID-19 pandemic, but this season remains a testament to our team's resilience and ability to innovate under pressure.</p>
-                    
-                    <!-- Original Robot Dropdown -->
-                    <div class="dropdown-section">
-                        <button class="toggle-btn">
-                            Original Robot Design
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="details">
-                            <div class="detail-grid">
-                                <div class="detail-text">
-                                    <h3>Turret-Based Scoring System</h3>
-                                    <p>Our initial design featured a tank drive with a 360° turret for rapid aiming. This approach complemented the tank drive's maneuverability limitations by allowing independent aiming while moving.</p>
-                                    
-                                    <p>The system included a flywheel for consistent ball velocity, a vertically adjustable hood for trajectory control, and a unique feeding mechanism. To ensure consistent feeding regardless of turret orientation, I designed a pulley system that achieved 6 inches of throw from a 2-inch piston.</p>
-                                    
-                                    <p>Challenges included maintaining a low profile for field navigation, which created feeding issues. I solved this with a custom piston extender that doubled the throw without increasing height. Wire management was critical with the flywheel near sensitive electronics.</p>
-                                </div>
-                                <div class="detail-media">
-                                    <img src="images/FRC2020TurretCad.png" alt="Turret CAD Design">
-                                    <img src="images/FRC2020TurretAttached.png" alt="Turret Attached">
-                                    <img src="images/FRC2020TurretDetatched.png" alt="Turret Detached">
-                                    <img src="images/FRC2020PistonExtend.png" alt="Piston Extender">
-                                </div>
-                            </div>
-                            
-                            <div class="gallery">
-                                <div class="gallery-item">
-                                    <video muted autoplay loop>
-                                        <source src="images/2020OldBotShooting.mov" type="video/mp4">
-                                    </video>
-                                    <div class="gallery-caption">Original Shooting Mechanism</div>
-                                </div>
-                                <div class="gallery-item">
-                                    <video muted autoplay loop>
-                                        <source src="images/2020OldTurretSpinning.MOV" type="video/mp4">
-                                    </video>
-                                    <div class="gallery-caption">Turret Rotation Test</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Redesigned Bot Dropdown -->
-                    <div class="dropdown-section">
-                        <button class="toggle-btn">
-                            Redesigned Scoring System
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="details">
-                            <div class="detail-grid">
-                                <div class="detail-text">
-                                    <h3>The "Washing Machine" Design</h3>
-                                    <p>After observing gameplay during the first competition week, I recognized that our piston-based feeding mechanism was too slow for competitive play. With the seniors away, I led the team through a complete redesign.</p>
-                                    
-                                    <p>The new system featured a rotating "washing machine" carousel with a hollow center tube. An omni wheel positioned above a cutout in the tube would spin to push balls into the center while allowing them to pass when not engaged.</p>
-                                    
-                                    <p>This innovative approach increased our scoring rate dramatically - from one ball every 3-4 seconds to five balls in the same timeframe. The redesign was completed in just one week, demonstrating our team's ability to innovate rapidly under pressure.</p>
-                                </div>
-                                <div class="detail-media">
-                                    <img src="images/FRC2020SidePicofBot.png" alt="Redesigned Robot Side View">
-                                    <img src="images/FRC2020RobotBeforeRedesign.png" alt="Robot Before Redesign">
-                                </div>
-                            </div>
-                            
-                            <div class="gallery">
-                                <div class="gallery-item">
-                                    <video muted autoplay loop>
-                                        <source src="images/FRC2020Slowmotionvid.MP4" type="video/mp4">
-                                    </video>
-                                    <div class="gallery-caption">Slow Motion Feeding</div>
-                                </div>
-                                <div class="gallery-item">
-                                    <video muted autoplay loop>
-                                        <source src="images/FRC2020BotShooting.mp4" type="video/mp4">
-                                    </video>
-                                    <div class="gallery-caption">Redesigned Shooting Test</div>
-                                </div>
-                                <div class="gallery-item">
-                                    <video muted autoplay loop>
-                                        <source src="images/2020NewPrototyping.MOV" type="video/mp4">
-                                    </video>
-                                    <div class="gallery-caption">Prototyping Process</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Sam Ozer's Climb Dropdown -->
-                    <div class="dropdown-section">
-                        <button class="toggle-btn">
-                            In Memory: Sam Ozer's Climbing Mechanism
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="details">
-                            <div class="detail-grid">
-                                <div class="detail-text">
-                                    <h3>Continuing a Legacy</h3>
-                                    <p>Sam Ozer was a beloved member of our team and community whose life was tragically cut short in a biking accident during our build season. Sam had been developing an innovative climbing mechanism that would have given our robot a competitive edge.</p>
-                                    
-                                    <p>His ingenious design used two opposed tape measures to launch a hook upward with Kevlar rope. The opposed configuration provided stability that a single tape measure couldn't achieve. After the competition cancellation, I took it upon myself to complete Sam's work as a tribute to his memory and ingenuity.</p>
-                                    
-                                    <p>Using Sam's laser-cut prototypes as a foundation, I engineered a metal version capable of handling the required forces. This project was more than technical problem-solving - it was a way to honor a teammate and friend whose passion for robotics inspired us all.</p>
-                                </div>
-                                <div class="detail-media">
-                                    <img src="images/SamsClimb.jpg" alt="Sam's Climb Mechanism">
-                                    <img src="images/SamsClimbOnBot.jpg" alt="Climb on Robot">
-                                </div>
-                            </div>
-                            
-                            <div class="gallery">
-                                <div class="gallery-item">
-                                    <video muted autoplay loop>
-                                        <source src="images/SamsClimbVideo.MOV" type="video/mp4">
-                                    </video>
-                                    <div class="gallery-caption">Climbing Mechanism Test</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+				<!-- OVERVIEW -->
+				<h3 class="major">Overview</h3>
+				<div class="section-intro">
+					<p>FIRST Robotics Competition (FRC) challenges high school students to design, build, and program industrial-sized robots to compete in challenging field games. As Team Captain and Mechanical Lead throughout high school, I led multidisciplinary teams in solving complex engineering problems under strict deadlines, developing leadership, technical, and problem-solving skills.</p>
+					<p>My responsibilities included mechanical design leadership, project management, strategic decision-making, and mentoring younger team members. This experience fostered my passion for robotics and engineering while demonstrating my ability to lead technical teams to success.</p>
+				</div>
+				
+				<!-- 2020 SEASON -->
+				<h3 class="major">2020 Season: Infinite Recharge</h3>
+				<div class="media-container">
+					<img src="images/FRC2020RobotWithA10.png" alt="2020 Robot with A-10">
+				</div>
+				
+				<div class="section-intro">
+					<p>As Team Captain in my junior year, I led the design of a robot to shoot dodgeballs across the field. After observing early competitions, I initiated and executed a complete redesign in one week. Although the season was canceled due to COVID-19, this experience demonstrated rapid adaptation and leadership under pressure.</p>
+				</div>
+				
+				<!-- Original Robot Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('original-robot')">Original Robot Design</button>
+					<div class="details" id="original-robot">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>Our initial approach focused on a tank drive with a 360° turret to maximize scoring potential. The design prioritized a low profile to navigate under field obstacles, but this created challenges for feeding balls into the turret.</p>
+										
+										<p>To ensure consistent shooting regardless of turret orientation, I developed a central feeding mechanism using a piston instead of a ramp. The height constraints required a custom piston extender that doubled the throw distance - a solution achieved with standard components to avoid exceeding size limitations.</p>
+										
+										<p>The turret featured a flywheel with vertical adjustment hood, precision machined to maintain consistent energy transfer during shooting. Careful wire management prevented interference with moving components.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/FRC2020RobotBeforeRedesign.png" alt="Original Robot Design">
+									<img src="images/FRC2020TurretCad.png" alt="Turret CAD Design">
+								</div>
+							</div>
+							
+							<div class="media-grid">
+								<img src="images/FRC2020TurretAttached.png" alt="Turret Attached">
+								<img src="images/FRC2020TurretDetatched.png" alt="Turret Detached">
+								<img src="images/FRC2020PistonExtend.png" alt="Piston Extender">
+								<video muted autoplay loop>
+									<source src="images/2020OldBotShooting.mov" type="video/mp4">
+								</video>
+								<video muted autoplay loop>
+									<source src="images/2020OldTurretSpinning.MOV" type="video/mp4">
+								</video>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Redesigned Bot Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('redesigned-bot')">Complete Redesign</button>
+					<div class="details" id="redesigned-bot">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>After observing the first competition, I realized our original design wouldn't be competitive. With seniors away on trips, I proposed a complete redesign that the team enthusiastically supported.</p>
+										
+										<p>The new "washing machine" design featured a carousel spinner with a hollow center tube. An omni-wheel positioned above a cutout in the tube allowed balls to pass when stationary, but when activated, it pushed balls into the center tube and toward the flywheel.</p>
+										
+										<p>This innovative solution dramatically improved our scoring capacity - from one ball every 3-4 seconds to five balls (the maximum allowed) in the same timeframe. The redesign was completed in just one week, demonstrating rapid iteration and problem-solving capabilities.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/FRC2020SidePicofBot.png" alt="Redesigned Robot">
+								</div>
+							</div>
+							
+							<div class="media-grid">
+								<video muted autoplay loop>
+									<source src="images/FRC2020Slowmotionvid.MP4" type="video/mp4">
+								</video>
+								<video muted autoplay loop>
+									<source src="images/FRC2020BotShooting.mp4" type="video/mp4">
+								</video>
+								<video muted autoplay loop>
+									<source src="images/2020NewPrototyping.MOV" type="video/mp4">
+								</video>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Sam Ozer's Climb Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('sam-climb')">Sam Ozer's Climbing Mechanism</button>
+					<div class="details" id="sam-climb">
+						<div class="details-content">
+							<div class="tribute-section">
+								<h4>In Memory of Sam Ozer</h4>
+								<p>Sam Ozer was a brilliant and beloved member of our team who tragically passed away in a biking accident during the season. His creativity and passion for robotics inspired everyone who worked with him.</p>
+								<p>To honor Sam's legacy, I completed work on his ingenious climbing mechanism concept that he was developing before his passing.</p>
+							</div>
+							
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>Sam's innovative approach used two opposed tape measures to deploy a climbing hook with Kevlar rope. The opposing orientation prevented buckling that would occur with a single tape measure.</p>
+										
+										<p>I transformed Sam's laser-cut prototypes into a durable metal mechanism capable of handling competition forces. The final design was integrated into our robot as a tribute to his creativity and dedication.</p>
+										
+										<p>Completing this project was both a technical challenge and a meaningful way to honor our teammate's contribution to the team and the robotics community.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/SamsClimb.jpg" alt="Sam's Climb Mechanism">
+									<img src="images/SamsClimbOnBot.jpg" alt="Climb Mechanism on Robot">
+								</div>
+							</div>
+							
+							<div class="media-container">
+								<video muted autoplay loop>
+									<source src="images/SamsClimbVideo.MOV" type="video/mp4">
+								</video>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 2019 SEASON -->
+				<h3 class="major">2019 Season: Destination Deep Space</h3>
+				<div class="media-container">
+					<img src="images/FRC2019Picatcomp.png" alt="2019 Robot at Competition">
+				</div>
+				
+				<div class="section-intro">
+					<p>As Mechanical Lead in my sophomore year, I designed a robot to manipulate polycarbonate disks and large yoga balls, with the ability to climb a 2-foot platform during endgame. Our versatile design featured multiple intake systems at different heights for optimal scoring.</p>
+				</div>
+				
+				<!-- 2019 Dropdown -->
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('season-2019')">Season Details & Achievements</button>
+					<div class="details" id="season-2019">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>During a district competition, I identified an opportunity to improve our game piece handling. Using only a photo of the robot's side, I designed a new component that we added during the competition (within FRC's bagging rules), significantly enhancing functionality.</p>
+										
+										<p>Our climbing mechanism proved exceptionally effective, enabling the robot to ascend the platform in just 7 seconds. This capability gave us a strategic advantage during endgame scoring.</p>
+										
+										<p>In the off-season Ramp Riot event, our robot's performance earned us first place. This victory demonstrated the durability and effectiveness of our design beyond the regular competition season.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/FRC2019HoldingTrophy.png" alt="Team with Trophy">
+									<img src="images/FRC2019BotTitlePic.png" alt="2019 Robot">
+								</div>
+							</div>
+							
+							<div class="media-grid">
+								<img src="images/FRC2019ACtualTitlePic.JPG" alt="2019 Robot Title Pic">
+								<video muted autoplay loop>
+									<source src="images/FRC2019ClimbingVideo.mp4" type="video/mp4">
+								</video>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 2018 SEASON -->
+				<h3 class="major">2018 Season: Power Up</h3>
+				<div class="media-container">
+					<img src="images/FRC2018.png" alt="2018 Robot">
+				</div>
+				
+				<div class="section-intro">
+					<p>My rookie season introduced me to competitive robotics through a game requiring robots to manipulate milk crate-sized boxes. Our reverse four-bar parallel lift earned us the Excellence in Engineering Award and qualification for the World Championship in Detroit.</p>
+					<p>This foundational experience taught me team dynamics, engineering principles, and competition strategy. Competing at the highest level as a freshman was both challenging and transformative, setting the stage for my future leadership roles.</p>
+				</div>
+				
+				<!-- ELEVATOR PROJECT -->
+				<h3 class="major">Off-Season Project: Top-Braceless Elevator</h3>
+				<div class="section-intro">
+					<p>To enable future robots with pivoting arms that could transfer game pieces across the robot, I developed an elevator system that wouldn't require top bracing. This constraint led to an innovative solution where the uprights become self-bracing as the elevator extends.</p>
+				</div>
+				
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('elevator-project')">Design & Development Process</button>
+					<div class="details" id="elevator-project">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>I designed a modular bracket system that could be precisely replicated for consistent performance. Each bracket was engineered to hold bearings at exact tolerances to smoothly guide the elevator along aluminum extrusions.</p>
+										
+										<p>With our teacher only familiar with 2D machining (SheetCAM), I taught myself Fusion 360 to create 3D models and generate G-code for CNC machining. This expanded our team's manufacturing capabilities beyond previous limitations.</p>
+										
+										<p>The development process included iterative prototyping - first in foam for rapid testing, then in HDPE for functional validation. This approach allowed refinement before committing to final materials.</p>
+										
+										<p>Although this specific elevator wasn't implemented in competition, the skills gained in CAD, CNC programming, and precision manufacturing have proven invaluable in subsequent engineering projects.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/FRC_ElevatorCad.JPG" alt="Elevator CAD Design">
+									<img src="images/FRC_ElevatorPic.JPG" alt="Elevator Prototype">
+								</div>
+							</div>
+							
+							<div class="media-grid">
+								<img src="images/FRCElevatoFoam.jpeg" alt="Foam Prototype">
+								<video muted autoplay loop>
+									<source src="images/FRCElevatorVid.MOV" type="video/mp4">
+								</video>
+							</div>
+						</div>
+					</div>
+				</div>
 
-        <!-- 2019 Season -->
-        <section id="2019">
-            <div class="section-title">
-                <h2>2019 Season: Deep Space</h2>
-            </div>
-            
-            <div class="season-section">
-                <div class="season-header">
-                    <div class="season-year">2019</div>
-                    <div class="season-title">Mechanical Leadership</div>
-                </div>
-                
-                <div class="season-content">
-                    <img src="images/FRC2019Picatcomp.png" alt="2019 Robot at Competition" class="season-image">
-                    
-                    <p>In my sophomore year, I stepped into the role of Mechanical Lead for our Deep Space robot. The game required manipulating polycarbonate disks and large yoga balls, then climbing a 2-foot platform during endgame.</p>
-                    
-                    <p>Our solution featured multiple intakes: low-positioned for rapid ground collection, and arm-mounted for precise high-scoring. This versatility made us effective in various gameplay situations. I also designed our climbing mechanism that could ascend the platform in just 7 seconds.</p>
-                    
-                    <p>Mid-season, I redesigned a critical game piece handler using only a side photo of the robot (as FRC rules prohibited modifications during competition). This impromptu redesign significantly improved our performance at districts.</p>
-                    
-                    <!-- 2019 Dropdown -->
-                    <div class="dropdown-section">
-                        <button class="toggle-btn">
-                            Competition Highlights
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="details">
-                            <div class="gallery">
-                                <div class="gallery-item">
-                                    <img src="images/FRC2019ACtualTitlePic.JPG" alt="2019 Robot">
-                                    <div class="gallery-caption">2019 Competition Robot</div>
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="images/FRC2019HoldingTrophy.png" alt="Ramp Riot Trophy">
-                                    <div class="gallery-caption">Ramp Riot Off-Season Win</div>
-                                </div>
-                                <div class="gallery-item">
-                                    <img src="images/2019MeWithBot.jpg" alt="With 2019 Robot">
-                                    <div class="gallery-caption">With Our 2019 Robot</div>
-                                </div>
-                            </div>
-                            
-                            <h3>Ramp Riot Victory</h3>
-                            <p>After the official season, we competed in Ramp Riot, an off-season event where we put our Deep Space robot to the test against teams from multiple states. Our versatile design and reliable climbing mechanism helped us secure first place, validating the mechanical decisions we made during build season.</p>
-                            
-                            <h3>Rapid Redesign</h3>
-                            <p>Mid-competition season, I identified a weakness in our game piece handling system. Bound by FRC rules that prohibited modifications between competitions, I designed a new component using only a side photo of the robot. At the next competition, we implemented this redesign, which significantly improved our scoring consistency and reliability.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+			</div>
+		</div>
+	</section>
 
-        <!-- 2018 Season -->
-        <section id="2018">
-            <div class="section-title">
-                <h2>2018 Season: Power Up</h2>
-            </div>
-            
-            <div class="season-section">
-                <div class="season-header">
-                    <div class="season-year">2018</div>
-                    <div class="season-title">Foundational Experience</div>
-                </div>
-                
-                <div class="season-content">
-                    <img src="images/FRC2018.png" alt="2018 Robot" class="season-image">
-                    
-                    <p>My rookie year in FRC introduced me to competitive robotics through the Power Up game, which involved moving milk crate-sized boxes onto scales at heights up to 9 feet.</p>
-                    
-                    <p>I contributed to our reverse four-bar parallel lift system that earned us the Excellence in Engineering award and qualified us for the World Championship in Detroit. This foundational experience taught me the engineering design process, teamwork dynamics, and the thrill of competitive robotics.</p>
-                    
-                    <p>Competing at the World Championship exposed me to cutting-edge robotics designs and inspired me to pursue greater technical challenges in subsequent seasons.</p>
-                </div>
-            </div>
-        </section>
+	<!-- FOOTER -->
+	<section id="footer">
+		<div class="inner">
+			<h2 class="major">Get in Touch</h2>
+			<ul class="contact">
+				<li class="icon solid fa-phone">610-316-5180</li>
+				<li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
+				<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
+			</ul>
+			<a href="index.html" class="special">Back to Portfolio</a>
+			<ul class="copyright">
+				<li>&copy; Jesse Gill Saligman. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</section>
 
-        <!-- Elevator Project -->
-        <section id="elevator">
-            <div class="section-title">
-                <h2>Off-Season Project: Brace-Free Elevator</h2>
-            </div>
-            
-            <div class="season-section">
-                <div class="season-header">
-                    <div class="season-year">PROJECT</div>
-                    <div class="season-title">Engineering Innovation</div>
-                </div>
-                
-                <div class="season-content">
-                    <p>During an off-season, I tackled the challenge of creating an elevator system that wouldn't require top bracing, which would interfere with pivoting arms transferring game pieces. My solution was to fully constrain the uprights so they became their own support as the elevator extended.</p>
-                    
-                    <p>This project became a deep dive into manufacturing and CNC machining. With my teacher only familiar with SheetCam for 2D parts, I taught myself Fusion 360 to generate 3D g-code. I started by designing a modular bracket that could be used throughout the system, precisely toleranced to hold bearings at the perfect spacing around aluminum extrusions.</p>
-                    
-                    <p>After prototyping in foam, I manufactured final components from HDPE. Though never implemented on a competition robot, this project significantly advanced my CAD, CAM, and manufacturing skills while demonstrating innovative approaches to mechanical constraints.</p>
-                    
-                    <!-- Elevator Dropdown -->
-                    <div class="dropdown-section">
-                        <button class="toggle-btn">
-                            Project Details & Media
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="details">
-                            <div class="detail-grid">
-                                <div class="detail-text">
-                                    <h3>Technical Approach</h3>
-                                    <p>The elevator was designed around the principle of self-supporting uprights that gain stability as they extend. Each section interlocks with the next, creating a rigid structure without external bracing.</p>
-                                    
-                                    <p>I created a universal bracket design that could be used at every joint point. This required precise tolerancing (±0.005") to ensure smooth operation while maintaining structural integrity. Bearings were positioned to perfectly align with the aluminum extrusions, minimizing friction while preventing binding.</p>
-                                    
-                                    <p>The project was a comprehensive learning experience in designing for manufacturability, CNC programming, and precision assembly. Though not competition-tested, it demonstrated innovative solutions to common robotics challenges.</p>
-                                </div>
-                                <div class="detail-media">
-                                    <img src="images/FRC_ElevatorCad.JPG" alt="Elevator CAD">
-                                    <img src="images/FRC_ElevatorPic.JPG" alt="Elevator Prototype">
-                                    <img src="images/FRCElevatoFoam.jpeg" alt="Foam Prototype">
-                                </div>
-                            </div>
-                            
-                            <div class="gallery">
-                                <div class="gallery-item">
-                                    <video muted autoplay loop>
-                                        <source src="images/FRCElevatorVid.MOV" type="video/mp4">
-                                    </video>
-                                    <div class="gallery-caption">Elevator Mechanism Test</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <h2>Get In Touch</h2>
-            <ul class="footer-links">
-                <li><a href="mailto:jsaligman@gmail.com"><i class="fas fa-envelope"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fas fa-file-pdf"></i></a></li>
-            </ul>
-            <p>I'm always interested in discussing robotics, engineering challenges, or potential opportunities.</p>
-            <div class="copyright">
-                &copy; 2025 Jesse Gill Saligman. All rights reserved.
-            </div>
-        </div>
-    </footer>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 
-    <script>
-        // Toggle dropdown functionality
-        document.querySelectorAll('.toggle-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const details = this.nextElementSibling;
-                const isOpen = details.style.display === 'block';
-                
-                // Close all open dropdowns
-                document.querySelectorAll('.details').forEach(d => {
-                    d.style.display = 'none';
-                    d.previousElementSibling.classList.remove('active');
-                });
-                
-                // Open this dropdown if it was closed
-                if (!isOpen) {
-                    details.style.display = 'block';
-                    this.classList.add('active');
-                    
-                    // Smooth scroll to the dropdown
-                    details.scrollIntoView({behavior: 'smooth', block: 'nearest'});
-                }
-            });
-        });
-        
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Header video mute toggle
-        const headerVideo = document.getElementById('header-video');
-        headerVideo.muted = true; // Ensure it starts muted
-        
-        // Scroll down button
-        document.querySelector('.scroll-down').addEventListener('click', function() {
-            window.scrollTo({
-                top: document.querySelector('.container').offsetTop - 60,
-                behavior: 'smooth'
-            });
-        });
-    </script>
 </body>
 </html>
