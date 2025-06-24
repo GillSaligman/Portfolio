@@ -1,18 +1,18 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>FRC Robotics | Jesse Gill Saligman</title>
+	<title>FIRST Robotics Competition | Jesse Gill Saligman</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<style>
 		:root {
 			--primary: #2c3e50;
-			--secondary: #d35400; /* Orange accent for FRC */
+			--secondary: #3498db;
 			--dark-bg: #1a1f29;
 			--light-text: #f0f0f0;
 			--medium-bg: #252c3a;
-			--accent: #e67e22;
+			--accent: #4fc3f7;
 		}
 		
 		#wrapper > header {
@@ -96,6 +96,11 @@
 			width: 100%;
 			height: auto;
 			display: block;
+		}
+
+		.coms-diagram-container {
+			max-width: 70%;
+			margin: 0 auto;
 		}
 
 		.dropdown-section {
@@ -212,21 +217,6 @@
 			object-fit: contain;
 		}
 		
-		.media-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-			gap: 1.5rem;
-			margin-top: 2rem;
-		}
-		
-		.media-grid img,
-		.media-grid video {
-			width: 100%;
-			height: auto;
-			border-radius: 8px;
-			box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-		}
-		
 		@media (max-width: 900px) {
 			.detail-grid {
 				grid-template-columns: 1fr;
@@ -236,6 +226,9 @@
 			}
 			.details {
 				padding: 1.8em;
+			}
+			.coms-diagram-container {
+				max-width: 100%;
 			}
 		}
 		
@@ -292,18 +285,21 @@
 			margin-bottom: 1.2em;
 		}
 		
-		/* Tribute section styling */
-		.tribute-section {
-			background: rgba(255,255,255,0.05);
-			padding: 2rem;
-			border-radius: 8px;
-			margin: 2rem 0;
-			border-left: 4px solid var(--accent);
+		.media-gallery {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 20px;
+			margin-top: 2em;
 		}
 		
-		.tribute-section h4 {
-			color: var(--accent);
-			margin-top: 0;
+		.media-gallery img,
+		.media-gallery video {
+			border-radius: 10px;
+			box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+			border: 1px solid #3a4659;
+			width: 100%;
+			height: auto;
+			object-fit: cover;
 		}
 	</style>
 	<script>
@@ -313,16 +309,6 @@
 			el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
 			btn.classList.toggle('active');
 		}
-		
-		document.addEventListener('DOMContentLoaded', function() {
-			// Automatically mute and loop all videos
-			const videos = document.querySelectorAll('video');
-			videos.forEach(video => {
-				video.muted = true;
-				video.loop = true;
-				video.playsInline = true;
-			});
-		});
 	</script>
 </head>
 <body>
@@ -339,8 +325,8 @@
 				Your browser does not support the video tag.
 			</video>
 			<div class="inner">
-				<h2>First Robotics Competition</h2>
-				<p>Team Captain & Mechanical Lead | 2017-2021</p>
+				<h2>FIRST Robotics Competition</h2>
+				<p>Team Captain & Mechanical Lead | 2018-2021</p>
 			</div>
 		</header>
 
@@ -350,21 +336,43 @@
 				<!-- OVERVIEW -->
 				<h3 class="major">Overview</h3>
 				<div class="section-intro">
-					<p>FIRST Robotics Competition (FRC) challenges high school students to design, build, and program industrial-sized robots to compete in challenging field games. As Team Captain and Mechanical Lead throughout high school, I led multidisciplinary teams in solving complex engineering problems under strict deadlines, developing leadership, technical, and problem-solving skills.</p>
-					<p>My responsibilities included mechanical design leadership, project management, strategic decision-making, and mentoring younger team members. This experience fostered my passion for robotics and engineering while demonstrating my ability to lead technical teams to success.</p>
+					<p>As a former team captain, mechanical lead, and robot operator in FRC, I designed and iterated advanced competitive robots under tight timelines. Highlights include a turret-based dodgeball shooter with a rotating magazine and a full robot redesign completed in under a week. Today, I continue mentoring FRC students, helping them explore and grow in STEM fields.</p>
 				</div>
 				
+				<div class="dropdown-section">
+					<button class="toggle-btn" onclick="toggleDetails('overview')">Roles & Contributions</button>
+					<div class="details" id="overview">
+						<div class="details-content">
+							<div class="detail-grid">
+								<div class="detail-text">
+									<div class="narrative-content">
+										<p>Throughout my four years in FRC, I progressed from team member to mechanical lead and ultimately team captain. As mechanical lead, I was responsible for the design, prototyping, and manufacturing of competition robots, managing a team of students under tight 6-week build seasons.</p>
+										
+										<p>Key contributions include designing competition-winning mechanisms, implementing rapid redesigns during competitions, and mentoring younger team members. My technical skills grew from basic fabrication to advanced CAD design, CNC machining, and systems integration.</p>
+										
+										<p>Beyond competition, I developed leadership skills by coordinating team efforts, managing resources, and presenting our designs to judges. These experiences formed the foundation of my engineering career and passion for robotics.</p>
+									</div>
+								</div>
+								<div class="detail-media">
+									<img src="images/FRCTeampic.jpg" alt="FRC Team">
+									<img src="images/2019MeWithBot.jpg" alt="With 2019 Robot">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<!-- 2020 SEASON -->
-				<h3 class="major">2020 Season: Infinite Recharge</h3>
+				<h3 class="major">2020 Season</h3>
 				<div class="media-container">
 					<img src="images/FRC2020RobotWithA10.png" alt="2020 Robot with A-10">
 				</div>
 				
 				<div class="section-intro">
-					<p>As Team Captain in my junior year, I led the design of a robot to shoot dodgeballs across the field. After observing early competitions, I initiated and executed a complete redesign in one week. Although the season was canceled due to COVID-19, this experience demonstrated rapid adaptation and leadership under pressure.</p>
+					<p>As team captain and mechanical lead in 2020, I designed a turret-based dodgeball shooter. After watching the first competition, I led a complete robot redesign in one week. Unfortunately, competitions were canceled due to COVID, but the experience taught valuable lessons in adaptability and leadership.</p>
 				</div>
 				
-				<!-- Original Robot Dropdown -->
+				<!-- Original Robot -->
 				<div class="dropdown-section">
 					<button class="toggle-btn" onclick="toggleDetails('original-robot')">Original Robot Design</button>
 					<div class="details" id="original-robot">
@@ -372,23 +380,22 @@
 							<div class="detail-grid">
 								<div class="detail-text">
 									<div class="narrative-content">
-										<p>Our initial approach focused on a tank drive with a 360° turret to maximize scoring potential. The design prioritized a low profile to navigate under field obstacles, but this created challenges for feeding balls into the turret.</p>
+										<p>Our initial design featured a 360° turret mounted on a tank drive chassis, allowing independent aiming while maintaining mobility. The system included a custom flywheel shooter with vertical adjustment hood and a unique feeding mechanism.</p>
 										
-										<p>To ensure consistent shooting regardless of turret orientation, I developed a central feeding mechanism using a piston instead of a ramp. The height constraints required a custom piston extender that doubled the throw distance - a solution achieved with standard components to avoid exceeding size limitations.</p>
+										<p>Key innovations included a piston-driven feeder that achieved 6 inches of throw from a 2-inch piston, enabling consistent feeding regardless of turret orientation. We implemented careful wire management to prevent entanglement in the rotating turret.</p>
 										
-										<p>The turret featured a flywheel with vertical adjustment hood, precision machined to maintain consistent energy transfer during shooting. Careful wire management prevented interference with moving components.</p>
+										<p>We prioritized a low profile to navigate under field obstacles, but this created challenges with ball feeding height. The solution was a custom piston extender that doubled the throw distance without increasing the mechanism height.</p>
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/FRC2020RobotBeforeRedesign.png" alt="Original Robot Design">
-									<img src="images/FRC2020TurretCad.png" alt="Turret CAD Design">
+									<img src="images/FRC2020RobotBeforeRedesign.png" alt="Original Design">
+									<img src="images/FRC2020TurretCad.png" alt="Turret CAD">
 								</div>
 							</div>
-							
-							<div class="media-grid">
+							<div class="media-gallery">
 								<img src="images/FRC2020TurretAttached.png" alt="Turret Attached">
 								<img src="images/FRC2020TurretDetatched.png" alt="Turret Detached">
-								<img src="images/FRC2020PistonExtend.png" alt="Piston Extender">
+								<img src="images/FRC2020PistonExtend.png" alt="Piston Mechanism">
 								<video muted autoplay loop>
 									<source src="images/2020OldBotShooting.mov" type="video/mp4">
 								</video>
@@ -400,7 +407,7 @@
 					</div>
 				</div>
 				
-				<!-- Redesigned Bot Dropdown -->
+				<!-- Redesigned Bot -->
 				<div class="dropdown-section">
 					<button class="toggle-btn" onclick="toggleDetails('redesigned-bot')">Complete Redesign</button>
 					<div class="details" id="redesigned-bot">
@@ -408,61 +415,51 @@
 							<div class="detail-grid">
 								<div class="detail-text">
 									<div class="narrative-content">
-										<p>After observing the first competition, I realized our original design wouldn't be competitive. With seniors away on trips, I proposed a complete redesign that the team enthusiastically supported.</p>
+										<p>After observing the first competition, I realized our robot wouldn't be competitive. With seniors away on trips, I proposed and led a complete redesign in just one week. We stripped the robot to its base and rebuilt with a revolutionary ball handling system.</p>
 										
-										<p>The new "washing machine" design featured a carousel spinner with a hollow center tube. An omni-wheel positioned above a cutout in the tube allowed balls to pass when stationary, but when activated, it pushed balls into the center tube and toward the flywheel.</p>
+										<p>The new "washing machine" design featured a rotating storage carousel with a central tube. An omni wheel positioned above a cutout would engage balls when spinning, propelling them up the tube and into the flywheel. This increased our firing rate from 1 ball every 3-4 seconds to 5 balls in the same timeframe.</p>
 										
-										<p>This innovative solution dramatically improved our scoring capacity - from one ball every 3-4 seconds to five balls (the maximum allowed) in the same timeframe. The redesign was completed in just one week, demonstrating rapid iteration and problem-solving capabilities.</p>
+										<p>This redesign demonstrated our team's resilience and my ability to lead under pressure. Though COVID prevented competition, the experience proved our capacity for rapid innovation and adaptation.</p>
 									</div>
 								</div>
 								<div class="detail-media">
 									<img src="images/FRC2020SidePicofBot.png" alt="Redesigned Robot">
+									<video muted autoplay loop>
+										<source src="images/2020Slowmotionvid.MP4" type="video/mp4">
+									</video>
 								</div>
 							</div>
-							
-							<div class="media-grid">
-								<video muted autoplay loop>
-									<source src="images/FRC2020Slowmotionvid.MP4" type="video/mp4">
-								</video>
+							<div class="media-gallery">
+								<img src="images/2020NewPrototyping.MOV" type="video/mp4" alt="Prototyping">
 								<video muted autoplay loop>
 									<source src="images/FRC2020BotShooting.mp4" type="video/mp4">
-								</video>
-								<video muted autoplay loop>
-									<source src="images/2020NewPrototyping.MOV" type="video/mp4">
 								</video>
 							</div>
 						</div>
 					</div>
 				</div>
 				
-				<!-- Sam Ozer's Climb Dropdown -->
+				<!-- Sam Ozer's Climb -->
 				<div class="dropdown-section">
 					<button class="toggle-btn" onclick="toggleDetails('sam-climb')">Sam Ozer's Climbing Mechanism</button>
 					<div class="details" id="sam-climb">
 						<div class="details-content">
-							<div class="tribute-section">
-								<h4>In Memory of Sam Ozer</h4>
-								<p>Sam Ozer was a brilliant and beloved member of our team who tragically passed away in a biking accident during the off-season. His creativity and passion for robotics inspired everyone who worked with him.</p>
-								<p>To honor Sam's legacy, I completed work on his ingenious climbing mechanism concept that he was developing before his passing.</p>
-							</div>
-							
 							<div class="detail-grid">
 								<div class="detail-text">
 									<div class="narrative-content">
-										<p>Sam's innovative approach used two opposed tape measures to deploy a climbing hook with Kevlar rope. The opposing orientation prevented buckling that would occur with a single tape measure.</p>
+										<p>Sam Ozer was a cherished team member whose life was tragically cut short in a biking accident during our 2020 season. He had begun developing an innovative climbing mechanism that I completed in his memory.</p>
 										
-										<p>I transformed Sam's laser-cut prototypes into a durable metal mechanism capable of handling competition forces. The final design was integrated into our robot as a tribute to his creativity and dedication.</p>
+										<p>Sam's ingenious concept used two opposed tape measures to deploy a hook connected by Kevlar rope. The opposing orientation prevented buckling that would occur with a single tape measure. After winching the hook to the climb bar, the robot would reel itself up.</p>
 										
-										<p>Completing this project was both a technical challenge and a meaningful way to honor our teammate's contribution to the team and the robotics community.</p>
+										<p>I took Sam's prototype and engineered a robust metal version capable of handling competition forces. Integrating this mechanism onto our robot was a tribute to his creativity and a way to honor his contribution to our team.</p>
 									</div>
 								</div>
 								<div class="detail-media">
 									<img src="images/SamsClimb.jpg" alt="Sam's Climb Mechanism">
-									<img src="images/SamsClimbOnBot.jpg" alt="Climb Mechanism on Robot">
+									<img src="images/SamsClimbOnBot.jpg" alt="Climb on Robot">
 								</div>
 							</div>
-							
-							<div class="media-container">
+							<div class="media-gallery">
 								<video muted autoplay loop>
 									<source src="images/SamsClimbVideo.MOV" type="video/mp4">
 								</video>
@@ -470,88 +467,88 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<!-- 2019 SEASON -->
-				<h3 class="major">2019 Season: Destination Deep Space</h3>
+				<h3 class="major">2019 Season</h3>
 				<div class="media-container">
 					<img src="images/FRC2019Picatcomp.png" alt="2019 Robot at Competition">
 				</div>
 				
 				<div class="section-intro">
-					<p>As Mechanical Lead in my sophomore year, I designed a robot to manipulate polycarbonate disks and large yoga balls, with the ability to climb a 2-foot platform during endgame. Our versatile design featured multiple intake systems at different heights for optimal scoring.</p>
+					<p>As mechanical lead and robot operator in 2019, I designed a robot for Deep Space that could manipulate game pieces and climb a 2-foot platform in 7 seconds. We won the off-season Ramp Riot competition, showcasing our robot's capabilities.</p>
 				</div>
 				
-				<!-- 2019 Dropdown -->
 				<div class="dropdown-section">
-					<button class="toggle-btn" onclick="toggleDetails('season-2019')">Season Details & Achievements</button>
-					<div class="details" id="season-2019">
+					<button class="toggle-btn" onclick="toggleDetails('2019-details')">Competition Highlights</button>
+					<div class="details" id="2019-details">
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
 									<div class="narrative-content">
-										<p>During a district competition, I identified an opportunity to improve our game piece handling. Using only a photo of the robot's side, I designed a new component that we added during the competition (within FRC's bagging rules), significantly enhancing functionality.</p>
+										<p>The Deep Space game required handling polycarbonate disks and large yoga balls. Our solution featured multiple intake systems: low-profile intakes for ground collection and an arm-mounted intake for higher scoring positions.</p>
 										
-										<p>Our climbing mechanism proved exceptionally effective, enabling the robot to ascend the platform in just 7 seconds. This capability gave us a strategic advantage during endgame scoring.</p>
+										<p>During the district competition, I redesigned a key game piece handler based solely on a side photo of our robot. This modification significantly improved functionality despite FRC's strict rules against modifying bagged robots between events.</p>
 										
-										<p>In the off-season Ramp Riot event, our robot's performance earned us first place. This victory demonstrated the durability and effectiveness of our design beyond the regular competition season.</p>
+										<p>Our climbing mechanism could scale the endgame platform in just 7 seconds. This speed, combined with our versatile intakes, made us a formidable alliance partner. We demonstrated our robot's capabilities by winning the off-season Ramp Riot competition.</p>
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/FRC2019HoldingTrophy.png" alt="Team with Trophy">
-									<img src="images/FRC2019BotTitlePic.png" alt="2019 Robot">
+									<img src="images/FRC2019HoldingTrophy.png" alt="Ramp Riot Victory">
+									<img src="images/FRC2019ACtualTitlePic.JPG" alt="2019 Robot">
 								</div>
 							</div>
-							
-							<div class="media-grid">
-								<img src="images/FRC2019ACtualTitlePic.JPG" alt="2019 Robot Title Pic">
+							<div class="media-gallery">
+								<img src="images/FRC_2019BotTitlePic.png" alt="2019 Robot Front">
 								<video muted autoplay loop>
-									<source src="images/FRC2019ClimbingVideo.mp4" type="video/mp4">
+									<source src="https://www.youtube.com/embed/0kcaoZ99Ntc" type="video/mp4">
 								</video>
 							</div>
 						</div>
 					</div>
 				</div>
-				
+
 				<!-- 2018 SEASON -->
-				<h3 class="major">2018 Season: Power Up</h3>
+				<h3 class="major">2018 Season</h3>
 				<div class="media-container">
 					<img src="images/FRC2018.png" alt="2018 Robot">
 				</div>
 				
 				<div class="section-intro">
-					<p>My rookie season introduced me to competitive robotics through a game requiring robots to manipulate milk crate-sized boxes. Our reverse four-bar parallel lift earned us the Excellence in Engineering Award and qualification for the World Championship in Detroit.</p>
-					<p>This foundational experience taught me team dynamics, engineering principles, and competition strategy. Competing at the highest level as a freshman was both challenging and transformative, setting the stage for my future leadership roles.</p>
+					<p>My rookie year in FRC introduced me to competitive robotics. Our reverse four-bar parallel lift robot earned us a spot at the World Championship in Detroit and won the Excellence in Engineering Award.</p>
 				</div>
 				
-				<!-- ELEVATOR PROJECT -->
-				<h3 class="major">Off-Season Project: Top-Braceless Elevator</h3>
+				<div class="narrative-content" style="margin-top: 2em;">
+					<p>As a newcomer, I focused on learning the engineering design process, fabrication techniques, and team dynamics. Our robot's lift mechanism could place game pieces over 9 feet high, a key capability in that year's game.</p>
+					
+					<p>Competing at the World Championship in Detroit was a transformative experience that solidified my passion for robotics and engineering. The collaborative environment and exposure to advanced designs inspired me to pursue mechanical engineering.</p>
+				</div>
+
+				<!-- OFF-SEASON PROJECT -->
+				<h3 class="major">Off-Season Project: Elevator Mechanism</h3>
 				<div class="section-intro">
-					<p>To enable future robots with pivoting arms that could transfer game pieces across the robot, I developed an elevator system that wouldn't require top bracing. This constraint led to an innovative solution where the uprights become self-bracing as the elevator extends.</p>
+					<p>I developed a top-braceless elevator system that could support a pivoting arm for game piece transfer. This project advanced my CNC machining skills and taught me valuable lessons in precision manufacturing.</p>
 				</div>
 				
 				<div class="dropdown-section">
-					<button class="toggle-btn" onclick="toggleDetails('elevator-project')">Design & Development Process</button>
-					<div class="details" id="elevator-project">
+					<button class="toggle-btn" onclick="toggleDetails('elevator')">Design & Development</button>
+					<div class="details" id="elevator">
 						<div class="details-content">
 							<div class="detail-grid">
 								<div class="detail-text">
 									<div class="narrative-content">
-										<p>I designed a modular bracket system that could be precisely replicated for consistent performance. Each bracket was engineered to hold bearings at exact tolerances to smoothly guide the elevator along aluminum extrusions.</p>
+										<p>Traditional elevator designs require top bracing, which interferes with pivoting arms. My solution fully constrained the uprights so they became their own support structure as the elevator extended.</p>
 										
-										<p>With our teacher only familiar with 2D machining (SheetCAM), I taught myself Fusion 360 to create 3D models and generate G-code for CNC machining. This expanded our team's manufacturing capabilities beyond previous limitations.</p>
+										<p>I designed a universal mounting bracket that could be used throughout the mechanism. After teaching myself Fusion 360 CAM, I generated precision G-code to manufacture parts with exact tolerances for bearing alignment around aluminum extrusions.</p>
 										
-										<p>The development process included iterative prototyping - first in foam for rapid testing, then in HDPE for functional validation. This approach allowed refinement before committing to final materials.</p>
-										
-										<p>Although this specific elevator wasn't implemented in competition, the skills gained in CAD, CNC programming, and precision manufacturing have proven invaluable in subsequent engineering projects.</p>
+										<p>The development process included prototyping in foam before machining HDPE components. Though never implemented in competition, this project significantly advanced my CAD/CAM skills and understanding of precision manufacturing.</p>
 									</div>
 								</div>
 								<div class="detail-media">
-									<img src="images/FRC_ElevatorCad.JPG" alt="Elevator CAD Design">
+									<img src="images/FRC_ElevatorCad.JPG" alt="Elevator CAD">
 									<img src="images/FRC_ElevatorPic.JPG" alt="Elevator Prototype">
 								</div>
 							</div>
-							
-							<div class="media-grid">
+							<div class="media-gallery">
 								<img src="images/FRCElevatoFoam.jpeg" alt="Foam Prototype">
 								<video muted autoplay loop>
 									<source src="images/FRCElevatorVid.MOV" type="video/mp4">
