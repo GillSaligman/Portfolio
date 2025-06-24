@@ -38,6 +38,29 @@
 			object-fit: contain;
 			border-radius: 12px;
 		}
+		
+		/* FIX FOR DARK HORIZONTAL LINE */
+		.wrapper.spotlight::before,
+		.wrapper.spotlight::after {
+			background: none !important;
+		}
+		
+		/* Enhance content areas */
+		.wrapper.spotlight .inner {
+			background: rgba(30, 31, 44, 0.85);
+			border-radius: 8px;
+			padding: 3rem;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+		}
+		
+		.wrapper.spotlight .image {
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+		}
+		
+		/* Improve text readability */
+		.wrapper.spotlight .content {
+			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+		}
 	</style>
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
@@ -106,7 +129,7 @@
 			<section class="wrapper alt style1">
 				<div class="inner">
 					<h2 class="major">About Me</h2>
-					<p>I’m Jesse Gill Saligman, a mechanical engineer passionate about robotics, prototyping, and systems integration. I’ve built machines that compete, explore, and serve, and I bring a practical, full-stack mindset to every stage of design. Whether working on underwater manipulators, autonomous rovers, or competition robots — I thrive on translating complex ideas into working systems and turning ideas into reality.</p>
+					<p>I'm Jesse Gill Saligman, a mechanical engineer passionate about robotics, prototyping, and systems integration. I've built machines that compete, explore, and serve, and I bring a practical, full-stack mindset to every stage of design. Whether working on underwater manipulators, autonomous rovers, or competition robots — I thrive on translating complex ideas into working systems and turning ideas into reality.</p>
 					<a href="#" class="special">Learn More</a>
 				</div>
 			</section>
