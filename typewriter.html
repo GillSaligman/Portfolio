@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Automatic Typewriter | Jesse Gill Saligman</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --dark-bg: #1a1f29;
+      --light-text: #f0f0f0;
+      --accent: #4fc3f7;
+      --card-bg: #202634;
+    }
+
+    /* HERO: uses the back-of-typewriter image */
+    #wrapper > header {
+      background-image: url('./images/TypewriterBottom.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      padding: 10em 2em 16em 2em;
+      text-align: center;
+      position: relative;
+    }
+    #wrapper > header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+    }
+    #wrapper > header .inner { position: relative; z-index: 1; }
+
+    /* Body & spacing (MOA look) */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      color: #f0f0f0;
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    }
+    .wrapper { margin-top: -4em; margin-bottom: -6em; }
+    .inner.centered-content { max-width: 1100px; margin: 0 auto; }
+
+    /* Section headings */
+    h3.major {
+      text-align: center;
+      margin-top: 1em;
+      position: relative;
+      padding-bottom: 0.6em;
+      font-size: 1.8em;
+      color: #fff;
+    }
+    h3.major::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 4px; background: var(--secondary);
+    }
+
+    .section-intro {
+      margin: 0 auto 2em;
+      line-height: 1.8;
+      text-align: center;
+      max-width: 1000px;
+      font-size: 1.1em;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+
+    /* Media blocks */
+    .media-container {
+      max-width: 900px;
+      margin: 2em auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      border: 1px solid #3a4659;
+      background: #0f172a;
+    }
+    .media-container img, .media-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Side-by-side grid for text/media */
+    .detail-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.2em; margin: 2em 0;
+    }
+    @media (max-width: 900px) { .detail-grid { grid-template-columns: 1fr; } }
+    .detail-text { display: flex; flex-direction: column; justify-content: center; }
+    .detail-text p { margin-bottom: 1em; }
+
+    /* Gallery grid (all typewriter images) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1.2rem;
+      margin-top: 1.25rem;
+    }
+    @media (max-width: 1100px) { .gallery-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 680px)  { .gallery-grid { grid-template-columns: 1fr; } }
+    .gallery-grid img {
+      width: 100%; height: 240px; object-fit: cover; display: block;
+      border-radius: 10px; border: 1px solid #3a4659; background: #0f172a;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    /* ASCII art block */
+    pre.ascii {
+      background: var(--dark-bg);
+      border-left: 4px solid var(--secondary);
+      padding: 1.25em 1.5em;
+      border-radius: 0 10px 10px 0;
+      color: var(--light-text);
+      overflow-x: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.95rem;
+      line-height: 1.15;
+      margin-top: 1rem;
+    }
+
+    /* Footer (photo background for better cross-browser reliability) */
+    section#footer {
+      background: url('./images/TypewriterOpen.jpg') center center / cover fixed;
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+      padding-top: 4em; padding-bottom: 4em; border-top: none;
+    }
+    section#footer .contact li { font-weight: bold; font-size: 1.2em; }
+    section#footer a.special {
+      display: inline-block; margin-top: 1em; padding: 0.75em 2em;
+      border: 2px solid white; border-radius: 4px; text-decoration: none;
+      color: white; font-weight: bold; transition: background 0.3s ease, color 0.3s ease;
+    }
+    section#footer a.special:hover { background: white; color: #1b1b1b; }
+  </style>
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+<div id="page-wrapper">
+
+  <header id="header">
+    <h1><a href="index.html">Jesse Gill Saligman</a></h1>
+    <nav><a href="#menu">Menu</a></nav>
+  </header>
+
+  <nav id="menu">
+    <div class="inner">
+      <h2>Menu</h2>
+      <ul class="links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="moa.html">Ministry of Awe</a></li>
+      </ul>
+      <a href="#" class="close">Close</a>
+    </div>
+  </nav>
+
+  <section id="wrapper">
+    <header>
+      <div class="inner">
+        <h2>Automatic Typewriter</h2>
+        <p>Smith Corona SL575 • Manual Feel, Automatic Control</p>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="inner centered-content">
+
+        <!-- Overview -->
+        <h3 class="major">Overview</h3>
+        <div class="section-intro">
+          <p>The goal was simple but stubborn: build an <strong>automatic typewriter</strong> that still feels <strong>manual</strong>. The machine is a <strong>Smith Corona SL575</strong>—a semi-mechanical typewriter with an electronic keyboard + logic and a mechanical print mechanism. There were a bunch of ways to drive it (tap storage, intercept the print signal, or add my own actuators), but I landed on the cleanest approach: <strong>emulate the keyboard</strong>.</p>
+        </div>
+
+        <!-- Keyboard Emulation Discovery -->
+        <div class="detail-grid">
+          <div class="detail-text">
+            <h4><strong>Keyboard Matrix (17-Pin Ribbon)</strong></h4>
+            <p>After testing, I found the keyboard connects via a <strong>17-pin ribbon</strong> with a matrix. <strong>Shorting two pins</strong> acts like a keypress. Even better: the logic rides at <strong>~5V</strong>, which plays nicely with Arduino.</p>
+            <p>I first mapped every key with a jumper wire (left the <em>Shift</em> for later). Early experiments tried “just drive pins <em>HIGH/LOW</em>,” but direct GPIO control <strong>wasn’t reliable</strong>—sometimes it shorted multiple lines.</p>
+          </div>
+          <div class="media-container">
+            <img src="./images/Typematrix.png" alt="SL575 keyboard matrix mapping">
+          </div>
+        </div>
+
+        <!-- Hardware Path -->
+        <div class="detail-grid">
+          <div class="detail-text">
+            <h4><strong>Hardware Path: Analog Switches, Not Direct GPIO</strong></h4>
+            <p>I switched to <strong>CD4066 analog switch ICs</strong> (they act like tiny solid-state relays). Each keyboard line goes through a CD4066; when two channels are enabled at once, the lines are <strong>physically shorted</strong>—perfectly mimicking a keypress without fighting the typewriter’s own logic.</p>
+            <p>For wiring, I <strong>soldered to the back of the keyboard PCB</strong> for stability and ran the lines through <strong>cut VGA cables</strong> to keep everything organized. The Arduino Mega 2560 and relay boards live in a small desktop organizer for serviceability.</p>
+          </div>
+          <div class="media-container">
+            <img src="./images/TypewriterBottom.jpg" alt="Typewriter back and cabling">
+          </div>
+        </div>
+
+        <!-- Shift key -->
+        <div class="detail-grid">
+          <div class="detail-text">
+            <h4><strong>Shift Key Quirk</strong></h4>
+            <p><em>Shift</em> needs to be held <strong>while</strong> another key is pressed, which means <strong>three or four matrix lines</strong> can be involved at once. Tracing the keyboard showed <strong>Shift shorts lines 7 &amp; 8</strong>, so I dedicated a separate CD4066 channel to that combo. That solved shifted characters without breaking other presses.</p>
+          </div>
+          <div class="media-container">
+            <img src="./images/TypewriterOpen.jpg" alt="Typewriter keyboard access and internals">
+          </div>
+        </div>
+
+        <!-- Software -->
+        <div class="detail-grid">
+          <div class="detail-text">
+            <h4><strong>Software: Mapping, Pacing, and Generators</strong></h4>
+            <p>I built a key map that converts a desired string into timed “press” events: <strong>enable two CD4066 channels</strong> (matrix row/col), <strong>pause</strong> briefly, <strong>release</strong>, then move on. On top, I added content generators that randomly choose <strong>ASCII images</strong>, <strong>poems</strong>, and sometimes <strong>fake accounts with balances</strong> (all Philly names) to keep the output surprising.</p>
+            <p>We’ve got it feeding a long paper spool—it’s ready for the museum floor.</p>
+          </div>
+          <div class="media-container">
+            <video autoplay muted loop playsinline>
+              <source src="./images/Typevideo.MOV" type="video/mp4">
+              Your browser does not support embedded videos.
+            </video>
+          </div>
+        </div>
+
+        <!-- ASCII Art Example -->
+        <h3 class="major">Sample ASCII Output</h3>
+        <div class="media-container" style="padding: 1rem;">
+          <pre class="ascii">
+                   o.oo
+                 O#####e
+                 ##B#B#e
+            .ooeOOOBBBBBBOOeo.
+         .eOOBOBBOOOOOOOOOOOBOOe.
+       oOOOOOeOeeeOOOOOOeeeOeOOOOe
+     .BOeeeeeee####eeee###Oeeeeeeee.
+    o#BoooooooOBeeoooooB###O.......o
+    ##.ooooooeo   ooooo. o#########B.
+    ##.......oo  oBe..o.  e########e
+    ##e......... O#e..o.
+    e##o  .......oo.....
+     e###o    .... .......
+      .#####O.      .............
+        .B########O. ..    ...  ....
+            .eB####e ..##Oo..........
+                 ##e ..###Bo........o
+    ...     .    B#o..o.  .o........o.
+   OOoooooooo.   e#e..oo   oe.....o.eo
+   eOeoooooooo   O#Oooeo   BOoooooo.O.
+   .BOeooooooooo.##Booeo .eeooooeooOo
+    oBBOeeeeeeeeeeOeeeeeeeeeeeeoeOBo
+     .B###OeeeeeOOeOOOOOeeeeeeO##B.
+       e######BBOOBOOOOBBB#####B.
+         .eB#######OBBB#####Bo
+               ..o eBB#O
+                  B####.
+                  eOOe
+          </pre>
+        </div>
+
+        <!-- Full gallery of every typewriter image -->
+        <h3 class="major">Build Photos</h3>
+        <div class="gallery-grid">
+          <img src="./images/Typewriterthubnail.jpg" alt="Typewriter thumbnail (front)">
+          <img src="./images/TypewriterOpen.jpg" alt="Typewriter opened for wiring">
+          <img src="./images/TypewriterBottom.jpg" alt="Typewriter back panel and cables">
+          <img src="./images/TypewriteTest.jpg" alt="Test output on paper">
+          <img src="./images/Typematrix.png" alt="Keyboard matrix diagram">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section id="footer">
+    <div class="inner">
+      <h2 class="major">Get in Touch</h2>
+      <ul class="contact">
+        <li class="icon solid fa-phone">610-316-5180</li>
+        <li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
+        <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
+      </ul>
+      <a href="moa.html" class="special">Back to MOA</a>
+      <a href="index.html" class="special" style="margin-left: 0.75rem;">Back to Portfolio</a>
+      <ul class="copyright">
+        <li>&copy; Jesse Gill Saligman. All rights reserved.</li>
+        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
