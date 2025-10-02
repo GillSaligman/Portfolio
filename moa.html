@@ -11,12 +11,10 @@
       --secondary: #3498db;
       --dark-bg: #1a1f29;
       --light-text: #f0f0f0;
-      --medium-bg: #252c3a;
       --accent: #4fc3f7;
       --card-bg: #202634;
     }
 
-    /* Page background & base typography (kept close to your example) */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.7;
@@ -24,7 +22,7 @@
       background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
     }
 
-    /* Header hero with image background (EarTeller.jpg) */
+    /* Hero uses a sure-fire image background */
     #wrapper > header {
       position: relative;
       overflow: hidden;
@@ -32,23 +30,15 @@
       text-shadow: 0 2px 5px rgba(0,0,0,0.8);
       padding: 10em 2em 14em 2em;
       text-align: center;
-      background: url('images/EarTeller.jpg') center center / cover no-repeat;
+      background: url('./images/EarTeller.jpg') center center / cover no-repeat;
     }
-    #wrapper > header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-    }
-    #wrapper > header .inner {
-      position: relative;
-      z-index: 1;
-    }
+    #wrapper > header::after { content:""; position:absolute; inset:0; background: rgba(0,0,0,0.55); }
+    #wrapper > header .inner { position: relative; z-index: 1; }
 
-    /* Section wrapper spacing (mirrors your example’s tighter look) */
     .wrapper { margin-top: -4em; margin-bottom: -6em; }
 
-    /* Intro text under hero */
+    .inner.centered-content { max-width: 1200px; margin: 0 auto; }
+
     .section-intro {
       margin: 0 auto 2.2em;
       line-height: 1.8;
@@ -78,21 +68,16 @@
       background: var(--secondary);
     }
 
-    /* Card grid */
+    /* Simple, reliable card grid */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 2rem;
       margin-top: 2rem;
     }
-    @media (max-width: 1100px) {
-      .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 700px) {
-      .projects-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 1100px) { .projects-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 700px)  { .projects-grid { grid-template-columns: 1fr; } }
 
-    /* Project card */
     .card {
       background: var(--card-bg);
       border-radius: 14px;
@@ -103,102 +88,42 @@
       flex-direction: column;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 35px rgba(0,0,0,0.45);
-    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 35px rgba(0,0,0,0.45); }
 
-    /* Image wrapper with aspect-ratio handling for mixed orientations */
-    .card-media {
-      position: relative;
+    .card img {
       width: 100%;
-      aspect-ratio: 16 / 9; /* landscape-friendly default */
-      background: #111827;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    /* Portrait helper: add class "portrait" on the media wrapper when needed */
-    .card-media.portrait { aspect-ratio: 3 / 4; }
-    .card-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* fills while respecting crop */
+      height: 240px;           /* fixed display height for consistency */
+      object-fit: cover;       /* shows image even if portrait/landscape mismatch */
       display: block;
+      background: #0f172a;     /* prevents white flash if image loads slowly */
     }
 
     .card-body {
-      padding: 1.25rem 1.25rem 1.5rem;
-      display: flex;
-      flex: 1 1 auto;
-      flex-direction: column;
-      gap: 0.85rem;
+      padding: 1.1rem 1.25rem 1.4rem;
+      display: flex; flex-direction: column; gap: 0.8rem; flex: 1 1 auto;
     }
-    .card-title {
-      margin: 0;
-      font-size: 1.25rem;
-      color: #fff;
-      letter-spacing: 0.3px;
-    }
-    .card-desc {
-      margin: 0;
-      color: #e0e0e0;
-      font-size: 1.02rem;
-    }
-    .card-actions {
-      margin-top: auto;
-    }
+    .card-title { margin: 0; font-size: 1.25rem; color: #fff; letter-spacing: 0.3px; }
+    .card-desc  { margin: 0; color: #e0e0e0; font-size: 1.02rem; }
+    .card-actions { margin-top: auto; }
     .btn {
-      display: inline-block;
-      padding: 0.7em 1.2em;
-      border: 2px solid white;
-      border-radius: 8px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      transition: background 0.25s ease, color 0.25s ease, transform 0.1s ease;
+      display: inline-block; padding: 0.7em 1.2em; border: 2px solid white; border-radius: 8px;
+      text-decoration: none; color: white; font-weight: 600;
+      transition: background .25s ease, color .25s ease, transform .1s ease;
     }
-    .btn:hover {
-      background: white;
-      color: #1b1b1b;
-      transform: translateY(-1px);
-    }
+    .btn:hover { background: white; color: #1b1b1b; transform: translateY(-1px); }
 
-    /* Nauticus-style footer */
+    /* Footer */
     section#footer {
-      background: url('images/ArmVid1.MOV') center center / cover fixed;
-      color: white;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
-      padding-top: 4em;
-      padding-bottom: 4em;
-      border-top: none;
+      background: url('./images/ArmVid1.mp4') center center / cover fixed; /* mp4 thumbnail-friendly */
+      color: white; text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+      padding-top: 4em; padding-bottom: 4em; border-top: none;
     }
-    section#footer .contact li {
-      font-weight: bold;
-      font-size: 1.2em;
-    }
+    section#footer .contact li { font-weight: bold; font-size: 1.2em; }
     section#footer a.special {
-      display: inline-block;
-      margin-top: 1em;
-      padding: 0.75em 2em;
-      border: 2px solid white;
-      border-radius: 4px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: background 0.3s ease, color 0.3s ease;
+      display: inline-block; margin-top: 1em; padding: 0.75em 2em; border: 2px solid white; border-radius: 4px;
+      text-decoration: none; color: white; font-weight: bold; transition: background .3s ease, color .3s ease;
     }
-    section#footer a.special:hover {
-      background: white;
-      color: #1b1b1b;
-    }
-
-    /* Centered content width */
-    .inner.centered-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    section#footer a.special:hover { background: white; color: #1b1b1b; }
   </style>
 </head>
 <body>
@@ -219,147 +144,96 @@
     <div class="wrapper">
       <div class="inner centered-content">
         <div class="section-intro">
-          <p><strong>Ministry of Awe</strong> is a collaborative space where I bring robotics and technology into conversation with art. I design original pieces and retrofit existing works—ranging from <strong>mechanical assemblies</strong> to <strong>electronics-heavy builds</strong> to <strong>software-driven installations</strong>. I also worked closely with <strong>Spatial Pixel</strong> (a natural-language AI company) to weave AI into the systems we built.</p>
+          <p><strong>Ministry of Awe</strong> is where I bring robotics and tech into conversation with art. I design original pieces and retrofit existing works—ranging from <strong>mechanical assemblies</strong> to <strong>electronics-heavy builds</strong> to <strong>software-driven installations</strong>. I also worked with <strong>Spatial Pixel</strong> (natural-language AI) to weave AI into the systems we built.</p>
         </div>
 
         <h3 class="major">Projects</h3>
 
         <div class="projects-grid">
-
-          <!-- Automatic Typewriter (portrait) -->
+          <!-- Automatic Typewriter -->
           <article class="card">
-            <div class="card-media portrait">
-              <img src="images/Typewriterthubnail.jpg" alt="Automatic Typewriter thumbnail">
-            </div>
+            <img src="./images/Typewriterthubnail.jpg" alt="Automatic Typewriter thumbnail" loading="lazy">
             <div class="card-body">
               <h4 class="card-title">Automatic Typewriter</h4>
-              <p class="card-desc">
-                My first solo build: getting a <strong>Smith Corona SL575</strong> to type automatically while still working by hand. With zero documentation, I reverse-engineered the <strong>17-pin keyboard matrix</strong>, mapped it, carefully tapped the lines, and wrote code to <strong>emulate keypresses</strong> by selectively shorting pins—keeping the manual feel intact.
-              </p>
-              <div class="card-actions">
-                <a href="typewriter.html" class="btn">More Details</a>
-              </div>
+              <p class="card-desc">My first solo build: getting a <strong>Smith Corona SL575</strong> to type automatically while keeping manual operation. With zero documentation, I reverse-engineered the <strong>17-pin keyboard matrix</strong>, mapped it, tapped the lines, and wrote code to emulate keypresses by shorting specific pins.</p>
+              <div class="card-actions"><a class="btn" href="typewriter.html">More Details</a></div>
             </div>
           </article>
 
-          <!-- Watching Table / Turntable (portrait) -->
+          <!-- Watching Table -->
           <article class="card">
-            <div class="card-media portrait">
-              <img src="images/Turnthumb.jpg" alt="Watching Table thumbnail">
-            </div>
+            <img src="./images/Turnthumb.jpg" alt="Watching Table thumbnail" loading="lazy">
             <div class="card-body">
               <h4 class="card-title">Watching Table</h4>
-              <p class="card-desc">
-                An old <strong>Victor receipt printer</strong> hides a camera inside a custom turntable enclosure. A stepper motor and <strong>Raspberry Pi</strong> handle motion and vision: it <strong>tracks faces</strong>, turns toward a visitor, and—once they’re in range—spins up and <strong>prints rapidly</strong> as the machine “watches” them.
-              </p>
-              <div class="card-actions">
-                <a href="watching-table.html" class="btn">More Details</a>
-              </div>
+              <p class="card-desc">An old <strong>Victor receipt printer</strong> hides a camera inside a custom turntable. A stepper motor and <strong>Raspberry Pi</strong> handle motion and vision: it <strong>tracks faces</strong>, turns toward a visitor, and—once in range—spins up and prints rapidly as the machine “watches.”</p>
+              <div class="card-actions"><a class="btn" href="watching-table.html">More Details</a></div>
             </div>
           </article>
 
-          <!-- Phone System (landscape) -->
+          <!-- Phone System -->
           <article class="card">
-            <div class="card-media">
-              <img src="images/PhoneSystemThubnail.jpg" alt="Phone System thumbnail">
-            </div>
+            <img src="./images/PhoneSystemThubnail.jpg" alt="Phone System thumbnail" loading="lazy">
             <div class="card-body">
               <h4 class="card-title">Phone System</h4>
-              <p class="card-desc">
-                Phones and hidden numbers ring throughout the exhibit. An actor watches CCTV and <strong>calls visitors in real time</strong>, while secret numbers trigger <strong>pre-recorded messages</strong>. I learned a ton about software building an <strong>offline PA/telephony system</strong> that runs as a closed, low-cost network.
-              </p>
-              <div class="card-actions">
-                <a href="phone-system.html" class="btn">More Details</a>
-              </div>
+              <p class="card-desc">Phones and hidden numbers ring throughout the exhibit. An actor watches CCTV and <strong>calls visitors in real time</strong>, while secret lines trigger <strong>pre-recorded messages</strong>. I built an <strong>offline PA/telephony</strong> system that runs as a closed, low-cost network.</p>
+              <div class="card-actions"><a class="btn" href="phone-system.html">More Details</a></div>
             </div>
           </article>
 
-          <!-- Ear Teller (landscape) -->
+          <!-- Ear Teller -->
           <article class="card">
-            <div class="card-media">
-              <img src="images/EarTeller.jpg" alt="Ear Teller thumbnail">
-            </div>
+            <img src="./images/EarTeller.jpg" alt="Ear Teller thumbnail" loading="lazy">
             <div class="card-body">
               <h4 class="card-title">Ear Teller</h4>
-              <p class="card-desc">
-                With <strong>Spatial Pixel</strong> (natural-language AI), I helped design mechanical parts and control logic for a playful “bank teller.” I built the Arduino control for <strong>motors and lighting</strong>, and I’m proud of a solution using <strong>quadrature encoders</strong> to turn dials reliably—even when only <strong>relative position</strong> is known.
-              </p>
-              <div class="card-actions">
-                <a href="ear-teller.html" class="btn">More Details</a>
-              </div>
+              <p class="card-desc">With <strong>Spatial Pixel</strong> (natural-language AI), I helped design mechanical parts and control logic for a playful “bank teller.” I built Arduino control for <strong>motors and lighting</strong>, and implemented a <strong>quadrature-encoder</strong> approach for dials using only relative position.</p>
+              <div class="card-actions"><a class="btn" href="ear-teller.html">More Details</a></div>
             </div>
           </article>
 
-          <!-- Eye Teller (portrait note from you; file is EyeScreen.jpg) -->
+          <!-- Eye Teller -->
           <article class="card">
-            <div class="card-media portrait">
-              <img src="images/EyeScreen.jpg" alt="Eye Teller thumbnail">
-            </div>
+            <img src="./images/EyeScreen.jpg" alt="Eye Teller thumbnail" loading="lazy">
             <div class="card-body">
               <h4 class="card-title">Eye Teller</h4>
-              <p class="card-desc">
-                I engineered the mechanism to rotate a <strong>26&quot; fiberglass eye</strong> suspended over the vault—integrated with <strong>Spatial Pixel’s “Procession” AI</strong> for live control. Because it hangs above people, I layered <strong>multiple safety redundancies</strong> in hardware and software.
-              </p>
-              <div class="card-actions">
-                <a href="eye-teller.html" class="btn">More Details</a>
-              </div>
+              <p class="card-desc">Mechanism to rotate a <strong>26&quot; fiberglass eye</strong> suspended over the vault—integrated with <strong>Spatial Pixel’s Procession AI</strong> for live control. Because it’s above people, I added multiple <strong>hardware/software safety redundancies</strong>.</p>
+              <div class="card-actions"><a class="btn" href="eye-teller.html">More Details</a></div>
             </div>
           </article>
 
-          <!-- Automatic Cash Register (portrait) -->
+          <!-- Automatic Cash Register -->
           <article class="card">
-            <div class="card-media portrait">
-              <img src="images/Cashregthumb.jpg" alt="Automatic Cash Register thumbnail">
-            </div>
+            <img src="./images/Cashregthumb.jpg" alt="Automatic Cash Register thumbnail" loading="lazy">
             <div class="card-body">
               <h4 class="card-title">Automatic Cash Register</h4>
-              <p class="card-desc">
-                The goal: automate an old register to <strong>randomly actuate buttons</strong> while keeping it fully usable. High actuation forces made this a real challenge—I iterated quickly, prototyped mechanisms, and learned a lot about how <strong>vintage registers</strong> actually work.
-              </p>
-              <div class="card-actions">
-                <a href="cash-register.html" class="btn">More Details</a>
-              </div>
+              <p class="card-desc">Automate a vintage register to <strong>randomly actuate buttons</strong> while keeping it usable. High actuation forces made it tricky—I iterated fast, prototyped mechanisms, and learned how these <strong>old registers</strong> really work.</p>
+              <div class="card-actions"><a class="btn" href="cash-register.html">More Details</a></div>
             </div>
           </article>
 
-          <!-- Jewelry Boxes (portrait) -->
+          <!-- Jewelry Boxes -->
           <article class="card">
-            <div class="card-media portrait">
-              <img src="images/Jewlthumb.jpg" alt="Jewelry Boxes thumbnail">
-            </div>
+            <img src="./images/Jewlthumb.jpg" alt="Jewelry Boxes thumbnail" loading="lazy">
             <div class="card-body">
               <h4 class="card-title">Jewelry Boxes</h4>
-              <p class="card-desc">
-                One room becomes a life-size jewelry box, with dozens of boxes that <strong>dance in formation</strong>. I added robotics to each—<strong>motors, lights, speakers</strong>—and wrote control code so they can move <strong>in sync</strong> or deliberately “broken,” depending on the music.
-              </p>
-              <div class="card-actions">
-                <a href="jewelry-boxes.html" class="btn">More Details</a>
-              </div>
+              <p class="card-desc">A life-size jewelry-box room with dozens of boxes that <strong>dance in formation</strong>. I added robotics to each—<strong>motors, lights, speakers</strong>—and wrote control code so they move <strong>in sync</strong> or deliberately “broken,” depending on the music.</p>
+              <div class="card-actions"><a class="btn" href="jewelry-boxes.html">More Details</a></div>
             </div>
           </article>
 
-          <!-- Smaller Projects (landscape) -->
+          <!-- Smaller Projects -->
           <article class="card">
-            <div class="card-media">
-              <img src="images/SmallerProjectsThumbnail.jpg" alt="Smaller Projects thumbnail">
-            </div>
+            <img src="./images/SmallerProjectsThumbnail.jpg" alt="Smaller Projects thumbnail" loading="lazy">
             <div class="card-body">
               <h4 class="card-title">Smaller Projects</h4>
-              <p class="card-desc">
-                Here are smaller builds where I added <strong>electronics</strong> or <strong>mechanisms</strong> to other artists’ pieces—quick studies that kept the exhibit playful and alive.
-              </p>
-              <div class="card-actions">
-                <a href="smaller-projects.html" class="btn">More Details</a>
-              </div>
+              <p class="card-desc">A handful of smaller builds where I added <strong>electronics</strong> or <strong>mechanisms</strong> to other artists’ pieces—quick studies that keep the exhibit playful and alive.</p>
+              <div class="card-actions"><a class="btn" href="smaller-projects.html">More Details</a></div>
             </div>
           </article>
-
-        </div> <!-- /.projects-grid -->
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer (matches your Nauticus-style) -->
   <section id="footer">
     <div class="inner">
       <h2 class="major">Get in Touch</h2>
@@ -375,7 +249,6 @@
       </ul>
     </div>
   </section>
-
 </div>
 
 <script src="assets/js/jquery.min.js"></script>
