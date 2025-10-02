@@ -15,9 +15,9 @@
       --card-bg: #202634;
     }
 
-    /* HERO: uses the back-of-typewriter image */
+    /* HERO */
     #wrapper > header {
-      background-image: url('./images/TypewriterBottom.jpg');
+      background-image: url('./images/Typewriterthubnail.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -27,15 +27,10 @@
       text-align: center;
       position: relative;
     }
-    #wrapper > header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-    }
+    #wrapper > header::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
     #wrapper > header .inner { position: relative; z-index: 1; }
 
-    /* Body & spacing (MOA look) */
+    /* Body & spacing */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.7;
@@ -56,8 +51,7 @@
     }
     h3.major::after {
       content: "";
-      position: absolute;
-      bottom: 0; left: 50%; transform: translateX(-50%);
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
       width: 120px; height: 4px; background: var(--secondary);
     }
 
@@ -87,7 +81,18 @@
       display: block;
     }
 
-    /* Side-by-side grid for text/media */
+    /* NEW: Wide image container for ultra-wide assets (e.g., Typematrix.png) */
+    .media-container.wide {
+      max-width: 1400px; /* allow bigger than normal */
+    }
+    .wide-image {
+      width: min(100%, 1300px); /* cap at native width */
+      height: auto;
+      display: block;
+      margin: 0 auto; /* center it */
+    }
+
+    /* Side-by-side grid */
     .detail-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 2.2em; margin: 2em 0;
     }
@@ -95,7 +100,7 @@
     .detail-text { display: flex; flex-direction: column; justify-content: center; }
     .detail-text p { margin-bottom: 1em; }
 
-    /* Gallery grid (all typewriter images) */
+    /* Gallery grid */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -108,6 +113,10 @@
       width: 100%; height: 240px; object-fit: cover; display: block;
       border-radius: 10px; border: 1px solid #3a4659; background: #0f172a;
       box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+    /* NEW: do not crop the matrix image in the gallery */
+    .gallery-grid img.no-crop {
+      height: auto; object-fit: contain; background: #0b1220;
     }
 
     /* ASCII art block */
@@ -125,7 +134,7 @@
       margin-top: 1rem;
     }
 
-    /* Footer (photo background for better cross-browser reliability) */
+    /* Footer */
     section#footer {
       background: url('./images/TypewriterOpen.jpg') center center / cover fixed;
       color: white;
@@ -185,8 +194,10 @@
             <p>After testing, I found the keyboard connects via a <strong>17-pin ribbon</strong> with a matrix. <strong>Shorting two pins</strong> acts like a keypress. Even better: the logic rides at <strong>~5V</strong>, which plays nicely with Arduino.</p>
             <p>I first mapped every key with a jumper wire (left the <em>Shift</em> for later). Early experiments tried “just drive pins <em>HIGH/LOW</em>,” but direct GPIO control <strong>wasn’t reliable</strong>—sometimes it shorted multiple lines.</p>
           </div>
-          <div class="media-container">
-            <img src="./images/Typematrix.png" alt="SL575 keyboard matrix mapping">
+
+          <!-- FIXED: wide, centered matrix image -->
+          <div class="media-container wide">
+            <img class="wide-image" src="./images/Typematrix.png" alt="SL575 keyboard matrix mapping">
           </div>
         </div>
 
@@ -222,7 +233,7 @@
           </div>
           <div class="media-container">
             <video autoplay muted loop playsinline>
-              <source src="./images/Typevideo.MOV" type="video/mp4">
+              <source src="./images/Typevideo.MOV" type="video/quicktime">
               Your browser does not support embedded videos.
             </video>
           </div>
@@ -263,14 +274,16 @@
           </pre>
         </div>
 
-        <!-- Full gallery of every typewriter image -->
+        <!-- Build Photos -->
         <h3 class="major">Build Photos</h3>
         <div class="gallery-grid">
           <img src="./images/Typewriterthubnail.jpg" alt="Typewriter thumbnail (front)">
           <img src="./images/TypewriterOpen.jpg" alt="Typewriter opened for wiring">
           <img src="./images/TypewriterBottom.jpg" alt="Typewriter back panel and cables">
+          <!-- FIXED: exact filename for test print -->
           <img src="./images/TypewriteTest.jpg" alt="Test output on paper">
-          <img src="./images/Typematrix.png" alt="Keyboard matrix diagram">
+          <!-- FIXED: no-crop matrix image so the whole map is visible -->
+          <img class="no-crop" src="./images/Typematrix.png" alt="Keyboard matrix diagram full">
         </div>
 
       </div>
