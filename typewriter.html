@@ -66,14 +66,23 @@
     @media (max-width: 1400px) { .matrix-img { width: 100%; height: auto; } }
 
     /* Demo video block */
-    .video-wrap { clear: both; margin: 1.5rem 0 0.5rem; }
-    .video-wrap video {
-      width: 100%; height: auto; display: block;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-      border: 1px solid rgba(255,255,255,0.07);
-      background: #0f172a;
-    }
+    /* Make the video smaller and centered */
+    .video-wrap {
+  clear: both;
+  margin: 1.5rem auto 0.5rem;  /* center the block */
+  max-width: 720px;            /* 👈 pick your size: 480, 600, 720, etc. */
+}
+.video-wrap video {
+  width: 100%;                 /* fills the smaller container */
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.07);
+  background: #0f172a;
+}
+
+
 
     /* Responsive: collapse floats on small screens */
     @media (max-width: 900px) {
