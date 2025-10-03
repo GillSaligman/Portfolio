@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="assets/css/main.css" />
   <style>
-    /* Hero with background image (back view) */
+    /* Hero uses the back view */
     #wrapper > header {
       background-image: url('images/TypewriterBottom.jpg');
       background-size: cover;
@@ -18,17 +18,13 @@
       text-align: center;
       position: relative;
     }
-    #wrapper > header::after {
-      content: "";
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.45);
-    }
+    #wrapper > header::after { content:""; position:absolute; inset:0; background: rgba(0,0,0,0.45); }
     #wrapper > header .inner { position: relative; z-index: 1; }
 
-    /* Pull content up over hero edge for depth */
+    /* Pull content up over hero edge */
     #wrapper > .wrapper { margin-top: -6em; margin-bottom: -6em; }
 
-    /* Section heading underline (MOA style) */
+    /* Section heading underline (MOA vibe) */
     h3.major {
       text-align: center;
       margin-top: 1em;
@@ -41,75 +37,68 @@
       width: 120px; height: 4px; background: #3498db;
     }
 
-    /* Feature images grid (2-up responsive) */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2rem;
-    }
-    @media (max-width: 900px) {
-      .features { grid-template-columns: 1fr; }
-    }
-    .features img {
+    /* Newspaper floats */
+    .pull-right, .pull-left {
+      max-width: 40%;
       border-radius: 12px;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      margin-bottom: 0.5em;
       box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       border: 1px solid rgba(255,255,255,0.07);
     }
+    .pull-right { float: right; margin: 0.2rem 0 1.25rem 1.25rem; }
+    .pull-left  { float: left;  margin: 0.2rem 1.25rem 1.25rem 0; }
 
-    /* Matrix image: 1300x290 centered, responsive fallback */
-    .matrix-wrap { text-align: center; }
+    .pull-right img, .pull-left img { width: 100%; height: auto; display: block; }
+
+    /* Clear floats where needed */
+    .clear { clear: both; }
+
+    /* Matrix image: only full-width block, centered at 1300x290 but responsive */
+    .matrix-wrap { text-align: center; clear: both; }
     .matrix-img {
       width: 1300px; height: 290px;
       object-fit: contain;
       display: block; margin: 1.5rem auto;
-    }
-    @media (max-width: 1400px) {
-      .matrix-img { width: 100%; height: auto; }
-    }
-
-    /* Video block */
-    .video-wrap video {
-      width: 100%; height: auto; display: block;
-      border-radius: 12px;
+      border-radius: 10px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       border: 1px solid rgba(255,255,255,0.07);
-    }
-
-    /* ASCII art block */
-    pre.ascii {
       background: #0f172a;
-      color: #e5e7eb;
-      padding: 1.25rem 1.5rem;
-      border-radius: 12px;
-      overflow-x: auto;
-      border: 1px solid rgba(255,255,255,0.07);
-      line-height: 1.25;
-      font-size: 0.95rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    @media (max-width: 1400px) { .matrix-img { width: 100%; height: auto; } }
+
+    /* Demo video block */
+    /* Make the video smaller and centered */
+    .video-wrap {
+  clear: both;
+  margin: 1.5rem auto 0.5rem;  /* center the block */
+  max-width: 720px;            /* 👈 pick your size: 480, 600, 720, etc. */
+}
+.video-wrap video {
+  width: 100%;                 /* fills the smaller container */
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.07);
+  background: #0f172a;
+}
+
+
+
+    /* Responsive: collapse floats on small screens */
+    @media (max-width: 900px) {
+      .pull-right, .pull-left { float: none; max-width: 100%; margin: 0 0 1rem 0; }
     }
 
-    /* Footer background (cohesive look) */
+    /* Footer background for cohesion */
     section#footer {
       background: url('images/TypewriterBottom.jpg') center center / cover fixed;
       color: white;
       text-shadow: 0 1px 3px rgba(0,0,0,0.7);
-      padding-top: 4em;
-      padding-bottom: 4em;
-      border-top: none;
+      padding-top: 4em; padding-bottom: 4em; border-top: none;
     }
     section#footer a.special {
-      display: inline-block;
-      margin-top: 1em;
-      padding: 0.75em 2em;
-      border: 2px solid white;
-      border-radius: 4px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
+      display: inline-block; margin-top: 1em; padding: 0.75em 2em;
+      border: 2px solid white; border-radius: 4px; text-decoration: none; color: white; font-weight: bold;
       transition: background 0.3s ease, color 0.3s ease;
     }
     section#footer a.special:hover { background: white; color: #1b1b1b; }
@@ -148,139 +137,91 @@
     <div class="wrapper">
       <div class="inner">
 
-        <!-- Overview -->
+        <!-- OVERVIEW -->
         <h3 class="major">Overview</h3>
+        <figure class="pull-right">
+          <img src="images/Typewriterthubnail.jpg" alt="Typewriter front thumbnail">
+        </figure>
         <p>
-          The goal was simple and stubborn: build an <strong>automatic typewriter</strong> that still feels like a typewriter. 
-          The machine is a <strong>Smith Corona SL575</strong>—a semi-mechanical hybrid with an <strong>electronic keyboard/logic</strong> and a <strong>mechanical print system</strong>. 
-          There were a few possible control strategies: decode on-board storage, hijack the print-head signals, or physically actuate the mechanism. 
-          After experimenting, I leaned into the “least invasive” approach—<strong>emulating the keyboard</strong>.
+          The plan was simple and stubborn: build an <strong>automatic typewriter</strong> that still feels like a typewriter.
+          The base is a <strong>Smith Corona SL575</strong>—a semi-mechanical hybrid with an <strong>electronic keyboard/logic</strong> and a
+          <strong>mechanical print system</strong>. There were a few paths I could take: crack its brain storage, hijack the signals
+          to the print mechanism, or bolt on my own hardware. The least invasive idea—and the one I went with—was to
+          <strong>emulate the keyboard</strong> so manual use stays intact.
         </p>
 
-        <!-- Keyboard Matrix & Mapping -->
+        <!-- MATRIX -->
         <h3 class="major">Keyboard Matrix & Mapping</h3>
+        <figure class="pull-left">
+          <img src="images/TypewriterOpen.jpg" alt="Typewriter open, probing the keyboard">
+        </figure>
         <p>
-          The keyboard connects via a <strong>17-pin ribbon cable</strong> that forms a classic <strong>key matrix</strong>. 
-          Shorting the right <em>pair</em> of pins triggers a keypress. 
-          After probing, I got lucky—<strong>5&nbsp;V logic</strong> all around, which plays nicely with an Arduino Mega 2560. 
-          I mapped every key using jumpers (more on <strong>Shift</strong> below).
+          The keyboard plugs in with a <strong>17-pin ribbon cable</strong> forming a classic matrix—short the right two lines and you
+          get a keypress. After a little probing, I lucked out: the whole thing runs at <strong>5&nbsp;V logic</strong>, perfect for an
+          Arduino Mega 2560. I used jumpers to map every key (I’ll get to <strong>Shift</strong> in a second).
         </p>
-
-        <!-- Matrix image centered at 1300x290 -->
         <div class="matrix-wrap">
-          <img class="matrix-img" src="images/Typematrix.png" alt="Typewriter keyboard matrix mapping">
+          <img class="matrix-img" src="images/Typematrix.png" alt="Typewriter keyboard matrix mapping (1300x290)">
         </div>
 
-        <!-- Hardware Interface -->
+        <!-- HARDWARE INTERFACE -->
         <h3 class="major">Hardware Interface</h3>
-        <div class="features">
-          <article>
-            <a href="images/TypewriterOpen.jpg" class="image"><img src="images/TypewriterOpen.jpg" alt="Typewriter open top view" /></a>
-            <h4 class="major">Early Wiring Attempt</h4>
-            <p>
-              First try: <em>flattened wires</em> squished alongside the ribbon into the socket, then toggling Arduino pins high/low. 
-              It worked—barely. Pins were easy to misalign (accidental shorts), and driving logic levels directly <strong>shorted multiple lines</strong> unintentionally. Not robust.
-            </p>
-          </article>
-          <article>
-            <a href="images/TypewriterBottom.jpg" class="image"><img src="images/TypewriterBottom.jpg" alt="Back/Bottom wiring and harness" /></a>
-            <h4 class="major">Robust Solution: CD4066 Matrix Shorting</h4>
-            <p>
-              I switched to <strong>CD4066</strong> analog switch ICs (5&nbsp;V logic-controlled “relays”). 
-              Each ribbon line feeds an input; two enabled switches <strong>physically short</strong> their outputs—clean, repeatable keypresses with proper isolation. 
-              For durable wiring, I cut <strong>two VGA cables</strong> in half and <strong>soldered to the keyboard PCB</strong>, creating tidy, strain-relieved harnesses into a desktop organizer that houses the Mega + switch boards.
-            </p>
-          </article>
-        </div>
-
-        <!-- Shift key -->
-        <h3 class="major">The Shift Key Puzzle</h3>
+        <figure class="pull-right">
+          <img src="images/TypewriterBottom.jpg" alt="Back/Bottom wiring and harness">
+        </figure>
         <p>
-          <strong>Shift</strong> needed to be pressed <em>with</em> other keys, meaning multiple matrix shorts at once. 
-          Tracing the keyboard PCB showed Shift bridges <strong>lines 7 and 8</strong>. 
-          I dedicated a separate CD4066 pair to short <strong>7↔8</strong> on demand, then combined that with the letter’s row/column pair—so the system can press <em>three or four lines</em> safely and consistently.
+          My first test was quick-and-dirty: <em>flattened wires</em> squished alongside the ribbon, then toggling Mega pins high/low.
+          It worked, but was unreliable—pins could shift and accidentally short lines, and directly driving logic levels
+          sometimes <strong>shorted multiple matrix lines</strong>.
+        </p>
+        <p>
+          I switched to <strong>CD4066</strong> analog switch ICs (5&nbsp;V, logic-controlled). Each ribbon line feeds a switch input; enabling
+          two switches <strong>physically shorts their outputs</strong>—a clean, repeatable “keypress” with isolation. For durable wiring, I cut
+          <strong>two VGA display cables</strong> in half and <strong>soldered to the keyboard PCB</strong>, then routed everything into a desktop organizer
+          holding the Mega and breakout boards. Cable management got way easier and the connection became rock-solid.
         </p>
 
-        <!-- Firmware & Logic -->
+        <!-- SHIFT -->
+        <h3 class="major">The Shift Key Puzzle</h3>
+        <figure class="pull-left">
+          <img src="images/TypewriteTest.jpg" alt="Typewriter test output while tuning">
+        </figure>
+        <p>
+          <strong>Shift</strong> has to be pressed <em>with</em> other keys, which means multiple matrix shorts at the same time. Tracing the PCB
+          showed Shift bridges <strong>lines 7 and 8</strong>. I dedicated another CD4066 pair to short <strong>7↔8</strong> on demand, then combined it with
+          the letter’s row/column short—so the system can press <em>three or four lines</em> safely and reliably.
+        </p>
+
+        <!-- FIRMWARE -->
         <h3 class="major">Firmware & Print Logic</h3>
         <p>
-          Firmware maps each character to its <strong>(row, column)</strong> pair(s), then “types” line-by-line:
-          short the two pins → hold for a beat → release → next character. 
-          On top of that, I built small generators that randomly pick from <strong>images, poems, and messages</strong> to feed the printer logic.
+          I mapped each character to its <strong>(row, column)</strong> pair(s), then wrote a simple engine: look at the string to print,
+          process line-by-line, short the two pins for a character, <em>hold</em>, release, and move on. On top of that I added small
+          generators that randomly pick <strong>images, poems, and messages</strong> to feed the printer so it feels alive.
+        </p>
+        <p>
+          It also occasionally “leaks” <strong>accounts and balances</strong>—all <strong>Philadelphia-themed names</strong> and entirely fictional—just
+          to keep things playful.
         </p>
 
-        <!-- ASCII art sample (strings only) -->
-        <pre class="ascii">
-                   o.oo
-                 O#####e
-                 ##B#B#e
-            .ooeOOOBBBBBBOOeo.
-         .eOOBOBBOOOOOOOOOOOBOOe.
-       oOOOOOeOeeeOOOOOOeeeOeOOOOe
-     .BOeeeeeee####eeee###Oeeeeeeee.
-    o#BoooooooOBeeoooooB###O.......o
-    ##.ooooooeo   ooooo. o#########B.
-    ##.......oo  oBe..o.  e########e
-    ##e......... O#e..o.
-    e##o  .......oo.....
-     e###o    .... .......
-      .#####O.      .............
-        .B########O. ..    ...  ....
-            .eB####e ..##Oo..........
-                 ##e ..###Bo........o
-    ...     .    B#o..o.  .o........o.
-   OOoooooooo.   e#e..oo   oe.....o.eo
-   eOeoooooooo   O#Oooeo   BOoooooo.O.
-   .BOeooooooooo.##Booeo .eeooooeooOo
-    oBBOeeeeeeeeeeOeeeeeeeeeeeeoeOBo
-     .B###OeeeeeOOeOOOOOeeeeeeO##B.
-       e######BBOOBOOOOBBB#####B.
-         .eB#######OBBB#####Bo
-               ..o eBB#O
-                  B####.
-                  eOOe
-        </pre>
-
-        <!-- Video demo -->
+        <!-- DEMO VIDEO (muted, looped, playsinline) -->
         <h3 class="major">Live Demo</h3>
         <div class="video-wrap">
           <video autoplay muted loop playsinline controls>
-            <source src="images/Typevideo.MOV" type="video/quicktime" />
+            <!-- Many browsers will play .MOV fine when served; type left as mp4 to mirror your working FRC pattern -->
+            <source src="images/Typevideo.MOV" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
 
-        <!-- Extra gallery to include remaining assets (thumbnail + test print) -->
-        <h3 class="major">Build Gallery</h3>
-        <div class="features">
-          <article>
-            <a href="images/Typewriterthubnail.jpg" class="image"><img src="images/Typewriterthubnail.jpg" alt="Typewriter front thumbnail" /></a>
-            <h4 class="major">Front View</h4>
-            <p>A clean front-of-house look—manual use preserved while the automation hides in plain sight.</p>
-          </article>
-          <article>
-            <a href="images/TypewriteTest.jpg" class="image"><img src="images/TypewriteTest.jpg" alt="Typewriter test output" /></a>
-            <h4 class="major">Test Output</h4>
-            <p>Typographic tests while tuning press timing and character spacing for reliable, repeatable prints.</p>
-          </article>
-        </div>
-
-        <!-- Data generation -->
-        <h3 class="major">Randomized Content</h3>
-        <p>
-          Beyond ASCII images, the system can “leak” <strong>accounts and balances</strong>—all <strong>Philadelphia-flavored names</strong> and entirely fictional. 
-          Messages are batched and sent line-by-line to the typing engine, so the output feels organic and a little mischievous.
-        </p>
-
-        <!-- Status -->
+        <!-- STATUS -->
         <h3 class="major">Status & Install</h3>
         <p>
-          The typewriter is mounted with a <strong>long paper spool</strong> and ready to run when the museum opens. 
-          It’s reliable enough for continuous showtime, but still invites people to walk up and type—exactly the balance I wanted.
+          The typewriter is fitted with a <strong>long paper spool</strong> and ready to run when the museum opens—reliable for showtime,
+          but still welcoming to anyone who wants to walk up and type. Exactly the balance I wanted.
         </p>
 
-        <!-- Quick back link -->
-        <p style="text-align:center; margin-top:2rem;">
+        <p class="clear" style="text-align:center; margin-top:2rem;">
           <a href="moa.html" class="button primary">Back to Ministry of Awe</a>
         </p>
 
@@ -312,6 +253,19 @@
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
-
+<script>
+  // Safety net: ensure all videos are muted, looping, inline (mirrors your FRC page behavior)
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('video').forEach(v => {
+      v.muted = true;
+      v.loop = true;
+      v.playsInline = true;
+      // If autoplay is blocked, try to play after a brief tick
+      const tryPlay = () => v.play().catch(() => {});
+      tryPlay();
+      setTimeout(tryPlay, 250);
+    });
+  });
+</script>
 </body>
 </html>
