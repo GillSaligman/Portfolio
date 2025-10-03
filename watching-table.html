@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Watching Turntable (Spinning Eye) | Jesse Gill Saligman</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* Hero uses the final beauty shot */
+    #wrapper > header {
+      background-image: url('images/SpinningEyeFinal.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      padding: 10em 2em 18em 2em;
+      text-align: center;
+      position: relative;
+    }
+    #wrapper > header::after { content:""; position:absolute; inset:0; background: rgba(0,0,0,0.45); }
+    #wrapper > header .inner { position: relative; z-index: 1; }
+
+    /* Pull content up over hero edge */
+    #wrapper > .wrapper { margin-top: -6em; margin-bottom: -6em; }
+
+    /* Section heading underline (MOA vibe) */
+    h3.major {
+      text-align: center;
+      margin-top: 1em;
+      position: relative;
+      padding-bottom: 0.6em;
+    }
+    h3.major::after {
+      content: "";
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 4px; background: #3498db;
+    }
+
+    /* Newspaper floats */
+    .pull-right, .pull-left {
+      max-width: 40%;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .pull-right { float: right; margin: 0.2rem 0 1.25rem 1.25rem; }
+    .pull-left  { float: left;  margin: 0.2rem 1.25rem 1.25rem 0; }
+    .pull-right img, .pull-left img { width: 100%; height: auto; display: block; }
+
+    /* Clear floats where needed */
+    .clear { clear: both; }
+
+    /* Cross-section: only full-width block */
+    .diagram-wrap { text-align: center; clear: both; }
+    .diagram-img {
+      width: 1300px; max-width: 100%;
+      height: auto;
+      display: block; margin: 1.5rem auto;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.07);
+      background: #0f172a;
+    }
+
+    /* Live Demo: centered video (adjust width as you like) */
+    .video-row {
+      clear: both;
+      margin: 1.5rem auto 0.5rem;
+      display: flex;
+      justify-content: center;
+      max-width: 720px; /* change to 600px/840px if you want */
+    }
+    .video-box {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.07);
+      background: #0f172a;
+      overflow: hidden;
+    }
+    .video-box video { width: 100%; height: auto; display: block; }
+
+    /* Responsive: collapse floats on small screens */
+    @media (max-width: 900px) {
+      .pull-right, .pull-left { float: none; max-width: 100%; margin: 0 0 1rem 0; }
+      .video-row { max-width: 100%; }
+    }
+
+    /* Footer background for cohesion */
+    section#footer {
+      background: url('images/SpinningEyeFinal.jpg') center center / cover fixed;
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+      padding-top: 4em; padding-bottom: 4em; border-top: none;
+    }
+    section#footer a.special {
+      display: inline-block; margin-top: 1em; padding: 0.75em 2em;
+      border: 2px solid white; border-radius: 4px; text-decoration: none; color: white; font-weight: bold;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    section#footer a.special:hover { background: white; color: #1b1b1b; }
+    section#footer .contact li { font-weight: bold; font-size: 1.2em; }
+  </style>
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<div id="page-wrapper">
+
+  <header id="header">
+    <h1><a href="index.html">Jesse Gill Saligman</a></h1>
+    <nav><a href="#menu">Menu</a></nav>
+  </header>
+
+  <nav id="menu">
+    <div class="inner">
+      <h2>Menu</h2>
+      <ul class="links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="moa.html">Ministry of Awe</a></li>
+      </ul>
+      <a href="#" class="close">Close</a>
+    </div>
+  </nav>
+
+  <section id="wrapper">
+    <header>
+      <div class="inner">
+        <h2>Watching Turntable (Spinning Eye)</h2>
+        <p>Face-tracking, noise-on-target Victor receipt printer on a custom rotating base</p>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="inner">
+
+        <!-- OVERVIEW -->
+        <h3 class="major">Overview</h3>
+        <figure class="pull-right">
+          <img src="images/Turnthumb.jpg" alt="Watching turntable thumbnail">
+        </figure>
+        <p>
+          The objective: make an <strong>old machine turn and face you</strong>—and when it locks on, hit you with that
+          <strong>gloriously scary Victor receipt-printer noise</strong>. I had access to a few vintage machines; the
+          <strong>Victor receipt printer</strong> had the best sound, so the goal became tracking a person and triggering
+          the print clatter when they’re centered.
+        </p>
+
+        <!-- MECHANICAL DESIGN -->
+        <h3 class="major">Mechanical Design</h3>
+        <figure class="pull-left">
+          <img src="images/BottomOfTurnTable.jpg" alt="Underside of the rotating table">
+        </figure>
+        <p>
+          For rotation, I used spare <strong>thrust bearings</strong> and a simple wooden box as the plinth. I drilled a
+          <strong>2&quot; pass-through</strong> and designed a top plate for the machine plus a large drive gear beneath.
+          The two plates sandwich a <strong>thrust bearing</strong> against the wood so the printer is fully constrained
+          and spins smoothly. A <strong>3D-printed bushing</strong> handled radial support—no separate radial bearing needed.
+        </p>
+        <p>
+          I made assembly painless: the bearing/gear module uses <strong>six M3s into heat-set inserts</strong>, all with easy
+          access. A smaller <strong>helical gear</strong> on a stepper mates with the big ring gear. (Cross-section below.)
+        </p>
+        <div class="diagram-wrap">
+          <img class="diagram-img" src="images/SpineyeCrossSection.png" alt="Spinning eye turntable cross-section">
+        </div>
+
+        <!-- ELECTRONICS -->
+        <h3 class="major">Electronics & Power</h3>
+        <figure class="pull-right">
+          <img src="images/SpinningEyeInsideFinal.jpg" alt="Electronics neatly mounted inside the base">
+        </figure>
+        <p>
+          Control runs on a <strong>Raspberry Pi</strong> with a USB web camera. Power: <strong>5&nbsp;V/3&nbsp;A</strong> for the Pi and
+          <strong>12&nbsp;V</strong> for the stepper driver (directly controlled from the Pi). Heat was a concern, so the 12&nbsp;V
+          rail has a <strong>fan aimed at the motor</strong>, and the driver current is limited to <strong>~1.5&nbsp;A</strong>.
+        </p>
+        <p>
+          Prototype #1 used a servo tugging a string on the printer’s internal lever to force the “noise/print” action.
+          It worked but wasn’t robust. Digging deeper, I found the printer’s motor is <strong>125&nbsp;VAC</strong>, controlled by a
+          panel dial. I added an inexpensive <strong>125&nbsp;VAC motor controller</strong>—its pot wasn’t low-voltage (it actually
+          carried mains), so I hid the module in the base and used a <strong>servo to twist the onboard potentiometer</strong>.
+        </p>
+        <p>
+          Since Pi PWM to servos can jitter, I added a cheap <strong>ESP8266</strong> (MicroPython) that takes <strong>serial commands</strong>
+          from the Pi and drives the servo smoothly. It’s mounted on the underside of the lid for easy access. Only the
+          camera and the motor have twist-tolerant wiring loops.
+        </p>
+
+        <!-- CONTROL -->
+        <h3 class="major">Control & Behavior</h3>
+        <p>
+          The Pi runs a simple <strong>face-tracking loop</strong>. It measures the face’s X position vs. frame center, computes
+          an offset, and sets the stepper’s <strong>velocity proportional to that offset</strong>. Early on it was jittery if I sent
+          discrete step counts; switching to continuous <strong>velocity control with ramping</strong> smoothed it out. When a face
+          sits near center, the Pi sends a serial command to the ESP to push the servo to “<strong>full</strong>,” enabling the AC
+          motor and unleashing the noise.
+        </p>
+
+        <!-- BUILD NOTES -->
+        <h3 class="major">Build Notes & Revisions</h3>
+        <figure class="pull-left">
+          <img src="images/SpinningEyeFinal.jpg" alt="Finished rotating table with Victor printer">
+        </figure>
+        <p>
+          During assembly the first servo died and the printer briefly bound up—tempting to ditch the noise feature and
+          just track people, but solving the AC motor control made the whole interaction <strong>feel alive</strong>. The electronics
+          were reorganized into a smaller bedside table enclosure once everything proved reliable.
+        </p>
+
+        <!-- DEMO VIDEO -->
+        <h3 class="major">Live Demo</h3>
+        <div class="video-row">
+          <div class="video-box">
+            <video autoplay muted loop playsinline controls>
+              <!-- MOV works on many browsers; keeping 'video/mp4' like your FRC pattern -->
+              <source src="images/SpinningEyeVideo.MOV" type="video/mp4">
+              <source src="images/SpinningEyeVideo.MOV" type="video/quicktime">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <!-- STATUS -->
+        <h3 class="major">Status & Install</h3>
+        <p>
+          The unit is fully assembled, electronics are tidy, and it’s ready for display—turns to greet you, then
+          <strong>prints loudly on target</strong>. Exactly the vibe I was aiming for.
+        </p>
+
+        <p class="clear" style="text-align:center; margin-top:2rem;">
+          <a href="moa.html" class="button primary">Back to Ministry of Awe</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="footer">
+    <div class="inner">
+      <h2 class="major">Get in Touch</h2>
+      <ul class="contact">
+        <li class="icon solid fa-phone">610-316-5180</li>
+        <li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
+        <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
+      </ul>
+      <a href="index.html" class="special">Back to Portfolio</a>
+      <ul class="copyright">
+        <li>&copy; Jesse Gill Saligman. All rights reserved.</li>
+        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  // Safety net: ensure all videos are muted, looping, inline (matches your FRC page behavior)
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('video').forEach(v => {
+      v.muted = true;
+      v.loop = true;
+      v.playsInline = true;
+      const tryPlay = () => v.play().catch(() => {});
+      tryPlay();
+      setTimeout(tryPlay, 250);
+    });
+  });
+</script>
+</body>
+</html>
