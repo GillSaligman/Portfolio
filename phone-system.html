@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Interactive Phone System | Jesse Gill Saligman</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* Hero uses a clean final shot */
+    #wrapper > header {
+      background-image: url('images/PhoneSystemFinal.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      padding: 10em 2em 18em 2em;
+      text-align: center;
+      position: relative;
+    }
+    #wrapper > header::after { content:""; position:absolute; inset:0; background: rgba(0,0,0,0.45); }
+    #wrapper > header .inner { position: relative; z-index: 1; }
+
+    /* Pull content up over hero edge */
+    #wrapper > .wrapper { margin-top: -6em; margin-bottom: -6em; }
+
+    /* Section heading underline (MOA vibe) */
+    h3.major {
+      text-align: center;
+      margin-top: 1em;
+      position: relative;
+      padding-bottom: 0.6em;
+    }
+    h3.major::after {
+      content: "";
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 4px; background: #3498db;
+    }
+
+    /* Newspaper floats */
+    .pull-right, .pull-left {
+      max-width: 40%;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(0,0,0,0.02);
+    }
+    .pull-right { float: right; margin: 0.2rem 0 1.25rem 1.25rem; }
+    .pull-left  { float: left;  margin: 0.2rem 1.25rem 1.25rem 0; }
+    .pull-right img, .pull-left img { width: 100%; height: auto; display: block; }
+
+    /* Clear floats where needed */
+    .clear { clear: both; }
+
+    /* Simple callouts */
+    .callout {
+      background: rgba(255,255,255,0.05);
+      border-left: 4px solid #3498db;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin: 1rem 0 1.5rem;
+    }
+    .mini-list { margin: 0.75rem 0 0.25rem 1.25rem; }
+
+    /* Responsive: collapse floats on small screens */
+    @media (max-width: 900px) {
+      .pull-right, .pull-left { float: none; max-width: 100%; margin: 0 0 1rem 0; }
+    }
+
+    /* Footer background for cohesion */
+    section#footer {
+      background: url('images/PhoneSystemFinal.jpg') center center / cover fixed;
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+      padding-top: 4em; padding-bottom: 4em; border-top: none;
+    }
+    section#footer a.special {
+      display: inline-block; margin-top: 1em; padding: 0.75em 2em;
+      border: 2px solid white; border-radius: 4px; text-decoration: none; color: white; font-weight: bold;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    section#footer a.special:hover { background: white; color: #1b1b1b; }
+    section#footer .contact li { font-weight: bold; font-size: 1.2em; }
+  </style>
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<div id="page-wrapper">
+
+  <header id="header">
+    <h1><a href="index.html">Jesse Gill Saligman</a></h1>
+    <nav><a href="#menu">Menu</a></nav>
+  </header>
+
+  <nav id="menu">
+    <div class="inner">
+      <h2>Menu</h2>
+      <ul class="links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="moa.html">Ministry of Awe</a></li>
+      </ul>
+      <a href="#" class="close">Close</a>
+    </div>
+  </nav>
+
+  <section id="wrapper">
+    <header>
+      <div class="inner">
+        <h2>Interactive Phone System</h2>
+        <p>Offline PBX • Rotary & dial phones • Actor- and audio-driven interactions</p>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="inner">
+
+        <!-- OVERVIEW -->
+        <h3 class="major">Overview</h3>
+        <figure class="pull-right">
+          <img src="images/PhoneSystemThubnail.jpg" alt="Phone system thumbnail">
+        </figure>
+        <p>
+          Imagine walking through the exhibit and a <strong>rotary phone rings</strong> on a desk. No staff in sight—so you pick up.
+          On the line, a voice comments on <strong>what you’re wearing</strong> and references <strong>things you’ve already seen</strong> in the bank.
+          That’s the experience this project aims to deliver: a <strong>closed phone network</strong> where <strong>phones call each other</strong> and
+          <strong>hidden numbers trigger pre-recorded stories</strong>—all without paying a provider.
+        </p>
+
+        <div class="callout">
+          <strong>Core goal:</strong> build a self-contained, offline system that supports both <strong>rotary (pulse)</strong> and
+          <strong>touch-tone (DTMF)</strong> phones, with routing logic, actor interactions, and on-demand audio lines.
+        </div>
+
+        <!-- ARCHITECTURE -->
+        <h3 class="major">System Architecture</h3>
+        <figure class="pull-left">
+          <img src="images/PhoneSysPhones.jpg" alt="Assorted phones for the system">
+        </figure>
+        <p>
+          I boiled the problem down to three pieces:
+        </p>
+        <ul class="mini-list">
+          <li><strong>Computer:</strong> a Raspberry Pi to run the logic and host the PBX web UI.</li>
+          <li><strong>PBX software:</strong> ultimately <strong>IncrediblePBX</strong> (after a lot of dead ends).</li>
+          <li><strong>Analog gateway:</strong> a <strong>Grandstream HT818</strong> so rotary/dial phones can register as extensions.</li>
+        </ul>
+        <p>
+          A fortunate break: the <strong>HT818 can interpret pulse dialing</strong> (most modern gateways only read tones). The trade-off:
+          it rings at ~<strong>48&nbsp;V</strong>, so a few vintage sets that demand a hotter ring won’t work—an acceptable limitation.
+        </p>
+
+        <!-- HARDWARE -->
+        <h3 class="major">Hardware & Enclosure</h3>
+        <figure class="pull-right">
+          <img src="images/PhoneSysFinalFront.jpg" alt="Phone system enclosure front view">
+        </figure>
+        <p>
+          All components live in a tidy, serviceable enclosure with <strong>Ethernet split</strong> so the Pi and HT818 talk on the same LAN
+          and a laptop can plug in for updates. Keeping it <strong>offline</strong> was a hard requirement—no cloud, no bills, just a
+          robust internal network.
+        </p>
+
+        <!-- SOFTWARE -->
+        <h3 class="major">PBX Software (The Hard Part)</h3>
+        <figure class="pull-left">
+          <img src="images/PhoneIncrediblePBX.png" alt="IncrediblePBX web UI">
+        </figure>
+        <p>
+          A lot of guides point to <strong>RasPBX</strong>, but it was too outdated for my Raspberry Pi. I tried moving installs between
+          images, wrestled with dependencies, and chased paid alternatives that didn’t fit. The breakthrough was
+          <strong>IncrediblePBX</strong>—it runs on the Pi, exposes a local web UI, and lets me configure <strong>extensions, routes, and IVRs</strong>.
+        </p>
+        <figure class="pull-right">
+          <img src="images/PhoneRPISSH.png" alt="Raspberry Pi shell configuration">
+        </figure>
+        <p>
+          The setup is split: some work in the Pi terminal, some in the browser. Once dialplans and extensions were in,
+          I added <strong>pre-recorded messages</strong> that auto-play when specific numbers are dialed—perfect for <strong>easter eggs</strong>
+          scattered through the bank.
+        </p>
+
+        <!-- GATEWAY CONFIG -->
+        <h3 class="major">Gateway & Networking</h3>
+        <figure class="pull-left">
+          <img src="images/PhoneHt818UI.jpg" alt="Grandstream HT818 admin page">
+        </figure>
+        <p>
+          The <strong>HT818</strong> has its own web interface and prefers clear <strong>LAN/WAN roles</strong>, so I aligned addressing across the Pi,
+          the gateway, and the phones. Getting every device onto the same <strong>subnet</strong> (and keeping it that way without Internet)
+          was more fiddly than it sounds, but the result is a <strong>fully closed network</strong> with consistent registration.
+        </p>
+        <div class="callout">
+          <strong>Result:</strong> Pick up a phone, dial an extension, and it <strong>rings another handset</strong> or <strong>plays a story</strong>.
+          Numbers can be hidden around the exhibit to unlock <strong>backstories</strong> and <strong>interactive moments</strong>.
+        </div>
+
+        <!-- FINAL -->
+        <h3 class="major">Current Status</h3>
+        <figure class="pull-right">
+          <img src="images/PhoneSystemFinal.jpg" alt="Final phone system wiring and layout">
+        </figure>
+        <p>
+          The prototype is complete: extensions register, rotary dialing works, and the pre-recorded lines are live. Next step
+          is installing phones throughout the space and assigning numbers to scenes. With the <strong>Pi + IncrediblePBX + HT818</strong>
+          combo dialed in, deployment should be straightforward.
+        </p>
+
+        <p class="clear" style="text-align:center; margin-top:2rem;">
+          <a href="moa.html" class="button primary">Back to Ministry of Awe</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="footer">
+    <div class="inner">
+      <h2 class="major">Get in Touch</h2>
+      <ul class="contact">
+        <li class="icon solid fa-phone">610-316-5180</li>
+        <li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
+        <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
+      </ul>
+      <a href="index.html" class="special">Back to Portfolio</a>
+      <ul class="copyright">
+        <li>&copy; Jesse Gill Saligman. All rights reserved.</li>
+        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
