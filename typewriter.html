@@ -64,19 +64,22 @@
     }
     @media (max-width: 1400px) { .matrix-img { width: 100%; height: auto; } }
 
-    /* Live Demo: two side-by-side videos, flexible to stay side-by-side in your template */
+    /* Live Demo: two videos side-by-side, never wrap; scroll horizontally on small screens */
     .video-row {
       clear: both;
       margin: 1.5rem auto 0.5rem;
       display: flex;
       gap: 1rem;
       justify-content: center;
-      align-items: stretch;
-      flex-wrap: wrap;                /* allows gentle shrink or wrap on tiny screens */
+      align-items: flex-start;
+      flex-wrap: nowrap;             /* 👈 keep them on one line */
+      overflow-x: auto;              /* 👈 allow horizontal scroll if needed */
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.25rem;       /* a little space for the scrollbar */
     }
     .video-box {
-      flex: 1 1 520px;               /* target ~520px each to fit your ~1040px inner width */
-      max-width: 600px;              /* cap at 600 when there’s room */
+      flex: 0 0 600px;               /* 👈 exactly 600px each */
+      width: 600px;
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       border: 1px solid rgba(255,255,255,0.07);
@@ -85,7 +88,7 @@
     }
     .video-box video { width: 100%; height: auto; display: block; }
 
-    /* Responsive: collapse floats on small screens */
+    /* Responsive: collapse floats on small screens (videos will scroll horizontally instead of stacking) */
     @media (max-width: 900px) {
       .pull-right, .pull-left { float: none; max-width: 100%; margin: 0 0 1rem 0; }
     }
@@ -205,22 +208,22 @@
           to keep things playful.
         </p>
 
-        <!-- DEMO VIDEOS (two, side-by-side) -->
+        <!-- DEMO VIDEOS (two, side-by-side; never wrap) -->
         <h3 class="major">Live Demo</h3>
         <div class="video-row">
           <div class="video-box">
             <video autoplay muted loop playsinline controls>
               <!-- File: Typevideo.MOV -->
-              <source src="images/Typevideo.MOV" type="video/mp4">
               <source src="images/Typevideo.MOV" type="video/quicktime">
+              <source src="images/Typevideo.MOV" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="video-box">
             <video autoplay muted loop playsinline controls>
-              <!-- File: Typevid2.MOV (fixed filename) -->
-              <source src="images/Typevid2.MOV" type="video/mp4">
+              <!-- File: Typevid2.MOV (exact name + extension) -->
               <source src="images/Typevid2.MOV" type="video/quicktime">
+              <source src="images/Typevid2.MOV" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
