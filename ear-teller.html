@@ -142,13 +142,12 @@
         </figure>
         <p>
           Like any bank, this one has tellers—just… <em>weirder</em>. With the <strong>Ear Teller</strong>, visitors whisper a confession,
-          spin a pair of dials, and hear <strong>someone else’s confession</strong> read back with a <strong>voice modifier</strong> that matches the
-          dial settings. One dial leans toward “<strong>sorry</strong>,” the other toward “<strong>not sorry</strong>,” and together they shape how the
-          story is performed.
+          turn a single dial, and hear <strong>someone else’s confession</strong> read back with a <strong>voice modifier</strong> that matches the
+          dial’s setting. Two LEDs—one for “<strong>sorry</strong>,” one for “<strong>not sorry</strong>”—show where the vibe is headed.
         </p>
         <div class="callout">
           This project was led by <strong>Spatial Pixel</strong>—they built most of the hardware and the AI pipeline that stores
-          confessions and performs them in different tones based on the dials.
+          confessions and performs them in different tones based on the control input.
         </div>
 
         <!-- MY ROLE -->
@@ -175,21 +174,21 @@
         <!-- FAVORITE CHALLENGE -->
         <h3 class="major">Dial Logic (Favorite Challenge)</h3>
         <p>
-          The dials weren’t regular potentiometers—they were <strong>quadrature encoders</strong> flashed as a keyboard. That means they
-          report <em>movement</em> (steps left/right) but not an <em>absolute angle</em>. We wanted the dials to set how “sorry” or “not
-          sorry” a confession sounds, but without a home switch or fixed power-up orientation, we never truly “know” where
-          the dial is pointing.
+          The dial isn’t a potentiometer—it’s a <strong>quadrature encoder</strong> flashed as a keyboard. Encoders report <em>relative</em> movement
+          (ticks left/right), not an <em>absolute</em> angle. Instead of adding homing hardware or forcing a fixed power-up position,
+          I decoupled the control from physical angle and treated the dial as a <strong>nudger</strong>.
         </p>
         <p>
-          My solution was to make <strong>absolute position unnecessary</strong>. I added LEDs whose <strong>brightness tracks the same value</strong>
-          that drives the voice style. As the encoder spins, we change a “sincerity” variable; that <em>single variable</em> feeds both
-          the <strong>LED brightness</strong> and the <strong>voice modifier</strong>. Because both outputs share the same number, users get clear,
-          immediate feedback—brighter toward “sorry,” dimmer toward “not sorry”—and we never need to measure the dial’s
-          true angle. It’s intuitive with <strong>two dials</strong>, too, because each dial controls its own LED and parameter.
+          Turning the dial nudges a single variable—call it <strong>sorriness</strong>—up or down. That one number drives <em>both</em> the
+          <strong>voice style</strong> and the LED feedback. The two LEDs mirror the same value via PWM: the “sorry” LED brightens as
+          sorriness rises, the “not sorry” LED brightens as it falls. Because the LEDs and the voice read from the same source
+          of truth, they’re always in sync even though we never measure an absolute dial position.
         </p>
         <p>
-          There are other ways to solve this (limit switch, hard index, always start at a known angle), but this approach
-          kept the hardware simple, felt more interactive, and solved the core problem elegantly.
+          The nice side effect: if the encoder ever <strong>skips or drops a tick</strong>, nothing breaks. We simply don’t nudge the value
+          on that tick; the next tick updates it. There’s no drift between lights and audio because the dial isn’t the truth—the
+          <strong>sorriness value</strong> is. We clamp it to a range (e.g., 0–100%), add a little smoothing for feel, and it powers up at a
+          sensible default without any homing routine.
         </p>
 
         <!-- DEMOS -->
