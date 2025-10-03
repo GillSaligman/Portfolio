@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Ear Teller | Jesse Gill Saligman</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* Hero */
+    #wrapper > header {
+      background-image: url('images/EarTeller.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      padding: 10em 2em 18em 2em;
+      text-align: center;
+      position: relative;
+    }
+    #wrapper > header::after { content:""; position:absolute; inset:0; background: rgba(0,0,0,0.45); }
+    #wrapper > header .inner { position: relative; z-index: 1; }
+
+    /* Pull content up over hero edge */
+    #wrapper > .wrapper { margin-top: -6em; margin-bottom: -6em; }
+
+    /* Section heading underline */
+    h3.major {
+      text-align: center;
+      margin-top: 1em;
+      position: relative;
+      padding-bottom: 0.6em;
+    }
+    h3.major::after {
+      content: "";
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 4px; background: #3498db;
+    }
+
+    /* Newspaper floats */
+    .pull-right, .pull-left {
+      max-width: 40%;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(0,0,0,0.02);
+    }
+    .pull-right { float: right; margin: 0.2rem 0 1.25rem 1.25rem; }
+    .pull-left  { float: left;  margin: 0.2rem 1.25rem 1.25rem 0; }
+    .pull-right img, .pull-left img { width: 100%; height: auto; display: block; }
+
+    /* Clear floats where needed */
+    .clear { clear: both; }
+
+    /* Two side-by-side videos */
+    .video-row {
+      clear: both;
+      margin: 1.5rem auto 0.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: stretch;
+      flex-wrap: wrap; /* wrap on very small screens */
+    }
+    .video-box {
+      flex: 1 1 520px;      /* tries to keep ~520px each */
+      max-width: 600px;     /* cap width */
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.07);
+      background: #0f172a;
+    }
+    .video-box video { width: 100%; height: auto; display: block; }
+
+    /* Callout */
+    .callout {
+      background: rgba(255,255,255,0.05);
+      border-left: 4px solid #3498db;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin: 1rem 0 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .pull-right, .pull-left { float: none; max-width: 100%; margin: 0 0 1rem 0; }
+    }
+
+    /* Footer */
+    section#footer {
+      background: url('images/EarTeller.jpg') center center / cover fixed;
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+      padding-top: 4em; padding-bottom: 4em; border-top: none;
+    }
+    section#footer a.special {
+      display: inline-block; margin-top: 1em; padding: 0.75em 2em;
+      border: 2px solid white; border-radius: 4px; text-decoration: none; color: white; font-weight: bold;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    section#footer a.special:hover { background: white; color: #1b1b1b; }
+    section#footer .contact li { font-weight: bold; font-size: 1.2em; }
+  </style>
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<div id="page-wrapper">
+
+  <header id="header">
+    <h1><a href="index.html">Jesse Gill Saligman</a></h1>
+    <nav><a href="#menu">Menu</a></nav>
+  </header>
+
+  <nav id="menu">
+    <div class="inner">
+      <h2>Menu</h2>
+      <ul class="links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="moa.html">Ministry of Awe</a></li>
+      </ul>
+      <a href="#" class="close">Close</a>
+    </div>
+  </nav>
+
+  <section id="wrapper">
+    <header>
+      <div class="inner">
+        <h2>Ear Teller</h2>
+        <p>Interactive confession teller • Motorized hearing aid • Dial-driven voice styling</p>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="inner">
+
+        <!-- OVERVIEW -->
+        <h3 class="major">Overview</h3>
+        <figure class="pull-right">
+          <img src="images/EarFinalPic.jpg" alt="Ear Teller installation view">
+        </figure>
+        <p>
+          Like any bank, this one has tellers—just… <em>weirder</em>. With the <strong>Ear Teller</strong>, visitors whisper a confession,
+          spin a pair of dials, and hear <strong>someone else’s confession</strong> read back with a <strong>voice modifier</strong> that matches the
+          dial settings. One dial leans toward “<strong>sorry</strong>,” the other toward “<strong>not sorry</strong>,” and together they shape how the
+          story is performed.
+        </p>
+        <div class="callout">
+          This project was led by <strong>Spatial Pixel</strong>—they built most of the hardware and the AI pipeline that stores
+          confessions and performs them in different tones based on the dials.
+        </div>
+
+        <!-- MY ROLE -->
+        <h3 class="major">My Role</h3>
+        <figure class="pull-left">
+          <img src="images/EarGoodPic.jpg" alt="Close-up of the ear mechanism">
+        </figure>
+        <p>
+          I handled the motion and some of the tricky integration details. For the mechanical ear, Spatial Pixel repurposed
+          gears from an old grandfather clock. I designed a compact mount for an <strong>N20 DC motor</strong> to drive the train, and
+          wired it into a <strong>5&nbsp;V</strong> architecture so an <strong>Arduino Nano</strong> and a small motor driver dropped right in.
+        </p>
+
+        <!-- ELECTRONICS -->
+        <h3 class="major">Electronics & Integration</h3>
+        <figure class="pull-right">
+          <img src="images/EarElectronicsPic.jpg" alt="Electronics layout and wiring">
+        </figure>
+        <p>
+          The Teller runs on a tidy low-voltage stack—motor, Nano, drivers, and the AI box from Spatial Pixel. The goal was
+          museum reliability: clean wiring, serviceable mounting, and components that play nicely together in a 5&nbsp;V world.
+        </p>
+
+        <!-- FAVORITE CHALLENGE -->
+        <h3 class="major">Dial Logic (Favorite Challenge)</h3>
+        <p>
+          The dials weren’t regular potentiometers—they were <strong>quadrature encoders</strong> flashed as a keyboard. That means they
+          report <em>movement</em> (steps left/right) but not an <em>absolute angle</em>. We wanted the dials to set how “sorry” or “not
+          sorry” a confession sounds, but without a home switch or fixed power-up orientation, we never truly “know” where
+          the dial is pointing.
+        </p>
+        <p>
+          My solution was to make <strong>absolute position unnecessary</strong>. I added LEDs whose <strong>brightness tracks the same value</strong>
+          that drives the voice style. As the encoder spins, we change a “sincerity” variable; that <em>single variable</em> feeds both
+          the <strong>LED brightness</strong> and the <strong>voice modifier</strong>. Because both outputs share the same number, users get clear,
+          immediate feedback—brighter toward “sorry,” dimmer toward “not sorry”—and we never need to measure the dial’s
+          true angle. It’s intuitive with <strong>two dials</strong>, too, because each dial controls its own LED and parameter.
+        </p>
+        <p>
+          There are other ways to solve this (limit switch, hard index, always start at a known angle), but this approach
+          kept the hardware simple, felt more interactive, and solved the core problem elegantly.
+        </p>
+
+        <!-- DEMOS -->
+        <h3 class="major">Live Demos</h3>
+        <div class="video-row">
+          <div class="video-box">
+            <video autoplay muted loop playsinline controls>
+              <!-- Ear dial interaction -->
+              <source src="images/EarDialvideo.MOV" type="video/mp4">
+              <source src="images/EarDialvideo.MOV" type="video/quicktime">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-box">
+            <video autoplay muted loop playsinline controls>
+              <!-- Motorized ear demo -->
+              <source src="images/EarMotorVideo.MOV" type="video/mp4">
+              <source src="images/EarMotorVideo.MOV" type="video/quicktime">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <!-- STATUS -->
+        <h3 class="major">Status</h3>
+        <p>
+          The Ear Teller is integrated and exhibition-ready. The motor drive is reliable, the AI readback feels alive, and
+          the dial logic works smoothly without extra sensors.
+        </p>
+
+        <p class="clear" style="text-align:center; margin-top:2rem;">
+          <a href="moa.html" class="button primary">Back to Ministry of Awe</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="footer">
+    <div class="inner">
+      <h2 class="major">Get in Touch</h2>
+      <ul class="contact">
+        <li class="icon solid fa-phone">610-316-5180</li>
+        <li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
+        <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
+      </ul>
+      <a href="index.html" class="special">Back to Portfolio</a>
+      <ul class="copyright">
+        <li>&copy; Jesse Gill Saligman. All rights reserved.</li>
+        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  // Ensure all videos are muted/looping and try autoplay once loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('video').forEach(v => {
+      v.muted = true;
+      v.loop = true;
+      v.playsInline = true;
+      const tryPlay = () => v.play().catch(() => {});
+      tryPlay();
+      setTimeout(tryPlay, 250);
+    });
+  });
+</script>
+</body>
+</html>
