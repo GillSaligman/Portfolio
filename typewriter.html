@@ -46,7 +46,6 @@
     }
     .pull-right { float: right; margin: 0.2rem 0 1.25rem 1.25rem; }
     .pull-left  { float: left;  margin: 0.2rem 1.25rem 1.25rem 0; }
-
     .pull-right img, .pull-left img { width: 100%; height: auto; display: block; }
 
     /* Clear floats where needed */
@@ -65,35 +64,30 @@
     }
     @media (max-width: 1400px) { .matrix-img { width: 100%; height: auto; } }
 
-    /* Live Demo: two side-by-side videos, each 600px wide */
+    /* Live Demo: two side-by-side videos, flexible to stay side-by-side in your template */
     .video-row {
       clear: both;
       margin: 1.5rem auto 0.5rem;
       display: flex;
       gap: 1rem;
       justify-content: center;
-      flex-wrap: wrap;
-      max-width: calc(600px * 2 + 1rem); /* 1200px + gap */
+      align-items: stretch;
+      flex-wrap: wrap;                /* allows gentle shrink or wrap on tiny screens */
     }
     .video-box {
-      width: 600px;               /* << fixed width per your request */
+      flex: 1 1 520px;               /* target ~520px each to fit your ~1040px inner width */
+      max-width: 600px;              /* cap at 600 when there’s room */
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       border: 1px solid rgba(255,255,255,0.07);
       background: #0f172a;
       overflow: hidden;
     }
-    .video-box video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+    .video-box video { width: 100%; height: auto; display: block; }
 
     /* Responsive: collapse floats on small screens */
     @media (max-width: 900px) {
       .pull-right, .pull-left { float: none; max-width: 100%; margin: 0 0 1rem 0; }
-      .video-row { max-width: 100%; }
-      .video-box { width: 100%; max-width: 600px; } /* keeps them readable when stacked */
     }
 
     /* Footer background for cohesion */
@@ -211,19 +205,22 @@
           to keep things playful.
         </p>
 
-        <!-- DEMO VIDEOS (two @ 600px each, muted, looped, playsinline) -->
+        <!-- DEMO VIDEOS (two, side-by-side) -->
         <h3 class="major">Live Demo</h3>
         <div class="video-row">
           <div class="video-box">
             <video autoplay muted loop playsinline controls>
-              <!-- Following your FRC pattern for type attribute -->
+              <!-- File: Typevideo.MOV -->
               <source src="images/Typevideo.MOV" type="video/mp4">
+              <source src="images/Typevideo.MOV" type="video/quicktime">
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="video-box">
             <video autoplay muted loop playsinline controls>
-              <source src="images/Typevid2.mp4" type="video/mp4">
+              <!-- File: Typevid2.MOV (fixed filename) -->
+              <source src="images/Typevid2.MOV" type="video/mp4">
+              <source src="images/Typevid2.MOV" type="video/quicktime">
               Your browser does not support the video tag.
             </video>
           </div>
