@@ -20,113 +20,155 @@
       </nav>
     </div>
   </header>
+
   <main class="wrap">
     <div class="page-head">
       <a class="label back" href="index.html#work">&larr; All work</a>
       <h1>Ministry of Awe</h1>
-      <p>Interactive Art Experience | Old City, Philadelphia | Opening Early 2026</p>
+      <p>Robotics lead &middot; Aug 2025 &ndash; Apr 2026 &middot; Old City, Philadelphia</p>
     </div>
-    <div class="legacy">
-<div class="wrapper">
-      <div class="inner centered-content">
-        <div class="section-intro">
-          <p><strong>Ministry of Awe</strong> is where I bring robotics and tech into conversation with art. I design original pieces and retrofit existing works—ranging from <strong>mechanical assemblies</strong> to <strong>electronics-heavy builds</strong> to <strong>software-driven installations</strong>. I also worked with <strong>Spatial Pixel</strong> (natural-language AI) to weave AI into the systems we built.</p>
-        </div>
 
-        <h3 class="major">Projects</h3>
+    <figure class="wide-photo">
+      <img src="images/web/moa-atrium.jpg" alt="The Ministry of Awe atrium during install, with artists working on every floor" width="1600" height="1200">
+      <figcaption class="caption">Install week inside the old bank on N. 3rd St.</figcaption>
+    </figure>
 
-        <div class="projects-grid">
-          <!-- Automatic Typewriter -->
-          <article class="card">
-            <img src="./images/Typewriterthubnail.jpg" alt="Automatic Typewriter thumbnail" loading="lazy">
-            <div class="card-body">
-              <h4 class="card-title">Automatic Typewriter</h4>
-              <p class="card-desc">My first solo build: getting a <strong>Smith Corona SL575</strong> to type automatically while keeping manual operation. With zero documentation, I reverse-engineered the <strong>17-pin keyboard matrix</strong>, mapped it, tapped the lines, and wrote code to emulate keypresses by shorting specific pins.</p>
-              <div class="card-actions"><a class="btn" href="typewriter.html">More Details</a></div>
-            </div>
-          </article>
+    <div class="prose" style="padding-block: 24px 8px;">
+      <p>The Ministry of Awe is an interactive art experience built inside a former bank in Old City. I was the engineer on the team: artists, magicians, and the AI studio Spatial Pixel would bring me an idea, and I'd figure out how to build it, wire it, code it, and keep it running for visitors 40&ndash;50 hours a week on an art-project budget.</p>
+      <ul class="press">
+        <li><a href="https://www.forbes.com/sites/chaddscott/2026/03/12/ministry-of-awe-bank-gone-wild-opening-in-philadelphia/">Forbes</a>, March 2026: credits the &ldquo;tech interactions created by Gill Saligman.&rdquo;</li>
+        <li><a href="https://www.phillyvoice.com/ministry-of-awe-philly-museum-opening-manufactuers-national-bank/">PhillyVoice</a>, March 2026: a look inside, including the jewelry box room and the giant eye.</li>
+      </ul>
+    </div>
 
-          <!-- Watching Table -->
-          <article class="card">
-            <img src="./images/Turnthumb.jpg" alt="Watching Table thumbnail" loading="lazy">
-            <div class="card-body">
-              <h4 class="card-title">Watching Table</h4>
-              <p class="card-desc">An old <strong>Victor receipt printer</strong> hides a camera inside a custom turntable. A stepper motor and <strong>Raspberry Pi</strong> handle motion and vision: it <strong>tracks faces</strong>, turns toward a visitor, and—once in range—spins up and prints rapidly as the machine “watches.”</p>
-              <div class="card-actions"><a class="btn" href="watching-table.html">More Details</a></div>
-            </div>
-          </article>
-
-          <!-- Phone System -->
-          <article class="card">
-            <img src="./images/PhoneSystemThubnail.jpg" alt="Phone System thumbnail" loading="lazy">
-            <div class="card-body">
-              <h4 class="card-title">Phone System</h4>
-              <p class="card-desc">Phones and hidden numbers ring throughout the exhibit. An actor watches CCTV and <strong>calls visitors in real time</strong>, while secret lines trigger <strong>pre-recorded messages</strong>. I built an <strong>offline PA/telephony</strong> system that runs as a closed, low-cost network.</p>
-              <div class="card-actions"><a class="btn" href="phone-system.html">More Details</a></div>
-            </div>
-          </article>
-
-          <!-- Ear Teller -->
-          <article class="card">
-            <img src="./images/EarTeller.jpg" alt="Ear Teller thumbnail" loading="lazy">
-            <div class="card-body">
-              <h4 class="card-title">Ear Teller</h4>
-              <p class="card-desc">With <strong>Spatial Pixel</strong> (natural-language AI), I helped design mechanical parts and control logic for a playful “bank teller.” I built Arduino control for <strong>motors and lighting</strong>, and implemented a <strong>quadrature-encoder</strong> approach for dials using only relative position.</p>
-              <div class="card-actions"><a class="btn" href="ear-teller.html">More Details</a></div>
-            </div>
-          </article>
-
-          <!-- Eye Teller -->
-          <article class="card">
-            <img src="./images/EyeScreen.jpg" alt="Eye Teller thumbnail" loading="lazy">
-            <div class="card-body">
-              <h4 class="card-title">Eye Teller</h4>
-              <p class="card-desc">Mechanism to rotate a <strong>26&quot; fiberglass eye</strong> suspended over the vault—integrated with <strong>Spatial Pixel’s Procession AI</strong> for live control. Because it’s above people, I added multiple <strong>hardware/software safety redundancies</strong>.</p>
-              
-            </div>
-          </article>
-
-          <!-- Automatic Cash Register -->
-          <article class="card">
-            <img src="./images/Cashregthumb.jpg" alt="Automatic Cash Register thumbnail" loading="lazy">
-            <div class="card-body">
-              <h4 class="card-title">Automatic Cash Register</h4>
-              <p class="card-desc">Automate a vintage register to <strong>randomly actuate buttons</strong> while keeping it usable. High actuation forces made it tricky—I iterated fast, prototyped mechanisms, and learned how these <strong>old registers</strong> really work.</p>
-              
-            </div>
-          </article>
-
-          <!-- Jewelry Boxes -->
-          <article class="card">
-            <img src="./images/Jewlthumb.jpg" alt="Jewelry Boxes thumbnail" loading="lazy">
-            <div class="card-body">
-              <h4 class="card-title">Jewelry Boxes</h4>
-              <p class="card-desc">A life-size jewelry-box room with dozens of boxes that <strong>dance in formation</strong>. I added robotics to each—<strong>motors, lights, speakers</strong>—and wrote control code so they move <strong>in sync</strong> or deliberately “broken,” depending on the music.</p>
-              
-            </div>
-          </article>
-
-          <!-- Smaller Projects -->
-          <article class="card">
-            <img src="./images/SmallerProjectsThumbnail.jpg" alt="Smaller Projects thumbnail" loading="lazy">
-            <div class="card-body">
-              <h4 class="card-title">Smaller Projects</h4>
-              <p class="card-desc">A handful of smaller builds where I added <strong>electronics</strong> or <strong>mechanisms</strong> to other artists’ pieces—quick studies that keep the exhibit playful and alive.</p>
-              
-            </div>
-          </article>
-        </div>
+    <section class="build" id="jewelry-boxes">
+      <div class="media">
+        <img src="images/web/jewelry-wall.jpg" alt="Wall of 45 music boxes with the wiring panel open on the right" loading="lazy">
+        <video src="images/web/video/jewelry-final.mp4" poster="images/web/video/jewelry-final.jpg" controls playsinline preload="none"></video>
       </div>
-    </div>
-  
-    </div>
-    <div class="titleblock" aria-label="Title block">
-      <div><span class="label">Drawn by</span>Gill Saligman</div>
-      <div><span class="label">Contact</span><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></div>
-      <div><span class="label">Phone</span>610-316-5180</div>
-      <div><span class="label">Back</span><a href="index.html#work">All work</a></div>
-    </div>
+      <div>
+        <span class="label">Jewelry box room</span>
+        <h2>45 music boxes that dance to the room's soundtrack</h2>
+        <p>After the prototype worked, I had to put 45 music boxes on one wall and wire every one of them: motors, lights, and speakers. They run off an Arduino with IO expanders.</p>
+        <p>The room has a custom soundtrack and a holographic projection, and everything had to stay in time with the music. I set up the whole room to start on a single pulse when the music begins. Everything plays for ten minutes, then the next pulse resets it and the show starts over.</p>
+        <p class="note">Looking back, I'd design a custom controller board instead of hand-wiring that panel. It worked, but a board would have made it far easier to debug and maintain.</p>
+      </div>
+    </section>
+
+    <section class="build" id="loving-memory">
+      <div class="media">
+        <img src="images/web/loving-memory.jpg" alt="Memorial screen reading In Loving Memory with a visitor's face in the oval" loading="lazy">
+      </div>
+      <div>
+        <span class="label">Department of Final Affairs</span>
+        <h2>In Loving Memory</h2>
+        <p>I worked with two magicians on this room. They came up with the ideas, and I built them. Earlier in the experience, visitors look into a mirror. There's a camera hidden behind it. A few rooms later, they find a funeral-style memorial screen with their own face on it.</p>
+        <p>It all runs on a Raspberry Pi. When it sees a face, it takes a burst of photos and ranks each one on how sharp it is and how straight-on the person is looking, throwing out the losing candidates. Every 30 seconds, if it has a new photo, it fades it in so the change looks smooth. It starts on its own when plugged in and recovers safely from reboots. This one was a big hit with visitors.</p>
+      </div>
+    </section>
+
+    <section class="build" id="death-certificate">
+      <div class="media">
+        <div class="pair">
+          <img src="images/web/death-certs.jpg" alt="Two printed death certificates" loading="lazy">
+          <video src="images/web/video/death-cert-print.mp4" poster="images/web/video/death-cert-print.jpg" controls playsinline preload="none"></video>
+        </div>
+        <video src="images/web/video/death-cert-kiosk.mp4" poster="images/web/video/death-cert-kiosk.jpg" controls playsinline preload="none"></video>
+      </div>
+      <div>
+        <span class="label">Department of Final Affairs</span>
+        <h2>Sign your birth certificate, get your death certificate</h2>
+        <p>Another idea from the magicians: visitors sign a birth certificate and walk away with a death certificate carrying their signature.</p>
+        <p>I used a Raspberry Pi with a touchscreen set up like a kiosk, and a cheap receipt printer, which fit an art-project budget. Anything drawn on the screen is saved and laid over the certificate image. The lines match up, so a signature in the right spot lands in the right spot on paper, but people can draw anywhere they want. Three seconds after the last touch, it assumes you're done and prints.</p>
+      </div>
+    </section>
+
+    <section class="build" id="touch-rosettes">
+      <div class="media">
+        <div class="pair">
+          <img src="images/web/rosette-installed.jpg" alt="Painted rosette installed in the Heavens wall" loading="lazy">
+          <img src="images/web/rosette-board.jpg" alt="Test board painted with conductive paint and the sensor box" loading="lazy">
+        </div>
+        <video src="images/web/video/rosette-touch.mp4" poster="images/web/video/rosette-touch.jpg" controls playsinline preload="none"></video>
+      </div>
+      <div>
+        <span class="label">The Heavens &middot; with Spatial Pixel</span>
+        <h2>Touch-sensitive rosettes</h2>
+        <p>The Heavens is an interactive room, and the team wanted visitors to touch the rosettes on the walls to change what happens in the space.</p>
+        <p>I painted the rosettes with a paint mixed with graphite powder so they conduct, and read them with the capacitive sensing pin on an ESP32 Arduino Nano. Each sensor constantly broadcasts its value so the room's main computer can read it and change the projections based on what people touch.</p>
+      </div>
+    </section>
+
+    <section class="build" id="nested-turntables">
+      <div class="media">
+        <div class="pair">
+          <img src="images/web/nested-turntable-build.jpg" alt="Large printed ring gears with small drive gears and an Arduino" loading="lazy">
+          <img src="images/web/nested-turntable-cad.jpg" alt="CAD of the large ring gear" loading="lazy">
+        </div>
+        <video src="images/web/video/nested-turntable.mp4" poster="images/web/video/nested-turntable.jpg" controls playsinline preload="none"></video>
+      </div>
+      <div>
+        <span class="label">The Heavens &middot; with Spatial Pixel</span>
+        <h2>Two nested, endlessly spinning turntables</h2>
+        <p>The ask was two turntables, one inside the other, that could spin forever in either direction while the computer always knows where each one is.</p>
+        <p>I designed two large ring gears and split them along their diagonals for 3D printing, so the pieces would re-attach easily. Small gears ride on each ring and drive a gearbox that spins a magnet at exactly 1:1 with the ring. A magnetic encoder on an ESP32 Arduino Nano reads each magnet and sends both angles to the PC.</p>
+      </div>
+    </section>
+
+    <section class="block" style="padding-inline: 0;">
+      <div class="section-head"><h2>Earlier builds</h2></div>
+      <div class="cards">
+        <article>
+          <a href="typewriter.html"><img src="images/web/t-typewriter.jpg" alt="Automatic typewriter" loading="lazy"></a>
+          <h3><a href="typewriter.html">Automatic Typewriter</a></h3>
+          <p>A Smith Corona SL575 that types on its own but still works by hand. I reverse-engineered its 17-pin keyboard matrix with no documentation.</p>
+        </article>
+        <article>
+          <a href="watching-table.html"><img src="images/web/t-turntable.jpg" alt="Watching table" loading="lazy"></a>
+          <h3><a href="watching-table.html">Watching Table</a></h3>
+          <p>An old Victor receipt printer on a turntable with a hidden camera. It tracks faces, turns toward a visitor, and starts printing.</p>
+        </article>
+        <article>
+          <a href="phone-system.html"><img src="images/web/t-phone.jpg" alt="Phone system" loading="lazy"></a>
+          <h3><a href="phone-system.html">Phone System</a></h3>
+          <p>An offline phone network so an actor watching CCTV can call visitors in real time, plus secret lines with recorded messages.</p>
+        </article>
+        <article>
+          <a href="ear-teller.html"><img src="images/web/t-ear.jpg" alt="Ear Teller" loading="lazy"></a>
+          <h3><a href="ear-teller.html">Ear Teller</a></h3>
+          <p>A confession booth with a motorized ear, built with Spatial Pixel. I did the motion and the dial encoders.</p>
+        </article>
+        <article>
+          <img src="images/web/t-eye.jpg" alt="Eye Teller" loading="lazy">
+          <h3>Eye Teller</h3>
+          <p>A mechanism to rotate a 26&Prime; fiberglass eye hanging over the vault, driven live by Spatial Pixel's AI, with hardware and software safety redundancies because it hangs over people.</p>
+        </article>
+        <article>
+          <img src="images/web/t-cashreg.jpg" alt="Automatic cash register" loading="lazy">
+          <h3>Automatic Cash Register</h3>
+          <p>A vintage register that randomly presses its own buttons while staying usable. The actuation forces took a lot of fast prototyping.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" style="padding-inline: 0;">
+      <div class="section-head"><h2>More from the build</h2></div>
+      <div class="clips">
+        <figure style="margin:0"><video src="images/web/video/flip-clock-1.mp4" poster="images/web/video/flip-clock-1.jpg" controls playsinline preload="none"></video><figcaption class="caption">Flip clocks</figcaption></figure>
+        <figure style="margin:0"><video src="images/web/video/flip-clock-2.mp4" poster="images/web/video/flip-clock-2.jpg" controls playsinline preload="none"></video><figcaption class="caption">Flip clocks</figcaption></figure>
+        <figure style="margin:0"><video src="images/web/video/ticking-watch.mp4" poster="images/web/video/ticking-watch.jpg" controls playsinline preload="none"></video><figcaption class="caption">Randomly ticking watch</figcaption></figure>
+        <figure style="margin:0"><img src="images/web/clock-cad-front.jpg" alt="SolidWorks clock gear train" loading="lazy"><figcaption class="caption">Clock gear train in SolidWorks</figcaption></figure>
+        <figure style="margin:0"><video src="images/web/video/mechanical-advantage.mp4" poster="images/web/video/mechanical-advantage.jpg" controls playsinline preload="none"></video><figcaption class="caption">Mechanical Advantage</figcaption></figure>
+        <figure style="margin:0"><video src="images/web/video/jewelry-prototype-1.mp4" poster="images/web/video/jewelry-prototype-1.jpg" controls playsinline preload="none"></video><figcaption class="caption">Jewelry box wall, early test</figcaption></figure>
+      </div>
+    </section>
   </main>
 
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Gill Saligman &middot; <a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a> &middot; 610-316-5180</span>
+      <a href="index.html#work">Back to all work</a>
+    </div>
+  </footer>
 </body>
 </html>

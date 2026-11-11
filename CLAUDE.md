@@ -6,15 +6,16 @@ Static site served by GitHub Pages at gillsaligman.github.io/Portfolio. No build
 - Clean "engineering drawing" style. All styling lives in `assets/css/site.css`. Do not reintroduce the old HTML5 UP template (`assets/css/main.css`, jQuery scripts); those files are unused leftovers.
 - Fonts: IBM Plex Sans (body) and IBM Plex Mono (labels, numbers) from Google Fonts.
 - Colors are CSS variables on `:root` with a dark-mode override. Use the tokens, never hard-coded colors.
-- Footer on every page is a drawing "title block".
+- Keep it plain and human: no stat boxes, big-number rows, or decorative badges. Gill dislikes anything that looks AI-generated.
+- Footer on every page is a simple `.site-footer` line with contact info.
 
 ## Structure
 - `index.html`: homepage. Projects are `<article class="project">` rows with `.specs` lists, most recent first.
-- Project pages (`nauticus.html`, `robotarm.html`, `frc.html`, `moa.html`, and the Ministry of Awe sub-pages `typewriter.html`, `phone-system.html`, `ear-teller.html`, `watching-table.html`) share one layout: site header, `.page-head`, content inside `.legacy`, title block.
+- Project pages (`nauticus.html`, `robotarm.html`, `frc.html`, `moa.html`, and the Ministry of Awe sub-pages `typewriter.html`, `phone-system.html`, `ear-teller.html`, `watching-table.html`) share one layout: site header, `.page-head`, content inside `.legacy`, `.site-footer`. `moa.html` is hand-built with `.build` sections instead of `.legacy`.
 - To add a project page, copy `typewriter.html` and replace the content inside `<div class="legacy">`.
 
 ## Images
-- Originals are in `images/` (some are large .MOV videos). Web-sized copies used by the homepage are in `images/web/` (JPEG, max 1400px). Make a web-sized copy for any new photo.
+- Originals are in `images/` (some are large .MOV videos). Web-sized copies used by the homepage are in `images/web/` (JPEG, max 1400px). Make a web-sized copy for any new photo. Videos live in `images/web/video/` as H.264 .mp4 (phone .MOV files are HEVC and do not play in Chrome), each with a .jpg poster frame.
 - `images/images/` is a duplicate folder from an old upload and is not used.
 
 ## Facts to keep consistent with the resume
