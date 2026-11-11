@@ -1,177 +1,176 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Jesse Gill Saligman | Engineering Portfolio</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<style>
-		/* Background slideshow */
-		@keyframes bgCycle {
-			0% { background-image: url('images/bg.jpg'); }
-			33% { background-image: url('images/FRC2020SidePicofBot.png'); }
-			66% { background-image: url('images/NauticusRoboticsThumbnail.jpg'); }
-			100% { background-image: url('images/bg.jpg'); }
-		}
-
-		#banner {
-			animation: bgCycle 30s infinite;
-			background-size: cover;
-			background-position: center;
-			background-attachment: fixed;
-			color: white;
-			text-shadow: 0 2px 4px rgba(0,0,0,0.7);
-		}
-
-		img.enlarged-circle {
-			border-radius: 50%;
-			width: 120%;
-			height: auto;
-			object-fit: cover;
-			object-position: center;
-		}
-
-		img.rotated-arm {
-			transform: rotate(270deg);
-			width: 200px;
-			height: 500px;
-			object-fit: contain;
-			border-radius: 12px;
-		}
-		
-		/* FIX FOR DARK HORIZONTAL LINE */
-		.wrapper.spotlight::before,
-		.wrapper.spotlight::after {
-			background: none !important;
-		}
-		
-		/* Enhance content areas */
-		.wrapper.spotlight .inner {
-			background: rgba(30, 31, 44, 0.85);
-			border-radius: 8px;
-			padding: 3rem;
-			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-		}
-		
-		.wrapper.spotlight .image {
-			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-		}
-		
-		/* Improve text readability */
-		.wrapper.spotlight .content {
-			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-		}
-	</style>
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gill Saligman | Robotics &amp; Mechanical Engineer</title>
+  <meta name="description" content="Gill Saligman designs, machines, wires, and codes robots and production machinery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="is-preload">
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Gill Saligman <span>ROBOTICS / ME</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-	<div id="page-wrapper">
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <span class="label">Mechanical engineer &middot; Drexel BSME 2025</span>
+          <h1>I design robots, then build, wire, code, and fix them myself.</h1>
+          <p class="lede">From subsea manipulators to production machines nobody else could fix, I take hardware from CAD to a working system and stay with it until it runs reliably.</p>
+          <div class="cta">
+            <a class="btn primary" href="#work">See my work</a>
+            <a class="btn" href="#contact">Get in touch</a>
+          </div>
+          <div class="facts">
+            <div><b>0.001&Prime;</b><span>machining tolerance</span></div>
+            <div><b>7-DOF</b><span>arm built end to end</span></div>
+            <div><b>4,200/hr</b><span>rebuilt coiler output</span></div>
+          </div>
+        </div>
+        <figure>
+          <img src="images/web/hero.jpg" alt="Gill working on the orange Olympic Arm at Nauticus Robotics" width="902" height="880">
+          <figcaption class="label">Olympic Arm &middot; Nauticus Robotics</figcaption>
+        </figure>
+      </div>
+    </section>
 
-		<header id="header" class="alt">
-			<h1><a href="index.html">Jesse Gill Saligman</a></h1>
-			<nav><a href="#menu">Menu</a></nav>
-		</header>
+    <section class="block" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Selected work</h2>
+          <span class="label">Most recent first</span>
+        </div>
 
-		<nav id="menu">
-			<div class="inner">
-				<h2>Menu</h2>
-				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-				</ul>
-				<a href="#" class="close">Close</a>
-			</div>
-		</nav>
+        <article class="project">
+          <div class="media panel" aria-hidden="true">
+            <div><span class="label">Output, rebuilt coiler</span><b>4,200</b><span class="mono">parts/hr &middot; target 3,500</span></div>
+            <div><span class="label">Oldest fault fixed</span><b>~10 yrs</b><span class="mono">broken &middot; fixed in 1 hr</span></div>
+          </div>
+          <div>
+            <span class="label">Jun 2026 &ndash; present</span>
+            <h3>Vulcan Spring</h3>
+            <p>Robotics and mechanical engineer at a spring manufacturer. I take on the machines the plant has worked around for years and get them running better than new.</p>
+            <span class="result">3,500 &rarr; 4,200 parts/hr</span>
+            <ul class="specs">
+              <li><span>Rebuild</span><span>Rewired a $100K+ plastic coil-spring machine, machined new wire guides at half the size, and wrote control code with 14 operator settings.</span></li>
+              <li><span>Repairs</span><span>Fixed double-press faults on two coilers, one broken for a decade.</span></li>
+              <li><span>Vision</span><span>Machine vision system that checks every part in any orientation and stops production on a fault.</span></li>
+            </ul>
+          </div>
+        </article>
 
-		<section id="banner">
-			<div class="inner">
-				<div class="logo"><span class="icon fa-gem"></span></div>
-				<h2>Engineering Portfolio</h2>
-				<p><strong>Jesse Gill Saligman | Mechanical Engineering | Robotics</strong></p>
-			</div>
-		</section>
+        <article class="project">
+          <div class="media"><img src="images/web/moa-ear.jpg" alt="The Ear Teller exhibit piece" loading="lazy"></div>
+          <div>
+            <span class="label">Aug 2025 &ndash; Apr 2026 &middot; Philadelphia</span>
+            <h3>Ministry of Awe</h3>
+            <p>Robotics lead for an interactive art exhibit. I was the engineer turning artists' ideas into working machines, from mechanisms and electronics to software, with AI from Spatial Pixel driving some pieces live.</p>
+            <ul class="specs">
+              <li><span>Builds</span><span>Automatic typewriter, rotary phone system, face-tracking turntable, a 26&Prime; spinning eye, dozens of dancing jewelry boxes.</span></li>
+              <li><span>Uptime</span><span>Ran 40&ndash;50 hours a week; designed for fast part swaps.</span></li>
+            </ul>
+            <a class="more" href="moa.html">View the projects</a>
+          </div>
+        </article>
 
-		<section id="wrapper">
+        <article class="project">
+          <div class="media"><img src="images/web/arm-team.jpg" alt="The senior design team with the robotic arm on its chassis" loading="lazy"></div>
+          <div>
+            <span class="label">Sep 2024 &ndash; Jun 2025 &middot; Team lead</span>
+            <h3>7-DOF Robotic Arm</h3>
+            <p>A modular arm on a motorized chassis for a NASA RASC-AL inspired senior design. I worked on every layer: torque and singularity analysis, a 3D-printed harmonic drive, the joints and gripper, the wiring, and the firmware.</p>
+            <ul class="specs">
+              <li><span>Controls</span><span>Each joint runs its own ESP8266 with a 100 Hz PID loop, commanded by a Raspberry Pi over MQTT.</span></li>
+              <li><span>Power</span><span>Four-wire backbone makes joints hot-swappable.</span></li>
+            </ul>
+            <a class="more" href="robotarm.html">View the project</a>
+          </div>
+        </article>
 
-			<section class="wrapper spotlight style1">
-				<div class="inner">
-					<a href="#" class="image"><img src="images/NauticusCirclePic.jpg" alt="Nauticus Robotics" class="enlarged-circle" /></a>
-					<div class="content">
-						<h2 class="major">Nauticus Robotics</h2>
-						<p>As a mechanical engineer at Nauticus Robotics, I took on full-time responsibilities during a critical restructuring phase. I contributed to the design, manufacturing, and assembly of components for the Aquanaut MKII and Olympic Arm, solved oil pressure and hose routing challenges, and built a master controller prototype for advanced arm control. I worked long hours to meet tight deadlines and ensure the vehicle was ready for deep water testing.</p>
-						<a href="nauticus.html" class="special">View Project</a>
-					</div>
-				</div>
-			</section>
+        <article class="project">
+          <div class="media"><img src="images/web/nauticus-sub.jpg" alt="Aquanaut underwater vehicle" loading="lazy"></div>
+          <div>
+            <span class="label">Sep 2023 &ndash; May 2024 &middot; Houston</span>
+            <h3>Nauticus Robotics</h3>
+            <p>Started as an intern and took on a full engineering role two weeks in, staying through a company restructuring to get the Aquanaut MKII and Olympic Arm ready for deep-sea trials.</p>
+            <ul class="specs">
+              <li><span>Subsea</span><span>Replaced hardware, solved oil routing, passed pressure tests.</span></li>
+              <li><span>Controller</span><span>Built a working master-controller prototype for the Olympic Arm in three weeks.</span></li>
+            </ul>
+            <a class="more" href="nauticus.html">View the project</a>
+          </div>
+        </article>
 
-			<!-- NEW: Ministry of Awe section -->
-			<section class="wrapper spotlight style1">
-				<div class="inner">
-					<a href="moa.html" class="image"><img src="images/EarTeller.jpg" alt="Ministry of Awe" /></a>
-					<div class="content">
-						<h2 class="major">Ministry of Awe</h2>
-						<p>Ministry of Awe is an interactive art experience opening in Old City, Philadelphia in early 2026. I collaborate with artists to design original robotics pieces or add technology to existing works—spanning everything from mechanical assemblies to electronics-heavy builds and fully software-driven installations. I also worked closely with Spatial Pixel, a natural-language AI company, to weave AI into the systems we built.</p>
-						<a href="moa.html" class="special">View Projects</a>
-					</div>
-				</div>
-			</section>
-			<!-- END NEW -->
+        <article class="project">
+          <div class="media"><img src="images/web/frc-2020.jpg" alt="2020 FRC robot" loading="lazy"></div>
+          <div>
+            <span class="label">2018 &ndash; present &middot; Captain, now coach</span>
+            <h3>FIRST Robotics Competition</h3>
+            <p>Team captain and mechanical lead in high school, where I redesigned our 2020 shooter in a week. Today I coach a team of 15 students.</p>
+            <a class="more" href="frc.html">View the project</a>
+          </div>
+        </article>
+      </div>
+    </section>
 
-			<section class="wrapper alt spotlight style2">
-				<div class="inner" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-					<div class="content" style="max-width: 800px;">
-						<h2 class="major">7-DOF Robotic Arm</h2>
-						<p>This project is a modular robotic arm mounted to a custom motorized chassis, designed for autonomous surface exploration. It was built for the NASA RASC-AL competition and represents a full-stack engineering effort — I calculated joint torques, selected and integrated components, and developed everything from mechanical structure to embedded firmware and ROS2 communication protocols.</p>
-						<a href="robotarm.html" class="special">View Project</a>
-					</div>
-				<img src="images/RobotArmRender.jpg" alt="Robotic Arm" style="margin-top: 2rem; max-width: 100%; height: auto; border-radius: 10px;" />
-			</div>
-		</section>
+    <section class="block">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Ministry of Awe builds</h2>
+          <a class="more" href="moa.html">All builds</a>
+        </div>
+        <div class="grid">
+          <a class="tile" href="typewriter.html"><img src="images/web/t-typewriter.jpg" alt="" loading="lazy"><b>Automatic Typewriter</b><span>Reverse-engineered a 17-pin key matrix</span></a>
+          <a class="tile" href="phone-system.html"><img src="images/web/t-phone.jpg" alt="" loading="lazy"><b>Rotary Phone System</b><span>Offline phone network for vintage phones</span></a>
+          <a class="tile" href="watching-table.html"><img src="images/web/t-turntable.jpg" alt="" loading="lazy"><b>Watching Turntable</b><span>Camera, Raspberry Pi, stepper</span></a>
+          <a class="tile" href="ear-teller.html"><img src="images/web/t-ear.jpg" alt="" loading="lazy"><b>Ear Teller</b><span>Confession booth with a motorized ear</span></a>
+        </div>
+      </div>
+    </section>
 
-			<section class="wrapper spotlight style3">
-				<div class="inner">
-					<a href="frc.html" class="image"><img src="images/FRC2019HoldingTrophy.png" alt="FRC" /></a>
-					<div class="content">
-						<h2 class="major">FIRST Robotics Competition</h2>
-						<p>As a former team captain, mechanical lead, and robot operator in FRC, I designed and iterated advanced competitive robots under tight timelines. Highlights include a turret-based dodgeball shooter with a rotating magazine and a full robot redesign completed in under a week. Today, I continue mentoring FRC students, helping them explore and grow in STEM fields.</p>
-						<a href="frc.html" class="special">View Project</a>
-					</div>
-				</div>
-			</section>
+    <section class="block" id="about">
+      <div class="wrap about">
+        <div>
+          <div class="section-head"><h2>About</h2></div>
+          <p>I'm a mechanical engineer who ended up doing robotics because I like every part of it: the mechanism, the electronics, the code, and especially the moment a machine finally works.</p>
+          <p>I do my best work on hard problems with no manual, like old machines nobody has documentation for, and I'd rather understand a system than work around it. Right now I'm building a CNC mill at home focused on rigidity and closed-loop control.</p>
+        </div>
+        <div class="skills">
+          <div><span class="label">Design</span><p>SolidWorks, Fusion 360, GD&amp;T, DFM, FEA</p></div>
+          <div><span class="label">Fabrication</span><p>CNC milling, lathe, EDM, laser cutting, 3D printing, sheet metal</p></div>
+          <div><span class="label">Electronics &amp; code</span><p>Arduino, ESP, Raspberry Pi, PLCs, Python, MQTT, ROS 2 (sim), machine vision</p></div>
+        </div>
+      </div>
+    </section>
 
-			<section class="wrapper alt style1">
-				<div class="inner">
-					<h2 class="major">About Me</h2>
-					<p>I'm Jesse Gill Saligman, a mechanical engineer passionate about robotics, prototyping, and systems integration. I've built machines that compete, explore, and serve, and I bring a practical, full-stack mindset to every stage of design. Whether working on underwater manipulators, autonomous rovers, or competition robots — I thrive on translating complex ideas into working systems and turning ideas into reality.</p>
-					<a href="#" class="special">Learn More</a>
-				</div>
-			</section>
-
-		</section>
-
-		<section id="footer">
-			<div class="inner">
-				<h2 class="major">Get in Touch</h2>
-				<ul class="contact">
-					<li class="icon solid fa-phone">610-316-5180</li>
-					<li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
-					<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; Jesse Gill Saligman. All rights reserved.</li>
-					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-				</ul>
-			</div>
-		</section>
-
-	</div>
-
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-
+    <section class="block" id="contact">
+      <div class="wrap">
+        <div class="section-head"><h2>Contact</h2><span class="label">Open to robotics roles &middot; willing to relocate</span></div>
+        <div class="contact">
+          <a href="mailto:jsaligman@gmail.com"><span class="label">Email</span>jsaligman@gmail.com</a>
+          <a href="tel:+16103165180"><span class="label">Phone</span>610-316-5180</a>
+          <a href="https://www.linkedin.com/in/gill-saligman-3a81a7255"><span class="label">LinkedIn</span>gill-saligman</a>
+        </div>
+        <div class="titleblock" aria-label="Title block">
+          <div><span class="label">Drawn by</span>Gill Saligman</div>
+          <div><span class="label">Location</span>Wayne, PA</div>
+          <div><span class="label">Rev</span>C &middot; 2026</div>
+          <div><span class="label">Sheet</span>1 of 1</div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
