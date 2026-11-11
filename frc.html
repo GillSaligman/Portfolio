@@ -1,302 +1,34 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>FIRST Robotics Competition | Jesse Gill Saligman</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<style>
-		:root {
-			--primary: #2c3e50;
-			--secondary: #d35400; /* FRC orange accent */
-			--dark-bg: #1a1f29;
-			--light-text: #f0f0f0;
-			--medium-bg: #252c3a;
-			--accent: #e67e22;
-		}
-		
-		#wrapper > header {
-			position: relative;
-			overflow: hidden;
-			color: white;
-			text-shadow: 0 2px 5px rgba(0,0,0,0.8);
-			padding: 10em 2em 23em 2em;
-			text-align: center;
-		}
-
-		#header-video {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			z-index: -1;
-		}
-
-		#wrapper > header::after {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: rgba(0,0,0,0.6);
-			z-index: 0;
-		}
-
-		#wrapper > header .inner {
-			position: relative;
-			z-index: 1;
-		}
-
-		.wrapper { margin-top: -6em; margin-bottom: -6em; }
-		
-		section#footer {
-			background: url('images/FRC2019ClimbingVideo.mp4') center center / cover fixed;
-			color: white;
-			text-shadow: 0 1px 3px rgba(0,0,0,0.7);
-			padding-top: 4em;
-			padding-bottom: 4em;
-			border-top: none;
-		}
-
-		section#footer a.special {
-			display: inline-block;
-			margin-top: 1em;
-			padding: 0.75em 2em;
-			border: 2px solid white;
-			border-radius: 4px;
-			text-decoration: none;
-			color: white;
-			font-weight: bold;
-			transition: background 0.3s ease, color 0.3s ease;
-		}
-
-		section#footer a.special:hover {
-			background: white;
-			color: #1b1b1b;
-		}
-
-		section#footer .contact li {
-			font-weight: bold;
-			font-size: 1.2em;
-		}
-
-		.media-container {
-			max-width: 900px;
-			margin: 2em auto;
-			border-radius: 12px;
-			overflow: hidden;
-			box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-		}
-		
-		.media-container img, 
-		.media-container video {
-			width: 100%;
-			height: auto;
-			display: block;
-		}
-
-		.dropdown-section {
-			margin: 3em 0;
-		}
-		
-		.toggle-btn {
-			display: block;
-			width: 100%;
-			margin: 1.5em 0 1em;
-			padding: 1.2em 2em;
-			background-color: var(--primary);
-			color: #fff;
-			border: none;
-			border-radius: 8px;
-			cursor: pointer;
-			font-size: 1.15em;
-			text-align: left;
-			transition: all 0.3s;
-			font-weight: 600;
-		}
-		
-		.toggle-btn:after {
-			content: "▼";
-			float: right;
-			font-size: 0.9em;
-			transition: transform 0.3s;
-		}
-		
-		.toggle-btn.active:after {
-			content: "▲";
-		}
-		
-		.toggle-btn:hover {
-			background-color: var(--secondary);
-			transform: translateY(-2px);
-			box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-		}
-
-		.details { 
-			display: none; 
-			padding: 2.5em;
-			margin: 0.5em 0 3em;
-			background: var(--dark-bg);
-			border-left: 4px solid var(--secondary);
-			border-radius: 0 10px 10px 0;
-			color: var(--light-text);
-			box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-		}
-		
-		.details-content {
-			max-width: 1400px;
-			margin: 0 auto;
-		}
-		
-		.details h4 {
-			color: var(--accent);
-			margin-top: 1.8em;
-			padding-bottom: 0.6em;
-			font-size: 1.3em;
-			border-bottom: 1px solid #3a4659;
-		}
-		
-		.details ul {
-			padding-left: 1.8em;
-			margin: 1.5em 0;
-		}
-		
-		.details li {
-			margin-bottom: 0.8em;
-			line-height: 1.7;
-			color: #e0e0e0;
-		}
-		
-		.section-intro {
-			margin-bottom: 2em;
-			line-height: 1.8;
-			text-align: center;
-			max-width: 1000px;
-			margin-left: auto;
-			margin-right: auto;
-			font-size: 1.1em;
-			color: #fff;
-			text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-		}
-		
-		.detail-grid {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 2.5em;
-			margin: 2em 0;
-		}
-		
-		.detail-text {
-			padding-right: 1.5em;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-		}
-		
-		.detail-media {
-			display: flex;
-			flex-direction: column;
-			gap: 2em;
-		}
-		
-		.detail-media img,
-		.detail-media video {
-			border-radius: 10px;
-			box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-			border: 1px solid #3a4659;
-			width: 100%;
-			height: auto;
-			object-fit: contain;
-		}
-		
-		.media-gallery {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-			gap: 20px;
-			margin-top: 2em;
-		}
-		
-		.media-gallery img,
-		.media-gallery video {
-			border-radius: 10px;
-			box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-			border: 1px solid #3a4659;
-			width: 100%;
-			height: auto;
-			object-fit: cover;
-		}
-		
-		.youtube-container {
-			position: relative;
-			width: 100%;
-			padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-			height: 0;
-			overflow: hidden;
-			border-radius: 10px;
-			box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-			border: 1px solid #3a4659;
-		}
-		
-		.youtube-container iframe {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			border: none;
-		}
-		
-		/* Tribute styling */
-		.tribute-section {
-			background: rgba(255,255,255,0.05);
-			padding: 1.5rem;
-			border-radius: 8px;
-			margin: 2rem 0;
-			border-left: 4px solid var(--accent);
-		}
-	</style>
-	<script>
-		function toggleDetails(id) {
-			var el = document.getElementById(id);
-			var btn = document.querySelector('[onclick="toggleDetails(\'' + id + '\')"]');
-			el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
-			btn.classList.toggle('active');
-		}
-		
-		// Automatically mute and loop all videos
-		document.addEventListener('DOMContentLoaded', function() {
-			const videos = document.querySelectorAll('video');
-			videos.forEach(video => {
-				video.muted = true;
-				video.loop = true;
-				video.playsInline = true;
-			});
-		});
-	</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FIRST Robotics Competition | Gill Saligman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-<div id="page-wrapper">
-	<header id="header">
-		<h1><a href="index.html">Jesse Gill Saligman</a></h1>
-		<nav><a href="#menu">Menu</a></nav>
-	</header>
-
-	<section id="wrapper">
-		<header>
-			<video id="header-video" autoplay muted loop playsinline>
-				<source src="images/FRC2019ClimbingVideo.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-			<div class="inner">
-				<h2>FIRST Robotics Competition</h2>
-				<p>Team Captain & Mechanical Lead | 2018-2021</p>
-			</div>
-		</header>
-
-		<div class="wrapper">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Gill Saligman <span>ROBOTICS / ME</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="page-head">
+      <a class="label back" href="index.html#work">&larr; All work</a>
+      <h1>FIRST Robotics Competition</h1>
+      <p>Team Captain & Mechanical Lead | 2018-2021</p>
+    </div>
+    <video class="banner" src="images/FRC2019ClimbingVideo.mp4" autoplay muted loop playsinline></video>
+    <div class="legacy">
+<div class="wrapper">
 			<div class="inner centered-content">
 
 				<!-- OVERVIEW -->
@@ -543,30 +275,31 @@
 	</section>
 
 	<!-- FOOTER -->
-	<section id="footer">
-		<div class="inner">
-			<h2 class="major">Get in Touch</h2>
-			<ul class="contact">
-				<li class="icon solid fa-phone">610-316-5180</li>
-				<li class="icon solid fa-envelope"><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></li>
-				<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gill-saligman-3a81a7255">linkedin.com/in/gill-saligman</a></li>
-			</ul>
-			<a href="index.html" class="special">Back to Portfolio</a>
-			<ul class="copyright">
-				<li>&copy; Jesse Gill Saligman. All rights reserved.</li>
-				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-			</ul>
-		</div>
-	</section>
-
-</div>
-
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-
+    </div>
+    <div class="titleblock" aria-label="Title block">
+      <div><span class="label">Drawn by</span>Gill Saligman</div>
+      <div><span class="label">Contact</span><a href="mailto:jsaligman@gmail.com">jsaligman@gmail.com</a></div>
+      <div><span class="label">Phone</span>610-316-5180</div>
+      <div><span class="label">Back</span><a href="index.html#work">All work</a></div>
+    </div>
+  </main>
+<script>
+		function toggleDetails(id) {
+			var el = document.getElementById(id);
+			var btn = document.querySelector('[onclick="toggleDetails(\'' + id + '\')"]');
+			el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
+			btn.classList.toggle('active');
+		}
+		
+		// Automatically mute and loop all videos
+		document.addEventListener('DOMContentLoaded', function() {
+			const videos = document.querySelectorAll('video');
+			videos.forEach(video => {
+				video.muted = true;
+				video.loop = true;
+				video.playsInline = true;
+			});
+		});
+	</script>
 </body>
 </html>
