@@ -20,5 +20,5 @@ Static site served by GitHub Pages at gillsaligman.github.io/Portfolio. No build
 
 ## Facts to keep consistent with the resume
 - Name: Gill Saligman. Email jsaligman@gmail.com, phone 610-316-5180.
-- Vulcan Spring (Jun 2026–present): coiler rebuilt to 4,200 parts/hr vs 3,500 target; fixed decade-old double-press fault; machine vision part checker. No photos yet.
+- Vulcan Spring (Jun 2026–present): coiler rebuilt to 4,200 parts/hr vs 3,500 target; fixed decade-old double-press fault; machine-vision inspection system in production since Aug 2026 (thousands of parts, zero false stops); designing a 100,000-cycle spring reel for a customer. Keep customer names, costs and internal data off the site. No photos yet.
 - Ministry of Awe (Aug 2025–Apr 2026), 7-DOF arm senior design (Sep 2024–Jun 2025), Nauticus Robotics (Sep 2023–May 2024).
